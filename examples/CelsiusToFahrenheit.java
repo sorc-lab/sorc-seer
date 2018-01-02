@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-class CelsiusToFahrenheit
+public class CelsiusToFahrenheit
 {
 	public static void main(String[] args)
 	{
@@ -30,6 +30,6 @@ class CelsiusToFahrenheit
 
 	public static double calculate(double celsius)
 	{
-		return celsius * (9/5) + 32;
+		return celsius * 9/5 + 32;
 	}
 }
