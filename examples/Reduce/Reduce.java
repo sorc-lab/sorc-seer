@@ -11,10 +11,10 @@ public class Reduce
 		int c = inRange(scores, 70, 80);
 		int d = inRange(scores, 60, 70);
 		int f = inRange(scores, 0, 60);
+
 		System.out.println(Arrays.toString(scores));
-		System.out.printf(
-			"A = %d, B = %d, C = %d, D = %d, F = %d\n",a,b,c,d,f
-		);
+		System.out.printf("A = %d, B = %d, C = %d, D = %d, F = %d\n",
+			a,b,c,d,f);
 	}
 
 	public static int[] randomArray(int size)
@@ -22,7 +22,7 @@ public class Reduce
 		Random random = new Random();
 		int[] arr = new int[size];
 		for (int i = 0; i < arr.length; i++) {
-			arr[i] = random.nextInt(100); // git test
+			arr[i] = random.nextInt(100);
 		}
 		return arr;
 	}
