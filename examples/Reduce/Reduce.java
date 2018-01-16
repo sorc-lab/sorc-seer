@@ -22,7 +22,7 @@ public class Reduce
 		Random random = new Random();
 		int[] arr = new int[size];
 		for (int i = 0; i < arr.length; i++) {
-			arr[i] = random.nextInt(100);
+			arr[i] = random.nextInt(100); // git test
 		}
 		return arr;
 	}
