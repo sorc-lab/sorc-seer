@@ -15,6 +15,15 @@ public class Reduce
 		System.out.println(Arrays.toString(scores));
 		System.out.printf("A = %d, B = %d, C = %d, D = %d, F = %d\n",
 			a,b,c,d,f);
+		
+		// calc & print histogram
+		int[] counts = new int[100];
+		for (int score : scores) {
+			counts[score]++;
+
+			if (counts[score] >= 1)
+				System.out.printf("%2d = %d\n", score, counts[score]);
+		}
 	}
 
 	public static int[] randomArray(int size)
