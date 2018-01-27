@@ -1,13 +1,14 @@
 public class Card
 {
+	public static final String[] SUITS = {
+		"Clubs", "Diamonds", "Hearts", "Spades"};
+
+	public static final String[] RANKS = {
+		null, "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack",
+		"Queen", "King"};
+
 	private int rank;
 	private int suit;
-
-	public static void main(String[] args)
-	{
-		Card card = new Card(11, 1);
-		System.out.println(card);
-	}
 
 	public Card(int rank, int suit)
 	{
@@ -15,13 +16,15 @@ public class Card
 		this.suit = suit;
 	}
 
+	public static void main(String[] args)
+	{
+		Card card = new Card(11, 1);
+		System.out.println(card);
+	}
+
 	public String toString()
 	{
-		String[] suits = {"Clubs", "Diamonds", "Hearts", "Spades"};
-		String[] ranks = {null, "Ace", "2", "3", "4", "5", "6", "7", "8", "9",
-			"10", "Jack", "Queen", "King"};
-
-		String s = ranks[this.rank] + " of " + suits[this.suit];
-		return s;
+		String str = RANKS[this.rank] + " of " + SUITS[this.suit];
+		return str;
 	}
 }
