@@ -20,11 +20,18 @@ public class Card
 	{
 		Card card = new Card(11, 1);
 		System.out.println(card);
+
+		// test equals overload method
 	}
 
 	public String toString()
 	{
 		String str = RANKS[this.rank] + " of " + SUITS[this.suit];
 		return str;
+	}
+
+	public boolean equals(Card that)
+	{
+		return this.rank == that.rank && this.suit == that.suit;
 	}
 }
