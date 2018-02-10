@@ -14,10 +14,20 @@ public class Card
 
 	public static void main(String[] args)
 	{
-		Card card = new Card(11, 1);
-		System.out.println(card);
+		Card[] cards = new Card[52];
 
-		// test equals overload method
+		int index = 0;
+		for (int suit = 0; suit <= 3; suit++)
+		{
+			for (int rank = 1; rank <= 13; rank++)
+			{
+				cards[index] = new Card(rank, suit);
+				index++;
+			}
+		}
+
+		Card card = new Card(11, 0);
+		System.out.println(binarySearch(cards, card));
 	}
 
 	public Card(int rank, int suit)
@@ -62,4 +72,58 @@ public class Card
 
 		return 0;
 	}
+
+	public static void printDeck(Card[] cards)
+	{
+		for (int i = 0; i < cards.length; i++)
+		{
+			System.out.println(cards[i]);
+		}
+	}
+
+	// Sequential search (for unsorted array)
+	public static int search(Card[] cards, Card target)
+	{
+		for (int i = 0; i < cards.length; i++)
+		{
+			if (cards[i].equals(target))
+			{
+				return i;
+			}
+		}
+
+		return -1;
+	}
+
+	// Binart search (for sorted array)
+	public static int binarySearch(Card[] cards, Card target)
+	{
+		int low = 0;
+		int high = cards.length - 1;
+
+		while (low <= high)
+		{
+			// trace
+			System.out.println(low + ", " + high);
+
+			int mid = (low + high) / 2;                               // step 1
+			int comp = cards[mid].compareTo(target);
+
+			if (comp == 0)                                            // step 2
+			{
+				return mid;
+			}
+			else if (comp < 0)                                        // step 3
+			{
+				low = mid + 1;
+			}
+			else                                                      // step 4
+			{
+				high = mid -1;
+			}
+		}
+
+		return -1;
+	}
 }
+
