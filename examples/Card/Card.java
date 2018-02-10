@@ -9,8 +9,8 @@ public class Card
 		"Queen", "King"
 	};
 
-	private int rank;
-	private int suit;
+	private final int rank;
+	private final int suit;
 
 	public static void main(String[] args)
 	{
@@ -61,15 +61,5 @@ public class Card
 		}
 
 		return 0;
-	}
-
-	public int getRank()
-	{
-		return this.rank;
-	}
-
-	public int getSuit()
-	{
-		return this.suit;
 	}
 }
