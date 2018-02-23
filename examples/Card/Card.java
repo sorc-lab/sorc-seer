@@ -28,6 +28,7 @@ public class Card
 
 		Card card = new Card(11, 0);
 		System.out.println(binarySearch(cards, card));
+		System.out.println(card);
 	}
 
 	public Card(int rank, int suit)
@@ -95,7 +96,7 @@ public class Card
 		return -1;
 	}
 
-	// Binart search (for sorted array)
+	// Binary search (for sorted array)
 	public static int binarySearch(Card[] cards, Card target)
 	{
 		int low = 0;
@@ -119,11 +120,37 @@ public class Card
 			}
 			else                                                      // step 4
 			{
-				high = mid -1;
+				high = mid - 1;
 			}
 		}
 
 		return -1;
 	}
+
+	// Recursive binary search
+	public static int binarySearch
+		(Card[] cards, Card target, int low, int high)
+	{
+		if (high < low) { return -1; }
+		int mid = (low + high) / 2;                                   // Step 1
+		int comp = cards[mid].compareTo(target);
+
+		if (comp == 0)                                                // Step 2
+		{
+			return mid;
+		}
+		else if (comp < 0)                                            // Step 3
+		{
+			return binarySearch(cards, target, mid + 1, high);
+		}
+		else                                                          // Step 4
+		{
+			return binarySearch(cards, target, low, mid - 1);
+		}
+	}
+
+	// TODO: Add makeDeck(), no parms, returns fully-populated array of Cards
+	// TODO: Impliment 2D library, see 12-4 (173)
+
 }
 
