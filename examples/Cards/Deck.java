@@ -1,6 +1,3 @@
-import Card;
-
-
 public class Deck
 {
 	private Card[] cards;
@@ -8,10 +5,10 @@ public class Deck
 	public static void main(String[] args)
 	{
 		Deck deck = new Deck();
-		print();
+		deck.print();
 	}
 
-	public Deck(int n)
+	public Deck()
 	{
 		this.cards = new Card[52];
 		int index = 0;
