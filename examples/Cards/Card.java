@@ -12,15 +12,12 @@ public class Card
 	private final int rank;
 	private final int suit;
 
-	public static void main(String[] args)
-	{
+	public static void main(String[] args) {
 		Card[] cards = new Card[52];
 
 		int index = 0;
-		for (int suit = 0; suit <= 3; suit++)
-		{
-			for (int rank = 1; rank <= 13; rank++)
-			{
+		for (int suit = 0; suit <= 3; suit++) {
+			for (int rank = 1; rank <= 13; rank++) {
 				cards[index] = new Card(rank, suit);
 				index++;
 			}
@@ -31,99 +28,72 @@ public class Card
 		System.out.println(card);
 	}
 
-	public Card(int rank, int suit)
-	{
+	public Card(int rank, int suit) {
 		this.rank = rank;
 		this.suit = suit;
 	}
 
 
-	public String toString()
-	{
+	public String toString() {
 		String str = RANKS[this.rank] + " of " + SUITS[this.suit];
 		return str;
 	}
 
-	public boolean equals(Card that)
-	{
+	public boolean equals(Card that) {
 		return this.rank == that.rank && this.suit == that.suit;
 	}
 
-	public int compareTo(Card that)
-	{
+	public int compareTo(Card that) {
 		if (this.suit < that.suit)
-		{
 			return -1;
-		}
 
 		if (this.suit > that.suit)
-		{
 			return 1;
-		}
 
 		if (this.rank < that.rank)
-		{
 			return -1;
-		}
 
 		if (this.rank > that.rank)
-		{
 			return 1;
-		}
 
 		return 0;
 	}
 
 	public static void printDeck(Card[] cards)
 	{
-		for (int i = 0; i < cards.length; i++)
-		{
+		for (int i = 0; i < cards.length; i++) {
 			System.out.println(cards[i]);
 		}
 	}
 
 	// Sequential search (for unsorted array)
-	public static int search(Card[] cards, Card target)
-	{
-		for (int i = 0; i < cards.length; i++)
-		{
-			if (cards[i].equals(target))
-			{
+	public static int search(Card[] cards, Card target) {
+		for (int i = 0; i < cards.length; i++) {
+			if (cards[i].equals(target)) {
 				return i;
 			}
 		}
-
 		return -1;
 	}
 
 	// Binary search (for sorted array)
-	public static int binarySearch(Card[] cards, Card target)
-	{
+	public static int binarySearch(Card[] cards, Card target) {
 		int low = 0;
 		int high = cards.length - 1;
+		while (low <= high) {
+			System.out.println(low + ", " + high); // trace
 
-		while (low <= high)
-		{
-			// trace
-			System.out.println(low + ", " + high);
-
-			int mid = (low + high) / 2;                               // step 1
+			int mid = (low + high) / 2;
 			int comp = cards[mid].compareTo(target);
 
-			if (comp == 0)                                            // step 2
-			{
+			if (comp == 0) {
 				return mid;
-			}
-			else if (comp < 0)                                        // step 3
-			{
+			} else if (comp < 0) {
 				low = mid + 1;
-			}
-			else                                                      // step 4
-			{
+			} else {
 				high = mid - 1;
 			}
 		}
-
 		return -1;
 	}
 
@@ -132,19 +102,14 @@ public class Card
 		(Card[] cards, Card target, int low, int high)
 	{
 		if (high < low) { return -1; }
-		int mid = (low + high) / 2;                                   // Step 1
+		int mid = (low + high) / 2;
 		int comp = cards[mid].compareTo(target);
 
-		if (comp == 0)                                                // Step 2
-		{
+		if (comp == 0) {
 			return mid;
-		}
-		else if (comp < 0)                                            // Step 3
-		{
+		} else if (comp < 0) {
 			return binarySearch(cards, target, mid + 1, high);
-		}
-		else                                                          // Step 4
-		{
+		} else {
 			return binarySearch(cards, target, low, mid - 1);
 		}
 	}
