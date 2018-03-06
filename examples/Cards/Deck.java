@@ -42,47 +42,38 @@ public class Deck
 	}
 
 	public void swapCards() {
-		/*
-		List<Integer> myList = new ArrayList<Integer>();
-		myList.add(5);
-		myList.add(7);
-		Arrays.asList(yourArray).contains(yourValue)
-		*/
-
-		ArrayList<Integer> track = new ArrayList<Integer>();
+		ArrayList<String> track = new ArrayList<String>();
 		int rand = this.randomInt(1, this.cards.length - 1);
-		System.out.println("rand = " + rand);
-		track.add(rand);
+		track.add(Integer.toString(rand));
 
-		System.out.println(track);
-
-		boolean isTracked = track.contains(rand);
-		System.out.println("isTracked = " + isTracked);
-
-		for (int i = 0; i < this.cards.length; i++) {
-			while (isTracked) {
+		for (int i = 0; i < this.cards.length - 1; i++) {
+			while (track.contains(rand)) {
 				rand = this.randomInt(1, this.cards.length -1);
 				if (!track.contains(rand)) {
-					track.add(rand);
-					System.out.println(track);
-
-
+					track.add(Integer.toString(rand));
 					break;
 				} else if (track.size() == this.cards.length - 1) {
-					System.out.println("BREAK");
 					break;
 				}
 			}
+			
+			int trackNum = Integer.parseInt(track.get(i));
+			System.out.println(trackNum);
+			//String cardStr = this.cards[trackNum].toString();
+			//track.set(i, cardStr);
 		}
 
-		System.out.println(track);
+		//System.out.println(track);
 
-	// TODO: Try removing element then re-indexing array
-
-	// 		for each index i {
-	// 			Choose a random number between 1 and length -1
-	// 			Swap the ith card and the randomly-chosen card
-	// 		}
+		/** Test track for duplicate values ================================ */
+		//boolean duplicates = false;
+		//for (int j = 0; j < track.size(); j++)
+		//  for (int k= j + 1; k < track.size(); k++)
+		//      if (k != j && track.get(k) == track.get(j))
+		//	        duplicates = true;
+		//
+		//System.out.println("duplicates = " + duplicates);
+		/** ================================================================ */
 	}
 
 
