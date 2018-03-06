@@ -1,10 +1,18 @@
+import java.util.Random;
+
 public class Deck
 {
 	private Card[] cards;
+	public static final Random rand = new Random();
 
 	public static void main(String[] args) {
-		Deck deck = new Deck();
-		deck.print();
+		/** Print deck */
+		//Deck deck = new Deck();
+		//deck.print();
+		
+		
+		int randInt = randomInt(1, 4);
+		System.out.println(randInt);
 	}
 
 	public Deck(int n) {
@@ -37,6 +45,16 @@ public class Deck
 		return sub;
 	}
 
+	public static int randomInt(int low, int high) {
+		return rand.nextInt((high - low) + 1);
+
+
+		// return random int b/t low and high, including both
+		// can use nextInt in java.util.Random
+		// avoid creating a Random obj. every time random Int is invoked
+	}
+
+	/** ==================================================================== */
 	// public Deck mergeSort() { (recursive)
 	//		if the deck is 0 or 1 cards, return it
 	//		divide the deck into two subdecks
