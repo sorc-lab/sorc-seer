@@ -1,4 +1,6 @@
 import java.util.Random;
+import java.util.Arrays;
+import java.util.ArrayList;
 
 public class Deck
 {
@@ -39,6 +41,52 @@ public class Deck
 		return rand.nextInt((high - low) + 1);
 	}
 
+	public void swapCards() {
+		/*
+		List<Integer> myList = new ArrayList<Integer>();
+		myList.add(5);
+		myList.add(7);
+		Arrays.asList(yourArray).contains(yourValue)
+		*/
+
+		ArrayList<Integer> track = new ArrayList<Integer>();
+		int rand = this.randomInt(1, this.cards.length - 1);
+		System.out.println("rand = " + rand);
+		track.add(rand);
+
+		System.out.println(track);
+
+		boolean isTracked = track.contains(rand);
+		System.out.println("isTracked = " + isTracked);
+
+		for (int i = 0; i < this.cards.length; i++) {
+			while (isTracked) {
+				rand = this.randomInt(1, this.cards.length -1);
+				if (!track.contains(rand)) {
+					track.add(rand);
+					System.out.println(track);
+
+
+					break;
+				} else if (track.size() == this.cards.length - 1) {
+					System.out.println("BREAK");
+					break;
+				}
+			}
+		}
+
+		System.out.println(track);
+
+	// TODO: Try removing element then re-indexing array
+
+	// 		for each index i {
+	// 			Choose a random number between 1 and length -1
+	// 			Swap the ith card and the randomly-chosen card
+	// 		}
+	}
+
+
+
 	/** ==================================================================== */
 	// public Deck mergeSort() { (recursive)
 	//		if the deck is 0 or 1 cards, return it
@@ -74,12 +122,6 @@ public class Deck
 	//		return the new deck
 	// }
 	
-	// public void swapCards() {
-	// 		for each index i {
-	// 			Choose a random number between 1 and length -1
-	// 			Swap the ith card and the randomly-chosen card
-	// 		}
-	// }
 
 	// public void selectionSort() {
 	//		for each index i {
