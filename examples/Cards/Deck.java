@@ -42,47 +42,51 @@ public class Deck
 	}
 
 	public void swapCards() {
-		ArrayList<Integer> track = new ArrayList<Integer>();
-		int rand = this.randomInt(1, this.cards.length - 1);
-		track.add(rand);
+		ArrayList<Integer> tracker = new ArrayList<Integer>();
+		int rand = this.randomInt(0, this.cards.length - 1);
 
-		for (int i = 0; i < this.cards.length - 1; i++) {
-			while (track.contains(rand)) {
-				rand = this.randomInt(1, this.cards.length -1);
-				if (!track.contains(rand)) {
-					track.add(rand);
+		for (int i = 0; i < this.cards.length; i++) {
+			if (i == 0)
+				tracker.add(rand);
+
+			while (tracker.contains(rand)) {
+				rand = this.randomInt(0, this.cards.length - 1);
+
+				if (!tracker.contains(rand)) {
+					tracker.add(rand);
 					break;
-				} else if (track.size() == this.cards.length - 1) {
+				} else if (tracker.size() == 52) {
 					break;
 				}
 			}
 		}
-
-		System.out.println(track.size());
-
-		// make a new deck of 52 empty elements
-		// loop through track for each value will be key to set for new deck
+		
 		Card[] newCards = new Card[52];
-		int trackNum;
-		for (int i = 0; i < newCards.length - 1; i++) {
-			trackNum = track.get(i);
-			newCards[trackNum] = this.cards[i];
+		int trackerNum;
+		for (int i = 0; i < newCards.length; i++) {
+			trackerNum = tracker.get(i);
+			newCards[trackerNum] = this.cards[i];
 		}
 
 		this.cards = newCards;
-		System.out.println(this.cards.length);
 
-		/** Test track for duplicate values ================================ */
-		//boolean duplicates = false;
-		//for (int j = 0; j < track.size(); j++)
-		//  for (int k= j + 1; k < track.size(); k++)
-		//      if (k != j && track.get(k) == track.get(j))
-		//	        duplicates = true;
-		//
-		//System.out.println("duplicates = " + duplicates);
-		/** ================================================================ */
 	}
 
+	public boolean checkDuplicateCards() {
+		boolean duplicates = false;
+		for (int j = 0; j < this.cards.length; j++) {
+			for (int k = j + 1; k < this.cards.length; k++) {
+		    	if (k != j && this.cards[k].equals(this.cards[j])) {
+					System.out.println(
+						"DUPLICATE FOUND: "+this.cards[k]+" & "+this.cards[j]
+					);
+					return true;
+			  	}
+			}
+		}
+		
+		return false;
+	}
 
 
 	/** ==================================================================== */
