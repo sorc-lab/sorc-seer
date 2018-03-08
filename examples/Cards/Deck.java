@@ -118,7 +118,8 @@ public class Deck
 			swapCards(i, randomInt(0, this.cards.length - 1));
 		}
 	}
-
+	
+	/*
 	public Deck mergeSort() {
 		// div deck into two sub
 		// sort subs using selectionsort
@@ -138,8 +139,8 @@ public class Deck
 
 		return merge(d1, d2);
 	}
+	*/
 	
-	/*
 	public Deck mergeSort() {
 		int len = cards.length;
 		if (len == 0 || len == 1) {
@@ -152,7 +153,6 @@ public class Deck
 			return merge(d1, d2);
 		}
 	}
-	*/
 
 	public Deck merge(Deck d1, Deck d2) {
 		Card[] c1 = d1.getCards();
