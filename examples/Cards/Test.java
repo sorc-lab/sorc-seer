@@ -3,15 +3,8 @@ public class Test
 	private static final Deck deck = new Deck();
 
 	public static void main(String[] args) {
-		/** Test merge() */
-		// build and shuffle a deck
-		// use subDeck() to form two small subdecks
-		// use selectionSort on the two subdecks
-		// pass the two subdecks into merge() and test
-		
 		deck.shuffle();
-		deck.mergeSort();
-		deck.print();
+		deck.mergeSort().print();
 
 
 		/*

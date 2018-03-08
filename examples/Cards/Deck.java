@@ -120,6 +120,27 @@ public class Deck
 	}
 
 	public Deck mergeSort() {
+		// div deck into two sub
+		// sort subs using selectionsort
+		// merge the two halves and return the result
+
+		int mid = cards.length / 2;
+		Deck d1 = subdeck(0, mid - 1);
+		Deck d2 = subdeck(mid, cards.length - 1);
+
+		this.cards = d1.cards;
+		selectionSort();
+		d1.cards = this.cards;
+
+		this.cards = d2.cards;
+		selectionSort();
+		d2.cards = this.cards;
+
+		return merge(d1, d2);
+	}
+	
+	/*
+	public Deck mergeSort() {
 		int len = cards.length;
 		if (len == 0 || len == 1) {
 			return this;
@@ -130,8 +151,8 @@ public class Deck
 
 			return merge(d1, d2);
 		}
-
 	}
+	*/
 
 	public Deck merge(Deck d1, Deck d2) {
 		Card[] c1 = d1.getCards();
