@@ -40,7 +40,8 @@ public class Deck
 	public static int randomInt(int low, int high) {
 		return rand.nextInt((high - low) + 1);
 	}
-
+	
+	// 36 milliseconds runtime
 	public void swapCards() {
 		ArrayList<Integer> tracker = new ArrayList<Integer>();
 		int rand = this.randomInt(0, this.cards.length - 1);
@@ -69,7 +70,13 @@ public class Deck
 		}
 
 		this.cards = newCards;
-
+	}
+	
+	// 34 milliseconds runtime
+	public void swapCards(int i, int j) {
+		Card tmp = cards[i];
+		cards[i] = cards[j];
+		cards[j] = tmp;
 	}
 
 	public boolean checkDuplicateCards() {

@@ -7,8 +7,10 @@ public class Test
 		
 		long startTime = System.currentTimeMillis();
 		System.out.println("startTime = " + startTime);
-
-		deck.swapCards();
+		
+		for (int i = 0; i < 52; i++) {
+			deck.swapCards(i, deck.randomInt(0, 51));
+		}
 
 		long endTime = System.currentTimeMillis();
 		System.out.println("endTime = " + endTime);
@@ -19,6 +21,8 @@ public class Test
 		System.out.println("Checking for card duplicates...");
 		if (deck.checkDuplicateCards()) {
 			System.out.println("ERROR: System found duplicate cards.");
+		} else {
+			System.out.println("No duplicates found.");
 		}
 		
 		//System.out.println();
