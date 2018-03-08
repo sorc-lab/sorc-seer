@@ -10,22 +10,8 @@ public class Test
 		// pass the two subdecks into merge() and test
 		
 		deck.shuffle();
-
-		Deck sub1 = deck.subdeck(0, 20);
-		Deck sub2 = deck.subdeck(21, 51);
-
-		System.out.println(sub1);
-		System.out.println(sub2);
-
-		sub1.print();
-		System.out.println();
-		sub2.print();
-
-		System.out.println(sub1.checkDuplicateCards());
-		System.out.println(sub2.checkDuplicateCards());
-
-
-
+		deck.mergeSort();
+		deck.print();
 
 
 		/*

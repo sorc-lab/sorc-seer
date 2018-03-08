@@ -119,6 +119,59 @@ public class Deck
 		}
 	}
 
+	public Deck mergeSort() {
+		int len = cards.length;
+		if (len == 0 || len == 1) {
+			return this;
+		} else {
+			int mid = len / 2;
+			Deck d1 = subdeck(0, mid - 1).mergeSort();
+			Deck d2 = subdeck(mid, len - 1).mergeSort();
+
+			return merge(d1, d2);
+		}
+
+	}
+
+	public Deck merge(Deck d1, Deck d2) {
+		Card[] c1 = d1.getCards();
+		Card[] c2 = d2.getCards();
+		int c1Len = c1.length;
+		int c2Len = c2.length;
+
+		Card[] sorted = new Card[c1Len + c2Len];
+		int i = 0; // d1 index
+		int j = 0; // d2 index
+
+		if (c1Len == 0) {
+			sorted = c2;
+		} else if (c2Len == 0) {
+			sorted = c1;
+		} else {
+			for (int k = 0; k < sorted.length; k++) {
+				// if d1 is empty, d2 wins
+				// if d2 is empty, d1 wins
+				// otherwise, compare the two cards
+				if (j >= c2Len || i < c1Len && c1[i].compareTo(c2[j]) <= 0) {
+					sorted[k] = c1[i];
+					i++;
+				} else {
+					sorted[k] = c2[j];
+					j++;
+				}
+			}
+		}
+
+		Deck deck = new Deck(c1Len + c2Len);
+		deck.cards = sorted;
+
+		return deck;
+	}
+
+	public Card[] getCards() {
+		return this.cards;
+	}
+
 
 
 	/** ==================================================================== */
