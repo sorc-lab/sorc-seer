@@ -141,6 +141,7 @@ public class Deck
 	}
 	*/
 	
+	// 32 milliseconds runtime
 	public Deck mergeSort() {
 		int len = cards.length;
 		if (len == 0 || len == 1) {

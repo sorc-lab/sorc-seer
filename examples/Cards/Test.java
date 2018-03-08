@@ -4,18 +4,15 @@ public class Test
 
 	public static void main(String[] args) {
 		deck.shuffle();
-		deck.mergeSort().print();
-
-
-		/*
-		System.out.println("Executing swapCards algorithm...");
 		
+		System.out.println("Executing recursive mergeSort...");
 		long startTime = System.currentTimeMillis();
 		System.out.println("startTime = " + startTime);
-		
-		deck.shuffle();
+
+		deck.mergeSort();
 
 		long endTime = System.currentTimeMillis();
+		System.out.println("DONE!");
 		System.out.println("endTime = " + endTime);
 
 		long duration = (endTime - startTime);
@@ -29,7 +26,6 @@ public class Test
 		}
 		
 		//System.out.println();
-		//deck.print();
-		*/
+		//deck.mergeSort().print();
 	}
 }
