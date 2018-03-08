@@ -79,6 +79,24 @@ public class Deck
 		cards[j] = tmp;
 	}
 
+	public void selectionSort() {
+		for (int i = 0; i < cards.length - 1; i++) {
+			swapCards(i, indexLowest(i, cards.length - 1));
+		}
+	}
+
+	public int indexLowest(int low, int high) {
+		int index = Math.min(low, high);
+
+		for (int i = index + 1; i <= Math.max(low, high); i++) {
+			if (cards[index].compareTo(cards[i]) == 1) {
+				index = i;
+			}
+		}
+
+		return index;
+	}
+
 	public boolean checkDuplicateCards() {
 		boolean duplicates = false;
 		for (int j = 0; j < this.cards.length; j++) {
@@ -94,6 +112,13 @@ public class Deck
 		
 		return false;
 	}
+
+	public void shuffle() {
+		for (int i = 0; i < this.cards.length; i++) {
+			swapCards(i, randomInt(0, this.cards.length - 1));
+		}
+	}
+
 
 
 	/** ==================================================================== */
@@ -132,11 +157,5 @@ public class Deck
 	// }
 	
 
-	// public void selectionSort() {
-	//		for each index i {
-	//			Find the lowest card at or to the right of i(method: indexLowest)
-	//			Swap the ith card and the lowest card found
-	// 		}
-	// }
 }
 
