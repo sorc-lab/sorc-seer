@@ -4,7 +4,7 @@ import java.util.Random;
 public class CardCollection
 {
 	private String label;
-	private ArrayList<Card> cards;
+	public ArrayList<Card> cards; // was private, couldn't construct
 
 	public CardCollection(String label) {
 		this.label = label;
@@ -62,5 +62,14 @@ public class CardCollection
 			int j = random.nextInt(i);
 			swapCards(i, j);
 		}
+	}
+
+	public String getLabel() {
+		return label;
+	}
+
+	public void dealAll(CardCollection that) {
+		int n = size();
+		deal(that, n);
 	}
 }

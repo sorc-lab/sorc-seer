@@ -1,9 +1,21 @@
 public class Test
 {
-	private static final Deck deck = new Deck();
+	//private static final Deck deck = new Deck();
 
 	public static void main(String[] args) {
+		Deck deck = new Deck("Deck");
 		deck.shuffle();
+
+		Hand hand = new Hand("Hand");
+		deck.deal(hand, 5);
+		hand.display();
+
+		Hand drawPile = new Hand("Draw Pile");
+		deck.dealAll(drawPile);
+		System.out.printf("Draw Pile has %d cards.\n", drawPile.size());
+
+		/** mergeSort Perf. Test */
+		/*deck.shuffle();
 		
 		System.out.println("Executing recursive mergeSort...");
 		long startTime = System.currentTimeMillis();
@@ -26,6 +38,6 @@ public class Test
 		}
 		
 		//System.out.println();
-		//deck.mergeSort().print();
+		//deck.mergeSort().print();*/
 	}
 }
