@@ -114,6 +114,14 @@ public class Card
 		}
 	}
 
+	public int getRank() {
+		return rank;
+	}
+
+	public int getSuit() {
+		return suit;
+	}
+
 	// TODO: Add makeDeck(), no parms, returns fully-populated array of Cards
 	// TODO: Impliment 2D library, see 12-4 (173)
 

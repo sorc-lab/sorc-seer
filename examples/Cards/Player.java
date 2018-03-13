@@ -71,7 +71,7 @@ public class Player
 	}
 
 	public void display() {
-		getHand().display();
+		hand.display();
 	}
 
 	public String getName() {
