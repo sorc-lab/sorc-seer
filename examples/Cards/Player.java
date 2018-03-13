@@ -7,7 +7,8 @@ public class Player
 		this.name = name;
 		this.hand = new Hand(name);
 	}
-
+	
+	/*
 	public Card play(Eights eights, Card prev) {
 		Card card = searchForMatch(prev);
 		if (card == null) {
@@ -15,28 +16,34 @@ public class Player
 		}
 		return card;
 	}
-
+	*/
+	
+	/*
 	public Card searchForMatch(Card prev) {
 		for (int i = 0; i < hand.size(); i++) {
 			Card card = hand.getCard(i);
-			if (cardMatches(card, prev) {
+			if (cardMatches(card, prev)) {
 				return hand.popCard(i);
 			}
 		}
 		return null;
 	}
-
+	*/
+	
+	/*
 	public Card drawForMatch(Eights eights, Card prev) {
 		while (true) {
 			Card card = eights.draw();
 			System.out.println(name + " draws " + card);
-			if (cardMatches(card, prev) {
+			if (cardMatches(card, prev)) {
 				return card;
 			}
 			hand.addCard(card);
 		}
 	}
-
+	*/
+	
+	/*
 	public static boolean cardMatches(Card card1, Card card2) {
 		if (card1.getSuit() == card2.getSuit()) {
 			return true;
@@ -49,7 +56,9 @@ public class Player
 		}
 		return false;
 	}
-
+	*/
+	
+	/*
 	public int score() {
 		int sum = 0;
 		for (int i = 0; i < hand.size(); i++) {
@@ -64,5 +73,22 @@ public class Player
 			}
 		}
 		return sum;
+	}
+	*/
+
+	public CardCollection getHand() {
+		return hand;
+	}
+
+	public void display() {
+		getHand().display();
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void displayScore() {
+		System.out.println(getName() + ": " + score());
 	}
 }
