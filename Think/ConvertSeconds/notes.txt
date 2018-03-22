@@ -1,0 +1,18 @@
+java ConvertSeconds < test.in > test.out
+java ConvertSeconds 193.04
+diff *.out *.exp
+cmp -b *.out *.exp
+
+test.out test.exp differ: byte 61, line 1 is  40    12 ^J
+
+Better way:
+hexdump -C file1 > file1.hex
+hexdump -C file2 > file2.hex
+diff file1.hex file2.hex
+
+^
+|
+Shows nothing in diff... exactly the same, but cmp -b
+command was indicating that there was possibly a different
+line ending character.
+
