@@ -1,0 +1,8 @@
+Connect		Client connects to the server by establishing a Socket connection
+1. Client A -- Make a socet connection to 196.164.1.103 at port 5000 --> Server
+
+Send		Client sends a message to the server
+2. Client A -- write.println(aMessage) --> Server
+
+Receive		Client gets a message from the server
+3. Client A <-- String s = read.readLine() -- Server
