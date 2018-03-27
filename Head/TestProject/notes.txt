@@ -23,3 +23,27 @@ $ cd TestProject/classes
 $ java -jar testproject.jar
 /** ======================================================================== */
 
+/** Packaging ============================================================== */
+TestProject/
+	classes/
+		com/
+			sorclab/
+				PackageExample.class
+	source/
+		com/
+			sorclab/
+				PackageExample.java
+
+PackageExample.java
+package com.sorclab; // at start of file before imports
+
+// compile via 'cd' to 'source' root dir, NOT inside 'com' or 'sorclab' etc.
+$ sudo javac -d ../classes com/sorclab/*.java
+NOTE: The compiler knows where to place the .class files given the structure.
+
+// run the code
+$ cd TestProject/classes
+$ sudo java com.sorclab.PackageExercise
+/** ======================================================================== */
+
+
