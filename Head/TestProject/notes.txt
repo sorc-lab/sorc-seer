@@ -1,0 +1,25 @@
+MyProject/
+	classes
+	source
+
+$ cd source
+$ sudo javac -d ../classes HelloWorld.java
+NOTE: Always compile from 'source' dir INTO classes dir. Run code from classes
+      dir that contains the *.class file.
+
+/** Making a JAR file ====================================================== */
+// create manifest file
+$ sudo touch MyProject/classes/manifest.txt
+
+// enter a single in in the manifest.txt w/ name of Class that calls main()
+Main-Class: Main // no .class appendage. Add an empty line after it.
+
+// run the 'jar' tool from the 'classes' dir.
+$ sudo jar -cvmf manifest.txt testproject.jar *.class
+/** ======================================================================== */
+
+/** Running (executing) the JAR ============================================ */
+$ cd TestProject/classes
+$ java -jar testproject.jar
+/** ======================================================================== */
+
