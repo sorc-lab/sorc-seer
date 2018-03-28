@@ -40,10 +40,27 @@ package com.sorclab; // at start of file before imports
 // compile via 'cd' to 'source' root dir, NOT inside 'com' or 'sorclab' etc.
 $ sudo javac -d ../classes com/sorclab/*.java
 NOTE: The compiler knows where to place the .class files given the structure.
+      The compiler will also create the directories in classes/ dir for you.
 
 // run the code
 $ cd TestProject/classes
 $ sudo java com.sorclab.PackageExercise
+NOTE: This needs to be run at the classes root dir, and can no longer just
+      call class via PackageExercise anymore. Must give full package name.
 /** ======================================================================== */
 
+
+/** JAR a Package ========================================================== */
+// make sure all classes are within correct package structure under the
+// 'classes' dir
+
+// create manifest.txt that states which class has the main() method and use
+// the fully qualified class name (eg Main-Class: com.sorclab.PackageExercise)
+
+// place the manifest.txt in the 'classes' dir root
+
+// from 'classes' dir, run the jar command
+$ sudo jar -cvmf manifest.txt packEx.jar com
+NOTE: Just specify 'com' and it will jar everything.
+/** ======================================================================== */
 
