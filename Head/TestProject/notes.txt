@@ -62,5 +62,12 @@ NOTE: This needs to be run at the classes root dir, and can no longer just
 // from 'classes' dir, run the jar command
 $ sudo jar -cvmf manifest.txt packEx.jar com
 NOTE: Just specify 'com' and it will jar everything.
+
+// list contents of a jar file (show table file)
+$ jar -tf packEx.jar
+
+// unpack a jar file
+$ jar -xf packEx.jar
 /** ======================================================================== */
+
 
