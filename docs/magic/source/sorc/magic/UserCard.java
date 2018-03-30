@@ -55,7 +55,6 @@ public class UserCard
 		}
 
 		String[] rank = rankStr.split("");
-
 		return rank;
 	}
 

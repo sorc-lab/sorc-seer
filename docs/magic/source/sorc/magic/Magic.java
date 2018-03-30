@@ -13,18 +13,38 @@ public class Magic {
 		ui.printCardSelection(deck);
 		int usrSelectedCard = ui.getSelectedCard(deck);
 		
-		System.out.println("\nDealing N cards w/ usr card on top...\n");
-
+		System.out.println("\nGenerating MagicDeck...\n");
+		MagicDeck magicDeck = new MagicDeck(deck, usrSelectedCard);
+		ui.printMagicDeck(magicDeck);
+		
 		UserCard usrCardObj = new UserCard(deck.get(usrSelectedCard));
 		String[][] usrCard = usrCardObj.getUserCard();
+		
+		magicDeck.sortRankDeck(usrCard);
 
+
+
+		// step 1
+		// Construct rankDeck
+		//
+		// step 2
+		// Construct ofDeck
+		//
+		// step 3
+		// Construct suitDeck
+		//
+		// step 4
+		// Construct magicDeck w/ user card revealed
+
+		// UI will take decks in each step and print according to spec
+		
+		/*
 		for (int i = 0; i < usrCard.length;i++) {
 			for (int j = 0; j < usrCard[i].length; j++) {
 				System.out.println(usrCard[i][j]);
 			}
 		}
-
-
+		*/
 
 		//Card usrCardVal = deck.get(usrCard);
 		//MagicDeck magicDeck = new MagicDeck(deck, usrCard);
