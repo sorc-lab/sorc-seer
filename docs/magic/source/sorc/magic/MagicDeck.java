@@ -45,11 +45,7 @@ public class MagicDeck
 	// refactor this into calling a sortDeck() method
 	public void sortRankDeck(String[][] usrCard)
 	{
-		// construct new array based on length of card rank
-		// reverse add them, so 1,2,3 becomes, 3,2,1
-		// append new array to orig array
-
-		int length = usrCard[0].length;
+		int length = usrCard[0].length; // rank specific data
 		String[] pile = new String[length];
 
 		for (int i = 0; i < pile.length; i++) {
@@ -58,14 +54,38 @@ public class MagicDeck
 		
 		// reverse pile
 		for (int i = 0; i < pile.length / 2; i++) {
-		    String tmp = pile[i];
-	    	pile[i] = pile[pile.length - i - 1];
-		    pile[pile.length - i - 1] = tmp;
+			String tmp = pile[i];
+	  		pile[i] = pile[pile.length - i - 1];
+			pile[pile.length - i - 1] = tmp;
 		}
 
-		System.out.println(Arrays.toString(pile));
+		magicDeck = Arrays.copyOfRange(magicDeck, length, magicDeck.length);
+		String[][] piles = {magicDeck, pile};
+		magicDeck = concatPiles(piles);
+		System.out.println(Arrays.toString(magicDeck));
 
-		//System.out.println(Arrays.toString(magicDeck));
+		// Arrays.copyOfRange(arr, 0, 2);          // returns {10, 20}
+
+		//System.out.println(Arrays.toString(pile));
 		return;
 	}
+
+	static String[] concatPiles(String[][] arrays) {
+		int length = 0;
+		for (String[] array : arrays) {
+			length += array.length;
+		}
+
+		String[] result = new String[length];
+		int pos = 0;
+		for (String[] array : arrays) {
+			for (String element : array) {
+				result[pos] = element;
+				pos++;
+			}
+		}
+
+		return result;
+	}
 }
+
