@@ -1,5 +1,6 @@
 package sorc.magic;
 
+import java.util.Arrays;
 import sorc.magic.Deck;
 import sorc.magic.MagicDeck;
 import sorc.magic.UI;
@@ -18,10 +19,13 @@ public class Magic {
 		ui.printMagicDeck(magicDeck);
 		
 		UserCard usrCardObj = new UserCard(deck.get(usrSelectedCard));
-		String[][] usrCard = usrCardObj.getUserCard();
-		
-		magicDeck.sortRankDeck(usrCard);
+		String[][] usrCardData = usrCardObj.getUserCardData();
 
+		String[] rank = usrCardData[0];
+		magicDeck.sortDeck(rank);
+		String[] rankSortedDeck = magicDeck.magicDeck;
+		System.out.println(Arrays.toString(rankSortedDeck));
+		// ui printdeck needs ui print sorted deck and handle a String[]
 
 
 		// step 1

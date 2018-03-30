@@ -70,7 +70,7 @@ public class UserCard
 		return magic;
 	}
 
-	public String[][] getUserCard()
+	public String[][] getUserCardData()
 	{
 		String[] rank  = getRank();
 		String[] of    = getOf();
@@ -82,43 +82,4 @@ public class UserCard
 
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

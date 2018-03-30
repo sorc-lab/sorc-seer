@@ -42,11 +42,10 @@ public class MagicDeck
 		return usrCardVal;
 	}
 	
-	// refactor this into calling a sortDeck() method
-	public void sortRankDeck(String[][] usrCard)
+	public void sortDeck(String[] data)
 	{
-		int length = usrCard[0].length; // rank specific data
-		String[] pile = new String[length];
+		int dataLength = data.length;
+		String[] pile = new String[dataLength];
 
 		for (int i = 0; i < pile.length; i++) {
 			pile[i] = magicDeck[i];
@@ -59,14 +58,11 @@ public class MagicDeck
 			pile[pile.length - i - 1] = tmp;
 		}
 
-		magicDeck = Arrays.copyOfRange(magicDeck, length, magicDeck.length);
+		magicDeck = Arrays.copyOfRange(
+			magicDeck, dataLength, magicDeck.length
+		);
 		String[][] piles = {magicDeck, pile};
 		magicDeck = concatPiles(piles);
-		System.out.println(Arrays.toString(magicDeck));
-
-		// Arrays.copyOfRange(arr, 0, 2);          // returns {10, 20}
-
-		//System.out.println(Arrays.toString(pile));
 		return;
 	}
 
