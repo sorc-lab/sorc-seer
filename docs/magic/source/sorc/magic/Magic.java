@@ -11,15 +11,26 @@ public class Magic {
 		
 		UI ui = new UI();
 		ui.printCardSelection(deck);
-		int usrCard = ui.getSelectedCard(deck);
+		int usrSelectedCard = ui.getSelectedCard(deck);
 		
 		System.out.println("\nDealing N cards w/ usr card on top...\n");
 
-		Card usrCardVal = deck.get(usrCard);
-		MagicDeck magicDeck = new MagicDeck(deck, usrCard);
-		ui.printMagicDeck(magicDeck);
+		UserCard usrCardObj = new UserCard(deck.get(usrSelectedCard));
+		String[][] usrCard = usrCardObj.getUserCard();
 
-		// parse usrCardVal, set suit and value as instance vars of UserCard
+		for (int i = 0; i < usrCard.length;i++) {
+			for (int j = 0; j < usrCard[i].length; j++) {
+				System.out.println(usrCard[i][j]);
+			}
+		}
+
+
+
+		//Card usrCardVal = deck.get(usrCard);
+		//MagicDeck magicDeck = new MagicDeck(deck, usrCard);
+		//ui.printMagicDeck(magicDeck);
+
+		// parse usrCardVal, set suit and value as instance vars of MagicDeck
 		// UserCard.getSuit (returns string
 		// UserCard.getRank
 		
