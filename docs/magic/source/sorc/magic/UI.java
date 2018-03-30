@@ -21,10 +21,18 @@ public class UI
 
 	public static void printMagicDeck(MagicDeck magicDeck)
 	{
+		Card usrCard = magicDeck.getUsrCard();
+
 		int size = magicDeck.MAGIC_DECK_SIZE;
 		for (int i = 0; i < size; i++) {
-			System.out.println(magicDeck.get(i));
-			// TODO: Add an arrow pointing to usr card
+			Card card = magicDeck.get(i);
+
+			if (card.equals(magicDeck.usrCardVal)) {
+				System.out.println(i + ". " + "--> " + card + " <--");
+			}
+			else {
+				System.out.println(i + ". " + card);
+			}
 		}
 	}
 }

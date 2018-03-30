@@ -15,7 +15,10 @@ public class Magic {
 
 		// create new deck w/ the top (n) cards + user selection
 		// place user selection on the top
+		
+		System.out.println("\nDealing N cards w/ usr card on top...\n");
 
+		Card usrCardVal = deck.get(usrCard);
 		MagicDeck magicDeck = new MagicDeck(deck, usrCard);
 		ui.printMagicDeck(magicDeck);
 

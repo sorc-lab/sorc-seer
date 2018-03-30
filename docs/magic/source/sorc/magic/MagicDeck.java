@@ -8,14 +8,17 @@ public class MagicDeck
 {
 	public ArrayList<Card> magicDeck;
 	public static final int MAGIC_DECK_SIZE = 13;
+	public Card usrCardVal;
 	
 	// creates MagicDeck from original Deck (52 cards) & user selected card
 	public MagicDeck(Deck origDeck, int usrCard)
 	{
 		magicDeck = new ArrayList<Card>();
 		Card[] cards = new Card[MAGIC_DECK_SIZE];
-		magicDeck.add(origDeck.get(usrCard));
-		for (int i = 1; i < MAGIC_DECK_SIZE - 1; i++) {
+		usrCardVal = origDeck.get(usrCard);
+		magicDeck.add(usrCardVal); // usr card goes on top
+
+		for (int i = 1; i < MAGIC_DECK_SIZE; i++) {
 			magicDeck.add(origDeck.get(i));
 		}
 	}
@@ -23,5 +26,10 @@ public class MagicDeck
 	public Card get(int index)
 	{
 		return magicDeck.get(index);
+	}
+
+	public Card getUsrCard()
+	{
+		return usrCardVal;
 	}
 }
