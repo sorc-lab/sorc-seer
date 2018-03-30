@@ -8,7 +8,7 @@ public class Magic {
 		deck.shuffle();
 
 		for (int i = 0; i < deck.size(); i++) {
-			System.out.println(deck.get(i)); // TODO: Fix deck.shuffle()
+			System.out.println(deck.get(i));
 		}
 	}
 }

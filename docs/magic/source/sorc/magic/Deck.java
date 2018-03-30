@@ -40,8 +40,9 @@ public class Deck
 	public void shuffle()
 	{
 		Random rand = new Random();
-		for (int i = size() - 1; i < 0; i--) {
+		for (int i = size() - 1; i > 0; i--) {
 			int j = rand.nextInt(i);
+			swapCards(i, j);
 
 		}
 	}
