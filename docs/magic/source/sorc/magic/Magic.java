@@ -22,11 +22,26 @@ public class Magic {
 		String[][] usrCardData = usrCardObj.getUserCardData();
 
 		String[] rank = usrCardData[0];
+		System.out.println("\nSorted by rank: " + rank.length + "\n");
 		magicDeck.sortDeck(rank);
 		String[] rankSortedDeck = magicDeck.magicDeck;
+		ui.printSortedDeck(rankSortedDeck, magicDeck);
+		
+		String[] of = usrCardData[1];
+		System.out.println("\nSorted by 'of': " + of.length + "\n");
+		magicDeck.sortDeck(of);
+		String[] ofSortedDeck = magicDeck.magicDeck;
+		ui.printSortedDeck(ofSortedDeck, magicDeck);
 
-		ui.printSortedDeck(rankSortedDeck, rank, magicDeck);
-
+		String[] suit = usrCardData[2];
+		System.out.println("\nSorted by suit: " + suit.length + "\n");
+		magicDeck.sortDeck(suit);
+		String[] suitSortedDeck = magicDeck.magicDeck;
+		ui.printSortedDeck(suitSortedDeck, magicDeck);
+		
+		// TODO: Get correct instructions. Currently does not work w/ 13 cards.
+		//       Test w/ 4 of spades and then w/ 4 of clubs. Different end
+		//       position.
 
 		// step 1
 		// Construct rankDeck

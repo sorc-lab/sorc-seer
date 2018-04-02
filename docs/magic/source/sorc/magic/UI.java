@@ -38,8 +38,7 @@ public class UI
 	}
 	
 	// TODO: refactor to not have to use the magicDeck
-	public static void printSortedDeck
-	(String[] deck, String[] data, MagicDeck magicDeck)
+	public static void printSortedDeck (String[] deck, MagicDeck magicDeck)
 	{
 		int size = magicDeck.MAGIC_DECK_SIZE;
 		for (int i = 0; i < size; i++) {
@@ -50,6 +49,7 @@ public class UI
 				System.out.println(i + ". " + deck[i]);
 			}
 		}
+		System.out.println();
 	}
 
 	/*public static String padLeft(String s, int n) {
