@@ -24,8 +24,8 @@ public class Magic {
 		String[] rank = usrCardData[0];
 		magicDeck.sortDeck(rank);
 		String[] rankSortedDeck = magicDeck.magicDeck;
-		System.out.println(Arrays.toString(rankSortedDeck));
-		// ui printdeck needs ui print sorted deck and handle a String[]
+
+		ui.printSortedDeck(rankSortedDeck, rank, magicDeck);
 
 
 		// step 1

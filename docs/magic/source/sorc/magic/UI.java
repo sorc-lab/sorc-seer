@@ -34,6 +34,22 @@ public class UI
 				System.out.println(i + ". " + card);
 			}
 		}
+		System.out.println();
+	}
+	
+	// TODO: refactor to not have to use the magicDeck
+	public static void printSortedDeck
+	(String[] deck, String[] data, MagicDeck magicDeck)
+	{
+		int size = magicDeck.MAGIC_DECK_SIZE;
+		for (int i = 0; i < size; i++) {
+			if (deck[i].trim().equals(magicDeck.usrCardVal.toString())) {
+				System.out.println(i + ". " + "--> " + deck[i] + " <--");
+			}
+			else {
+				System.out.println(i + ". " + deck[i]);
+			}
+		}
 	}
 
 	/*public static String padLeft(String s, int n) {
