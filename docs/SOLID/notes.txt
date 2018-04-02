@@ -1,0 +1,23 @@
+*** Single responsibility principle ***
+A class should only be responsible for one thing. To make sure this is true,
+check to see how many things can change within a class. For example, a class
+that is responsible for comiling and printing data could change in at least two
+areas. If the format of the data is to change, or if the content of the data
+changes. In the mentioned example, the class should be divided into a compile
+class and a print class, separately.
+
+*** Open/closed principle ***
+Entities such as classes, modules, functions etc. should only be open for
+extension and closed for modification.
+Open Module: Available for extension and possible to add fields to the data
+structures it contains, or new elements to the set of functions it performs.
+Closed Module: Available for use by other modules. The module can be extended
+via inheritance and features can be added to it without changing its parent
+class's source code.
+NOTE: There is mention of abstract base classes being used as an abstraced
+      interface that cannot be touched once it is created. All new features
+	  must implement that interface so that the existing interface is closed
+	  to modifications and the new implementation can use that base interface.
+
+*** Liskov substitution principle ***
+
