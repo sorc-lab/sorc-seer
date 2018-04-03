@@ -20,4 +20,14 @@ NOTE: There is mention of abstract base classes being used as an abstraced
 	  to modifications and the new implementation can use that base interface.
 
 *** Liskov substitution principle ***
+A sublcass must provide support for all behavior supported by the super-class;
+subclasses must implement any mutator methods defined in a base class. In the
+case of having a Rectangle class where there is a width and a height that do
+not have to be equal, you could not make a Square be a sub-class of the
+rectangle class because the setWidth/Heigth methods would have to apply the
+same value to the width/height respectively.
 
+So even though a Square is a special case of a Rectangle, what the Liskov
+Substitution Principle says is that, since the observable behavior of a Square
+is wildly different from that of a Rectangle, a Square shouldn't be treated as
+a subtype for a Rectangle.
