@@ -18,7 +18,7 @@ public class MagicDeck
 		magicDeckList = new ArrayList<Card>();
 		Card[] cards = new Card[MAGIC_DECK_SIZE];
 		usrCardVal = origDeck.get(usrCard);
-		magicDeckList.add(usrCardVal); // usr card goes on top
+		magicDeckList.add(usrCardVal);
 
 		for (int i = 1; i < MAGIC_DECK_SIZE; i++) {
 			magicDeckList.add(origDeck.get(i));
@@ -30,6 +30,11 @@ public class MagicDeck
 			Card card = magicDeckList.get(i);
 			magicDeck[i] = card.toString();
 		}
+
+		// place user selected card into deck @ index 2 (3rd card)
+		String tmp = magicDeck[2];
+		magicDeck[2] = magicDeck[0];
+		magicDeck[0] = tmp;
 	}
 
 	public Card get(int index)

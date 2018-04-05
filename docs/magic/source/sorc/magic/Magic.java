@@ -15,9 +15,12 @@ public class Magic {
 		int usrSelectedCard = ui.getSelectedCard(deck);
 		
 		System.out.println("\nGenerating MagicDeck...\n");
-		MagicDeck magicDeck = new MagicDeck(deck, usrSelectedCard);
-		ui.printMagicDeck(magicDeck);
+		MagicDeck magicDeckObj = new MagicDeck(deck, usrSelectedCard);
+		String[] magicDeck = magicDeckObj.magicDeck;
+		String usrCard = magicDeck[2];
+		ui.printMagicDeck(magicDeck, magicDeckObj);
 		
+		/*
 		UserCard usrCardObj = new UserCard(deck.get(usrSelectedCard));
 		String[][] usrCardData = usrCardObj.getUserCardData();
 
@@ -38,6 +41,7 @@ public class Magic {
 		magicDeck.sortDeck(suit);
 		String[] suitSortedDeck = magicDeck.magicDeck;
 		ui.printSortedDeck(suitSortedDeck, magicDeck);
+		*/
 		
 		// TODO: Get correct instructions. Currently does not work w/ 13 cards.
 		//       Test w/ 4 of spades and then w/ 4 of clubs. Different end

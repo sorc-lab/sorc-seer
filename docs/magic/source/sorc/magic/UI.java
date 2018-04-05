@@ -19,19 +19,16 @@ public class UI
 		return usrInput;
 	}
 
-	public static void printMagicDeck(MagicDeck magicDeck)
+	public static void printMagicDeck
+	(String[] magicDeck, MagicDeck magicDeckObj)
 	{
-		Card usrCard = magicDeck.getUsrCard();
-
-		int size = magicDeck.MAGIC_DECK_SIZE;
+		int size = magicDeckObj.MAGIC_DECK_SIZE;
 		for (int i = 0; i < size; i++) {
-			Card card = magicDeck.get(i);
-
-			if (card.equals(magicDeck.usrCardVal)) {
-				System.out.println(i + ". " + "--> " + card + " <--");
+			if (magicDeck[i].equals(magicDeckObj.usrCardVal.toString())) {
+				System.out.println(i + ". " + "--> " + magicDeck[i] + " <--");
 			}
 			else {
-				System.out.println(i + ". " + card);
+				System.out.println(i + ". " + magicDeck[i]);
 			}
 		}
 		System.out.println();
