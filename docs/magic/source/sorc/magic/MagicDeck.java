@@ -8,7 +8,7 @@ import sorc.magic.Deck;
 public class MagicDeck
 {
 	public ArrayList<Card> magicDeckList;
-	public static final int MAGIC_DECK_SIZE = 13;
+	public static final int MAGIC_DECK_SIZE = 9;
 	public Card usrCardVal;
 	public String[] magicDeck;
 	
