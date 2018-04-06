@@ -102,6 +102,28 @@ violates LSP because the height won't be changed. The 'f' function does not
 work for derivatives of its arguments. The reason is that SetWidth and
 SetHeight were not declared 'virtual' in Rectangle.
 
+Virtual functions:
+	public abstract class Shape { // Java
+		public abstract void draw();
+	}
+
+	In Java these are used via abstract class types. In C++ you get the same
+	effect by using a pure virtual function. There is a little difference in
+	C++ between 'virtual function/method' and PURE virtual functions/methods.
+	The virtual function can be overriden and the pure function must be
+	implemented by a derived class at runtime. MUST.
+
+	So, in the example above, it works as a C++ pure virtual function, in that
+	all classes derived from Shape, ie Square, Circle etc, will need to have
+	its own draw() method so that the program can later do things like use the
+	draw() method in a loop through any Shape derivative:
+
+		for (Shape shape : shapeList) {
+			shape.draw();
+		}
+
+	Same method can be used on all Shape derivatives without breaking anything.
+
 
 
 
