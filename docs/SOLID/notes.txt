@@ -31,3 +31,87 @@ So even though a Square is a special case of a Rectangle, what the Liskov
 Substitution Principle says is that, since the observable behavior of a Square
 is wildly different from that of a Rectangle, a Square shouldn't be treated as
 a subtype for a Rectangle.
+
+A Simple Example of a Violation of LSP:
+
+void DrawShape(const Shape& s)
+{
+	if (typeid(s) == typeid(Square))
+		DrawSquare(static_cast<Square&>(s));
+	else if (typeid(s) == typeid(Cirlce))
+		DrawCircle(static_cast<Circle&>(s);
+}
+
+DrawShape function takes a reference to Shape class and checks to see what kind
+of Shape it is and draws it. I needs to know about every possible derivative of
+Shape and when a new derivative is created, ie typeid(Triangle), then DrawShape
+will need to be modified to accomodate the new derivative.
+
+In most cases, when inheriting a new obj. from an old obj. the new obj. follows
+the IS-A relationship. The Rectangle->Square relationship is hard to catch
+until the program is being written.
+
+class Rectangle
+{
+public:
+	void SetWidth(double w) { itsWidth = w; }
+	void SetHeight(double h) { itsHeight = w; }
+	double GetHeight() const { return itsHeight; }
+	double GetWidth() const { return itsWidth; }
+
+private:
+	double itsWidth;
+	dobule itsHeight;
+}
+
+Clues that this is going to go wrong:
+	Square does not need both itsHeight and itsWidth member variables, but it
+	will inherit them anyway. In the case of writing a CAD/CAE program where
+	thousands of squares could be drawn, the wastefulness could be significant.
+	Besides wasting memory, the SetWidth and SetHeight functions are wrong for
+	a Square since its width and height are identical. Problem could be solved
+	by overriding the SetWidth and SetHeight methods.
+
+void Square::SetWidth(double w)
+{
+	Rectangle::SetWidth(w);
+	Rectangle::SetHeight(w);
+}
+
+void Square::SetHeight(double h)
+{
+	Rectangle::SetHeight(h);
+	Rectangle::SetWidth(h);
+}
+
+Above example fixes the issue.
+
+Square s;
+s.SetWidth(1); // sets width and height to 1
+s.SetHeight(2); // sets wifth and height to 2
+
+Consider this function:
+
+void f(Rectangle& r)
+{
+	r.SetWidth(32); // calls Rectangle::SetWidth;
+}
+
+Issue: If a reference to Square obj. is passed into the 'f' function then it
+violates LSP because the height won't be changed. The 'f' function does not
+work for derivatives of its arguments. The reason is that SetWidth and
+SetHeight were not declared 'virtual' in Rectangle.
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
