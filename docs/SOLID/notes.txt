@@ -124,16 +124,32 @@ Virtual functions:
 
 	Same method can be used on all Shape derivatives without breaking anything.
 
+By making the base class (Rectangle) have pure virtual functions: SetWidth()
+and SetHeight(), we are breaking the Open-Closed principle that says we cannot
+modify the base class, and can only extend it. Also, we are still breaking LSP.
+Consider the following code:
 
+void g(Rectangle& r)
+{
+	r.SetWidth(5);
+	r.SetHeight(4);
+	assert(r.GetWidth() * r.GetHeight()) == 20);
+}
 
+The programmer wrote valid code above for the assertion, but if they pass in a
+reference to a Square obj. the assertion will fail. The main problem is that we
+viewed the classes in isolation and they appeared valid, yet a programmer made
+reasonable assumptions of our base class and was able to break it. Thus, when
+we write code we need to view it in terms of the reasonable assumptions that
+will be made by the user of that design.
 
+The design itself is flawed in that the IS-A relationship between a Rectangle
+and Sqaure is broken. A Square IS NOT a Rectangle in terms of behavior. It may
+be true in terms of geometry but in terms of software, we have to measure IS-A
+relationships in terms of behavior. So, a Square OBJECT is not a Rectangle
+OBJECT.
 
+NOTE: Got lost, try to understand then re-read starting @ "What Went Wrong?"
+      Main point is that any derived class from a base class should be 100%
+	  capable of being substituted.
 
-
-
-
-
-
-
-
-	
