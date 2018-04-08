@@ -177,6 +177,7 @@ Post-Conditions - Whatever must be true when the method has been called.
 Invariants - What has to be true at all times in the program.
 
 
+- Robustness Principle -
 Pre-conditions in the sub-type MUST be the same, or weaker.
 Post-conditions in the sub-type MUST be the same, or stronger.
 Invariants in the sub-type have to be the same.
@@ -187,13 +188,31 @@ Box: ???, but we need to inherit from Animal.
 
 We cannot make an exception for Box, or we break substitution ability.
 
+Back to robustness principle:
+	A subclass must be able to receive everything that its base class expects
+	it to receive; the whole set of possible values, but it also may be able to
+	accept more. Those make up the PRE-CONDITIONS.
+
+	Values in the subclass must RETURN the SAME values from the base class. OR
+	it can return a subset of the values in the base class. It's either the
+	same values or a smaller subset of those same values that are in the sub
+	class.
+
+	"Be liberal in what you receive and conservative in what you send/return"
+
+	This is how we depend on the subclass to follow the 'contract' of the base
+	class.
+
+	Invariants in the sub class means that the subclass must have a set of
+	states that are identical to its base class. A little lost on this
+	principle but it could mean that the subclass of a base class would appear
+	identical in terms of their state variables.
 
 
-
-
-
-
-
+->> Review SRP <<-
+A class should only have one reason to change by any given person/role in the
+business or development team. (UI/formatting, DB/readwrites, CFO/calculations
+etc.)
 
 
 
