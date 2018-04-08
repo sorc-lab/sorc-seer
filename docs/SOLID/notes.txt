@@ -153,3 +153,56 @@ NOTE: Got lost, try to understand then re-read starting @ "What Went Wrong?"
       Main point is that any derived class from a base class should be 100%
 	  capable of being substituted.
 
+*** A better explanation ***
+All classes derived from the parent class MUST have the same method, for
+example, if we have an Animal class and say we have Tiger, Dog, Cat, and
+Snail classes that inherit from the Animal class, which as a speak() method,
+then all derived classes must have the speak() method. In this example, the
+Snail class breaks Liskov's Substitution Principle, because it cannot speak.
+
+To avoid issues like the Snail class, do not think of inheritence in terms of
+IS-A relationships but rather, HAS-A. In order for a Snail to derive from
+Animal it must HAS-A all the properties that Animal has or else it cannot
+derive from Animal.
+
+A Snail should be able to be subtituted for an Animal at any point in the
+program. Nothing should go wrong if we decide to substitute a Snail for a Tiger
+etc.
+
+Pre-Conditions - Entry conditions for the method. To be able to call the
+method, whatever is stated in the pre-conditions must be true.
+
+Post-Conditions - Whatever must be true when the method has been called.
+
+Invariants - What has to be true at all times in the program.
+
+
+Pre-conditions in the sub-type MUST be the same, or weaker.
+Post-conditions in the sub-type MUST be the same, or stronger.
+Invariants in the sub-type have to be the same.
+
+Animal (base class): walk()
+Cat: walk()
+Box: ???, but we need to inherit from Animal.
+
+We cannot make an exception for Box, or we break substitution ability.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
