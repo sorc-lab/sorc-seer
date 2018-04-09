@@ -28,6 +28,7 @@ docs/magic/classes/manifest.txt
 *.metadata
 docs/.metadata
 
+
 # Eclipse
 .mylyn/.taskListIndex/
 *.log
