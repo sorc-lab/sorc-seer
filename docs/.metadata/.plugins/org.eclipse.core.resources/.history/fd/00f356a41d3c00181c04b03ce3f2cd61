@@ -1,0 +1,22 @@
+package srp;
+
+import java.util.HashMap;
+
+public class Netlist {
+	// reportNetworkStatus: print network status
+	// getIp: return ip
+	// getStatus: return ONLINE or OFFLINE
+	// getId: return id
+	
+	HashMap<String, String> network = new HashMap<String, String>();
+	
+	public Netlist()
+	{
+		this.network.put("10.10.43.140", "SORC-JMPBX");
+		this.network.put("10.10.43.141", "SORC-DROPSTORE");
+		this.network.put("10.10.43.142", "SORC-STAGE");
+		
+	}
+	
+	
+}

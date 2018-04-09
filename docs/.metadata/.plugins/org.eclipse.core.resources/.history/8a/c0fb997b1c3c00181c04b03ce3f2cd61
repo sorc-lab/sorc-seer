@@ -1,0 +1,8 @@
+package srp;
+
+public class Netlist {
+	// reportNetworkStatus: print network status
+	// getIp: return ip
+	// getStatus: return ONLINE or OFFLINE
+	// getId: return id
+}

@@ -1,0 +1,11 @@
+package srp;
+
+public class Spy
+{
+	// assassinate
+	// gather intel
+	// report intel
+	// hide
+	// hp
+	// report hp
+}
