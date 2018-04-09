@@ -4,6 +4,7 @@ public class Main
 {
 	public static void main(String[] args)
 	{
-		System.out.println("HELL WORLD!");
+		Netlist netlist = new Netlist();
+		netlist.getIp("SORC-T530");
 	}
 }
