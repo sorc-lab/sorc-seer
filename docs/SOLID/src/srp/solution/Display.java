@@ -1,4 +1,4 @@
-package solution;
+package srp.solution;
 
 public class Display
 {

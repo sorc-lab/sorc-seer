@@ -1,4 +1,4 @@
-package solution;
+package srp.solution;
 
 import java.io.IOException;
 import java.net.InetAddress;
