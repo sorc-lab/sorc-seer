@@ -1,8 +1,0 @@
-package srp;
-
-public class Netlist {
-	// listNetworkMachines
-	// getIp
-	// getStatus
-	// getId
-}
