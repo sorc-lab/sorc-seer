@@ -1,14 +1,17 @@
 package srp.violation;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 public class Netlist {
-	/** TODO: pintReport() method */
+	/** TODO: printReport() method */
 	/** TODO: Add exceptions and fix getIpFromId and getIdFromIp */
+	/** TODO: Store Network objects in HashMap instead of str. data */
 	
 	HashMap<String, String> network = new HashMap<String, String>();
 	
@@ -21,7 +24,7 @@ public class Netlist {
 		this.network.put("10.10.43.144", "SORC-T530");
 	}
 	
-	public String getIpFromId(String id)
+	public String getNetIpById(String id)
 	{
 		String ip = "";
 		
@@ -36,7 +39,7 @@ public class Netlist {
 		return ip;
 	}
 	
-	public String getIdFromIp(String ip) { return network.get(ip); }
+	public String getIdByNetIp(String ip) { return network.get(ip); }
 	
 	public boolean getStatus(String ip)
 	{
@@ -68,5 +71,16 @@ public class Netlist {
 		}
 		
 		return false;
+	}
+	
+	public void printNetwork()
+	{
+		Iterator<Entry<String, String>> it = network.entrySet().iterator();
+		while (it.hasNext()) {
+			Entry<String, String> pair = it.next();
+			String ip = pair.getKey();
+			System.out.println(pair.getKey() + " = " + pair.getValue() + " (" + this.getStatus(ip) +")");
+			it.remove(); // avoids a ConcurrentModificationException
+		}
 	}
 }
