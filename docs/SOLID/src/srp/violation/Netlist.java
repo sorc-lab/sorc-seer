@@ -9,8 +9,19 @@ import java.net.UnknownHostException;
 
 public class Netlist
 {
-	/** TODO: Add exceptions and fix getIpFromId and getIdFromIp */
-	/** TODO: Store Network objects in HashMap instead of str. data */
+	/**
+	 * Class should have only one reason to change. List out the owners of each
+	 * responsibility in the class. Each source of change.
+	 * 
+	 * ->> SOURCES OF CHANGE <<-
+	 * SYS. ADMIN
+	 * getNetIpById: algorithm for finding the ip/key may change for speed.
+	 * getIdByNetIp: the structure of the HashMap may be removed or replaced
+	 * getStatus: May change and require IPv6
+	 * 
+	 * SYS. ADMIN, DEV. OPS., MORE...
+	 * printNetwork: formatting
+	 */
 	
 	HashMap<String, String> network = new HashMap<String, String>();
 	
