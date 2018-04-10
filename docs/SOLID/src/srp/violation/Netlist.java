@@ -9,7 +9,6 @@ import java.net.UnknownHostException;
 public class Netlist {
 	/** TODO: pintReport() method */
 	/** TODO: Add exceptions and fix getIpFromId and getIdFromIp */
-	/** TODO: .gitignore to filter out Eclipse IDE metadata */
 	
 	HashMap<String, String> network = new HashMap<String, String>();
 	
