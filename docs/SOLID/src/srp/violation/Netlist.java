@@ -2,14 +2,12 @@ package srp.violation;
 
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Map.Entry;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 public class Netlist {
-	/** TODO: printReport() method */
 	/** TODO: Add exceptions and fix getIpFromId and getIdFromIp */
 	/** TODO: Store Network objects in HashMap instead of str. data */
 	
