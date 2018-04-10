@@ -25,13 +25,11 @@ public class Netlist
 	
 	public String getNetIpById(String id)
 	{
-		String ip = "";
+		String ip = null;
 		
 		for (Entry<String, String> entry : network.entrySet()) {
             if (entry.getValue().equals(id)) {
             	ip = entry.getKey();
-            } else {
-            	ip = "Unable to get IP address from that ID.";
             }
         }
 		
@@ -57,7 +55,7 @@ public class Netlist
 			);
 			
 			try {
-				if (inetAddr.isReachable(200)) {
+				if (inetAddr.isReachable(100)) {
 					return true;
 				} else {
 					return false;
