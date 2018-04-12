@@ -4,6 +4,13 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
+/**
+ * NetworkEntity class contains a 'hostName' and 'ip' field that will take
+ * whatever the user passes into its constructor. The getStatus function will
+ * return true/false if the set 'ip' field returns a ping response. The class
+ * only has one reason to change--if the IP address is provided in a different
+ * format, i.e. IPv6, instead of the current IPv4 format. 
+ */
 public class NetworkEntity
 {
 	private String _hostName;
@@ -15,12 +22,13 @@ public class NetworkEntity
 		this._ip = ip;
 	}
 	
-	public String getHostName() { return this._hostName; }
-	public String getIp() { return this._ip; }
+	public String getHostName() { return _hostName; }
+	public String getIp() { return _ip; }
 	
+	// one reason to change, IPv4 to IPv6
 	public boolean getStatus()
 	{
-		String[] splitIp = this._ip.split("\\.");
+		String[] splitIp = _ip.split("\\.");
 		
 		byte nib1 = (byte) Integer.parseInt(splitIp[0]);
 		byte nib2 = (byte) Integer.parseInt(splitIp[1]);
