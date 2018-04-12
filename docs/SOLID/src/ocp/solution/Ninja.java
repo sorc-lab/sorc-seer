@@ -23,6 +23,9 @@ package ocp.solution;
 		ninja.setMovementSpeed(stealthMode.getMovementSpeed());
 		ninja.setVisibility(stealthMode.getVisibility());
 	}
+	
+ * Now when we need to add a new stealth mode, we can just create a new class
+ * and not have to modify any existing code.
  */
 public class Ninja
 {
