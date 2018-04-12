@@ -13,5 +13,8 @@ public class Main
 		stealth.changeStealthMode(hide);
 		stealth.changeStealthMode(sneak);
 		stealth.changeStealthMode(shadowDash);
+		
+		System.out.println(ninja.getMovementSpeed());
+		System.out.println(ninja.getVisibility());
 	}
 }
