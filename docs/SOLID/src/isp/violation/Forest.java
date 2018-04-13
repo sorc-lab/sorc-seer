@@ -1,4 +1,4 @@
-package lsp.violation;
+package isp.violation;
 
 import java.util.Random;
 
@@ -15,5 +15,5 @@ public class Forest
 			trees[i] = rand.nextInt(115) + 10;
 	}
 	
-	public int getClosestTreeHeight() { return trees[0]; }
+	public int getTree(int i) { return trees[i + 1]; }
 }
