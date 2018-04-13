@@ -10,7 +10,6 @@ public class Forest
 	{
 		trees = new int[2000];
 		Random rand = new Random();
-		
 		for (int i = 0; i < trees.length; i++)
 			trees[i] = rand.nextInt(115) + 10;
 	}
