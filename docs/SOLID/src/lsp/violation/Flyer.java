@@ -42,5 +42,9 @@ public class Flyer
 		
 		// Find way to divide the distance the least number of times in a loop
 		// in order to reach the altitude needed to land.
+		
+		// hit up these links:
+		// http://www.dotnetcurry.com/patterns-practices/1259/liskov-substitution-principle-perspective
+		// https://people.cs.umass.edu/~rjust/courses/2017Fall/CS520/2017_09_14.pdf
 	}
 }
