@@ -8,8 +8,8 @@ public class TreeFlyer extends Flyer
 	
 	public TreeFlyer()
 	{
-		elevate = new Elevate();
-		glide = new Glide();
-		treeInteraction = new TreeInteraction();
+		elevate = new Elevate(this);
+		glide = new Glide(this);
+		treeInteraction = new TreeInteraction(this);
 	}
 }

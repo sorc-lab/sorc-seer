@@ -5,11 +5,14 @@ public class TreeInteraction implements TreeInteractable
 	Forest forest;
 	Flyer flyer;
 	
+	public TreeInteraction(Flyer flyer) { this.flyer = flyer; }
+	
 	@Override
-	public String checkTree(int treeHight, Flyer flyer) {
-		if (flyer.altitude == treeHight) {
+	public String checkTree(int treeHight)
+	{
+		if (flyer.getAltitude() == treeHight) {
 			return "equal";
-		} else if (flyer.altitude > treeHight) {
+		} else if (flyer.getAltitude() > treeHight) {
 			return "low";
 		} else {
 			return "high";
@@ -17,14 +20,15 @@ public class TreeInteraction implements TreeInteractable
 	}
 
 	@Override
-	public boolean landOnTree(int treeHight, Flyer flyer) {
-		if (flyer.altitude == treeHight) {
+	public boolean landOnTree(int treeHight)
+	{
+		if (flyer.getAltitude() == treeHight) {
 			System.out.println("Landing successful!");
-			flyer.isLanded = true;
+			flyer.setIsLanded(true);
 			return true;
-		} else if (flyer.altitude < treeHight) {
+		} else if (flyer.getAltitude() < treeHight) {
 			System.out.println("Landing FAILED! Tree is too high.");
-		} else if (flyer.altitude > treeHight) {
+		} else if (flyer.getAltitude() > treeHight) {
 			System.out.println("Landing FAILED! Tree is too low.");
 		}
 		return false;

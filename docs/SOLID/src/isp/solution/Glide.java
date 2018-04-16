@@ -4,17 +4,21 @@ public class Glide implements Glideable
 {
 	Forest forest;
 	Flyer flyer;
+	
+	public Glide(Flyer flyer) { this.flyer = flyer; }
 
 	@Override
-	public void reduceAltitude(Flyer flyer, int n) { flyer.altitude -= n; }
+	public void reduceAltitude(int n)
+	{
+		flyer.setAltitude(flyer.getAltitude() - 1);
+	}
 
 	@Override
-	public void flyDownTo(int treeHeight, Flyer flyer) {
-		if (flyer.altitude > treeHeight) {
+	public void flyDownTo(int treeHeight) {
+		if (flyer.getAltitude() > treeHeight) {
 			System.out.println("Reducing altitude...");		
-			while (flyer.altitude != treeHeight)
-				reduceAltitude(flyer, 1);
+			while (flyer.getAltitude() != treeHeight)
+				reduceAltitude(1);
 		}
 	}
-	
 }

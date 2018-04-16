@@ -4,8 +4,8 @@ import java.util.Random;
 
 public class Flyer implements Flyable
 {
-	protected int altitude;
-	protected boolean isLanded;
+	private int altitude;
+	private boolean isLanded;
 	
 	public Flyer()
 	{
@@ -22,4 +22,13 @@ public class Flyer implements Flyable
 	
 	@Override
 	public int getAltitude() { return altitude; }
+	
+	@Override
+	public void setAltitude(int n) { altitude = n; }
+	
+	@Override
+	public boolean getIsLanded() { return isLanded; }
+	
+	@Override
+	public void setIsLanded(boolean isLanded) { this.isLanded = isLanded; }
 }
