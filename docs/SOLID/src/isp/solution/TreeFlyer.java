@@ -2,13 +2,14 @@ package isp.solution;
 
 import java.util.Random;
 
-public class Flyer implements Flyable
+public class TreeFlyer
+implements Flyable, Glideable, Elevatable, TreeInteractable
 {
 	private int altitude;
 	private Forest forest;
 	boolean isLanded;
 
-	public Flyer()
+	public TreeFlyer()
 	{
 		forest = new Forest();
 		fly();
@@ -26,7 +27,7 @@ public class Flyer implements Flyable
 	public int getAltitude() { return altitude; }
 	
 	@Override
-	public void gainAltitude(int n) { altitude += n; }
+	public void elevateAltitude(int n) { altitude += n; }
 	
 	@Override
 	public void reduceAltitude(int n) { altitude -= n; }
@@ -54,7 +55,7 @@ public class Flyer implements Flyable
 		if (altitude < treeHeight) {
 			System.out.println("Gaining altitude...");		
 			while (altitude != treeHeight)
-				gainAltitude(1);
+				elevateAltitude(1);
 		}
 	}
 
