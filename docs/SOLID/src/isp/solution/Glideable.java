@@ -2,5 +2,6 @@ package isp.solution;
 
 public interface Glideable
 {
-	public void reduceAltitude(int n);
+	void reduceAltitude(Flyer flyer, int n);
+	void flyDownTo(int treeIndex);
 }
