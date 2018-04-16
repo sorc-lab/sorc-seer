@@ -1,4 +1,4 @@
-package isp.violation;
+package isp.solution;
 
 /**
  * Interface Segregation Principle (ISP):
@@ -10,8 +10,7 @@ package isp.violation;
  */
 
 // TODO: Add example showing Bird and Glider objects breaking the game loop.
-public interface Flyable
-{
+public interface Flyable {
 	public void fly();
 	public int getAltitude();
 	public void gainAltitude(int n);
