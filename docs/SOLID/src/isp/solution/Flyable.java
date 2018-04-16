@@ -1,22 +1,16 @@
 package isp.solution;
 
-/**
- * Interface Segregation Principle (ISP):
- * All functionality needed for Birds consist of more than what Glider needs.
- * Glider is a Flyer but does not need:
- * 		gainAltitude or flyUpToTree
- * Flyable needs to be broken into two interfaces.
- * Flyer needs to be broken into two classes.
- */
-
-// TODO: Add example showing Bird and Glider objects breaking the game loop.
-public interface Flyable {
-	public void fly();
-	public int getAltitude();
-	public void gainAltitude(int n);
-	public void reduceAltitude(int n);
-	public void flyUpToTree(int tree);
-	public void flyDownToTree(int tree);
-	public boolean landOnTree(int tree);
-	public String checkTree(int tree);
+//need to split some of these functions into more classes as well...
+public interface Flyable
+{
+	public void fly();                 // keep
+	public int getAltitude();          // keep
+	public String checkTree(int tree); // keep
+	
+	public void gainAltitude(int n);   // maneuver, will not work for Glider
+	public void reduceAltitude(int n); // maneuver
+	
+	public void flyUpToTree(int tree);   // maneuver
+	public void flyDownToTree(int tree); // maneuver
+	public boolean landOnTree(int tree); // maneuver (advanced?)
 }

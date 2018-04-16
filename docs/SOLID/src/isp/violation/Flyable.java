@@ -9,7 +9,6 @@ package isp.violation;
  * Flyer needs to be broken into two classes.
  */
 
-// TODO: Add example showing Bird and Glider objects breaking the game loop.
 public interface Flyable
 {
 	public void fly();
