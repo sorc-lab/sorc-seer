@@ -6,25 +6,32 @@ public class Main
 {
 	public static void main(String[] args)
 	{
+		/**
+		 * Flyer can now use component behaviors, but all component behaviors
+		 * now have to pass in the Flyer as a parameter to access its fields.
+		 * Seems wrong...
+		 */
 		int gameCnt = 5;
 		Random rand = new Random();
 		TreeFlyer flyer = new TreeFlyer();
+		Forest forest = new Forest();
 		
 		for (int i = 0; i < gameCnt; i++) { // game loop
 			flyer.isLanded = false;
 			System.out.println("altitude = " + flyer.getAltitude() + " meters");
-			int tree = rand.nextInt(2000) + 1;
+			int treeIndex = rand.nextInt(2000) + 1;
+			int tree = forest.getTree(treeIndex);
 			
-			if (!flyer.landOnTree(tree)) {
+			if (!flyer.treeInteraction.landOnTree(tree, flyer)) {
 				while (!flyer.isLanded) {
-					String checkTree = flyer.checkTree(tree);
+					String checkTree = flyer.treeInteraction.checkTree(tree, flyer);
 					if (checkTree == "low") {
-						flyer.flyDownToTree(tree);
+						flyer.glide.flyDownTo(tree, flyer);
 					} else {
-						flyer.flyUpToTree(tree);
+						flyer.elevate.flyUpTo(tree, flyer);
 					}
 					
-					flyer.landOnTree(tree);
+					flyer.treeInteraction.landOnTree(tree, flyer);
 				}
 			}
 		}

@@ -1,6 +1,6 @@
 package isp.solution;
 
-public class Glider implements Glideable
+public class Glide implements Glideable
 {
 	Forest forest;
 	Flyer flyer;
@@ -9,8 +9,7 @@ public class Glider implements Glideable
 	public void reduceAltitude(Flyer flyer, int n) { flyer.altitude -= n; }
 
 	@Override
-	public void flyDownTo(int treeIndex) {
-		int treeHeight = forest.getTree(treeIndex);
+	public void flyDownTo(int treeHeight, Flyer flyer) {
 		if (flyer.altitude > treeHeight) {
 			System.out.println("Reducing altitude...");		
 			while (flyer.altitude != treeHeight)
