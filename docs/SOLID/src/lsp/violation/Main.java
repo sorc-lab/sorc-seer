@@ -14,12 +14,12 @@ public class Main
 		 * behavior.
 		 */
 		
-		Gun assaultRifle = new AssaultRifle();
+		AssaultRifle assaultRifle = new AssaultRifle();
 		assaultRifle.loadRound();
 		for (int i = 0; i < 3; i++)
 			assaultRifle.pullTrigger();
 		
-		Gun boltRifle = new BoltRifle();
+		BoltRifle boltRifle = new BoltRifle();
 		for (int i = 0; i < 3; i++)
 			boltRifle.pullTrigger();
 	}
