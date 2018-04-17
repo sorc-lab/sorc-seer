@@ -20,6 +20,7 @@ public class Main
 			assaultRifle.pullTrigger();
 		
 		BoltRifle boltRifle = new BoltRifle();
+		boltRifle.loadRound();
 		for (int i = 0; i < 3; i++)
 			boltRifle.pullTrigger();
 	}
