@@ -2,7 +2,6 @@ package isp.solution;
 
 public class TreeInteraction implements TreeInteractable
 {
-	Forest forest;
 	Flyer flyer;
 	
 	public TreeInteraction(Flyer flyer) { this.flyer = flyer; }

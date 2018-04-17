@@ -2,7 +2,6 @@ package isp.solution;
 
 public class Elevate implements Elevatable
 {
-	Forest forest;
 	Flyer flyer;
 	
 	public Elevate(Flyer flyer) { this.flyer = flyer; }

@@ -2,7 +2,6 @@ package isp.solution;
 
 public class Glide implements Glideable
 {
-	Forest forest;
 	Flyer flyer;
 	
 	public Glide(Flyer flyer) { this.flyer = flyer; }
