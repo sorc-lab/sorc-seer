@@ -4,29 +4,23 @@ public class Main
 {
 	public static void main(String[] args)
 	{
-		// VIOLATION
-		// Gun class
-			// pull trigger, release trigger, load round
-			// magazine, chamber
-			// fire gun, if trigger pulled
+		/**
+		 * AssaultRifle overrides the discharge() function to call loadRound()
+		 * before discharge() returns. AssaultRifle now breaks Liskov's
+		 * Substitution Principle because it cannot be substituted for its
+		 * parent class: Gun.
+		 * 
+		 * Firing each Gun object in a loop should produce the exact same
+		 * behavior.
+		 */
 		
-		// AssaultRifle extends Gun
-			// fire: continues to fire if trigger is pulled && round in chamber
-				// load round keeps getting called as long as magazine > 0 
+		Gun assaultRifle = new AssaultRifle();
+		assaultRifle.loadRound();
+		for (int i = 0; i < 3; i++)
+			assaultRifle.pullTrigger();
 		
-		// BoltRifle extends Gun
-			// stops firing if chamber is empty
-			// does not automatically load new rounds
-		
-		// Command class
-			// fire volley: shoots
-			// NOTE: Behaves differently w/ Bolt vs. Assault but extends Gun
-		
-		Gun gun = new Gun();
-		gun.loadRound();
-		gun.pullTrigger();
-		System.out.println(gun.getAmmo());
-		gun.loadRound();
-		gun.pullTrigger();
+		Gun boltRifle = new BoltRifle();
+		for (int i = 0; i < 3; i++)
+			boltRifle.pullTrigger();
 	}
 }

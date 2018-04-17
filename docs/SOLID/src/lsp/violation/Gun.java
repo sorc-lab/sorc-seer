@@ -2,6 +2,7 @@ package lsp.violation;
 
 public class Gun
 {
+	protected String label;
 	int magazine;
 	int chamber;
 	private boolean isChambered;
@@ -9,6 +10,7 @@ public class Gun
 	
 	public Gun()
 	{
+		label = "Gun";
 		magazine = 25;
 		isChambered = false;
 		isTriggerPulled = false;
@@ -28,15 +30,18 @@ public class Gun
 	
 	public void releaseTrigger() { isTriggerPulled = false; }
 	
-	private void discharge()
+	protected void discharge()
 	{
-		if (isChambered && isTriggerPulled) {
+		if (getIsChambered() && getIsTriggerPulled()) {
 			isChambered = false;
-			System.out.println("Weapon fired!");
+			System.out.println(label + " fired!\n");
 		} else {
-			System.out.println("Weapon did not fire, check if chambered.");
+			System.out.println(label + " did not fire, check if chambered.\n");
 		}
 	}
 	
 	public int getAmmo() { return magazine; }
+	public boolean getIsChambered() { return isChambered; }
+	public boolean getIsTriggerPulled() { return isTriggerPulled; }
+	public void setIsChambered(boolean status) { isChambered = status; }
 }
