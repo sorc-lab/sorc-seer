@@ -6,5 +6,5 @@ public interface CardCollection
 {
 	int size();
 	Card getCard(int index);
-	ArrayList<Card> getDeck();
+	ArrayList<Card> getCards();
 }
