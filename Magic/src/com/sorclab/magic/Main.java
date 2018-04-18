@@ -30,5 +30,9 @@ public class Main
 		
 		CardMetaData cardMetaData = new CardMetaData(userCard);
 		String[][] data = cardMetaData.getCardMetaData();
+		
+		ui.displayCards(cards, userCard);
+		
+		perform.sortCards(0, data);
 	}
 }

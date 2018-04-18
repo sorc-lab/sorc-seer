@@ -1,6 +1,7 @@
 package com.sorclab.magic;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PerformMagic implements MagicAction
 {
@@ -22,5 +23,25 @@ public class PerformMagic implements MagicAction
 		Card tmp = cards.get(MAGIC_IDX);
 		cards.set(MAGIC_IDX, cards.get(userCardIdx));
 		cards.set(userCardIdx, tmp);
+	}
+
+	@Override
+	public void sortCards(int mode, String[][] cardMetaData)
+	{
+		String[] data = cardMetaData[mode];
+		ArrayList<Card> pile = new ArrayList<Card>();
+		for (int i = 0; i < data.length; i++) {
+			Card tmp = cards.get(i);
+			System.out.println("tmp = " + tmp.toString());
+			pile.add(cards.get(i)); // check this idx
+			cards.remove(i);
+		}
+		
+		
+		
+		System.out.println("cards");
+		System.out.println(Arrays.toString(cards.toArray()));
+		System.out.println("pile");
+		System.out.println(Arrays.toString(pile.toArray()));
 	}
 }
