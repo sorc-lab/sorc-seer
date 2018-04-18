@@ -3,7 +3,7 @@ package com.sorclab.magic;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Deck implements CardCollection
+public class Deck implements CardCollection, DeckAction
 {
 	public static final int SUIT_INDEX_MAX = 3;
 	public static final int RANK_INDEX_MAX = 13;
