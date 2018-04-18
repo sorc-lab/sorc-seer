@@ -1,6 +1,7 @@
 package com.sorclab.magic;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Deck implements CardCollection
 {
@@ -24,11 +25,26 @@ public class Deck implements CardCollection
 	public int size() { return _deck.size(); }
 
 	@Override
-	public void swapCards() {}
+	public void swapCards(int i, int j)
+	{
+		Card tmp = getCard(i);
+		_deck.set(i, getCard(j));
+		_deck.set(j, tmp);
+	}
 
 	@Override
-	public void shuffle() {}
+	public void shuffle()
+	{
+		Random rand = new Random();
+		for (int i = size() - 1; i > 0; i--) {
+			int j = rand.nextInt(i);
+			swapCards(i, j);
+		}
+	}
 
 	@Override
-	public Card get(int index) { return _deck.get(index); }
+	public Card getCard(int index) { return _deck.get(index); }
+	
+	@Override
+	public ArrayList<Card> getDeck() { return _deck; }
 }
