@@ -34,5 +34,7 @@ public class Main
 		ui.displayCards(cards, userCard);
 		
 		perform.sortCards(0, data);
+		ui.displayCards(cards, userCard);
+
 	}
 }
