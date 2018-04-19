@@ -1,7 +1,7 @@
 package com.sorclab.magic;
 
-import java.io.Console;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class UI implements Display
 {
@@ -16,14 +16,9 @@ public class UI implements Display
 		}
 	}
 	
+	// automated in order to run program in loop for reports
 	@Override
-	public int promptUserSelection()
-	{
-		System.out.println();
-		Console console = System.console();
-		int userInput = Integer.parseInt(console.readLine("Choose a card: "));
-		return userInput;
-	}
+	public int promptUserSelection() { return new Random().nextInt(1) + 9; }
 	
 	@Override
 	public void displayCards(ArrayList<Card> cards, Card userCard)

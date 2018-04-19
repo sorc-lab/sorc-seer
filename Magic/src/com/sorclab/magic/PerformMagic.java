@@ -3,7 +3,6 @@ package com.sorclab.magic;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Iterator;
 
 public class PerformMagic implements MagicAction
 {
@@ -21,6 +20,7 @@ public class PerformMagic implements MagicAction
 	@Override
 	public void plantUserCard(int userInput)
 	{
+		System.out.println("Planting chosen card at index 3...");
 		int userCardIdx = userInput - 1;
 		Card tmp = cards.get(MAGIC_IDX);
 		cards.set(MAGIC_IDX, cards.get(userCardIdx));
@@ -53,7 +53,7 @@ public class PerformMagic implements MagicAction
 			System.out.println(cards.get(i));
 		}
 		
-		System.out.println("\n Merging SORT PILE and MAIN PILE...");
+		System.out.println("\nMerging SORT PILE and MAIN PILE...");
 		cards.addAll(pile);
 	}
 }
