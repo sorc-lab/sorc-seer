@@ -1,0 +1,1500 @@
+
+,-------------------------------------------.
+|                                           |
+|           START ROUND: 0                  |
+|                                           |
+`-------------------------------------------'
+1. King of Hearts
+2. Jack of Diamonds
+3. Queen of Clubs
+4. Jack of Spades
+5. 6 of Hearts
+6. King of Spades
+7. 10 of Clubs
+8. 4 of Diamonds
+9. Queen of Hearts
+
+Card chosen: Queen of Hearts
+Planting chosen card at index 3...
+
+1. King of Hearts
+2. Jack of Diamonds
+3. ->> Queen of Hearts <<-
+4. Jack of Spades
+5. 6 of Hearts
+6. King of Spades
+7. 10 of Clubs
+8. 4 of Diamonds
+9. Queen of Clubs
+
+Sorting cards...
+mode = 0
+data = [Q, u, e, e, n]
+
+=== SORT PILE ===
+6 of Hearts
+Jack of Spades
+Queen of Hearts
+Jack of Diamonds
+King of Hearts
+
+=== MAIN PILE ===
+King of Spades
+10 of Clubs
+4 of Diamonds
+Queen of Clubs
+
+Merging SORT PILE and MAIN PILE...
+
+1. King of Spades
+2. 10 of Clubs
+3. 4 of Diamonds
+4. Queen of Clubs
+5. 6 of Hearts
+6. Jack of Spades
+7. ->> Queen of Hearts <<-
+8. Jack of Diamonds
+9. King of Hearts
+
+Sorting cards...
+mode = 1
+data = [o, f]
+
+=== SORT PILE ===
+10 of Clubs
+King of Spades
+
+=== MAIN PILE ===
+4 of Diamonds
+Queen of Clubs
+6 of Hearts
+Jack of Spades
+Queen of Hearts
+Jack of Diamonds
+King of Hearts
+
+Merging SORT PILE and MAIN PILE...
+
+1. 4 of Diamonds
+2. Queen of Clubs
+3. 6 of Hearts
+4. Jack of Spades
+5. ->> Queen of Hearts <<-
+6. Jack of Diamonds
+7. King of Hearts
+8. 10 of Clubs
+9. King of Spades
+
+Sorting cards...
+mode = 2
+data = [H, e, a, r, t, s]
+
+=== SORT PILE ===
+Jack of Diamonds
+Queen of Hearts
+Jack of Spades
+6 of Hearts
+Queen of Clubs
+4 of Diamonds
+
+=== MAIN PILE ===
+King of Hearts
+10 of Clubs
+King of Spades
+
+Merging SORT PILE and MAIN PILE...
+
+1. King of Hearts
+2. 10 of Clubs
+3. King of Spades
+4. Jack of Diamonds
+5. ->> Queen of Hearts <<-
+6. Jack of Spades
+7. 6 of Hearts
+8. Queen of Clubs
+9. 4 of Diamonds
+
+Sorting cards...
+mode = 3
+data = [m, a, g, i, c]
+
+=== SORT PILE ===
+Queen of Hearts
+Jack of Diamonds
+King of Spades
+10 of Clubs
+King of Hearts
+
+=== MAIN PILE ===
+Jack of Spades
+6 of Hearts
+Queen of Clubs
+4 of Diamonds
+
+Merging SORT PILE and MAIN PILE...
+
+1. Jack of Spades
+2. 6 of Hearts
+3. Queen of Clubs
+4. 4 of Diamonds
+5. ->> Queen of Hearts <<-
+6. Jack of Diamonds
+7. King of Spades
+8. 10 of Clubs
+9. King of Hearts
+
+,-------------------------------------------.
+|                                           |
+|             END ROUND: 0                  |
+|                                           |
+`-------------------------------------------'
+
+,-------------------------------------------.
+|                                           |
+|           START ROUND: 1                  |
+|                                           |
+`-------------------------------------------'
+1. 4 of Hearts
+2. King of Hearts
+3. 7 of Spades
+4. King of Spades
+5. 2 of Hearts
+6. 9 of Hearts
+7. 6 of Hearts
+8. Ace of Hearts
+9. 6 of Clubs
+
+Card chosen: 6 of Clubs
+Planting chosen card at index 3...
+
+1. 4 of Hearts
+2. King of Hearts
+3. ->> 6 of Clubs <<-
+4. King of Spades
+5. 2 of Hearts
+6. 9 of Hearts
+7. 6 of Hearts
+8. Ace of Hearts
+9. 7 of Spades
+
+Sorting cards...
+mode = 0
+data = [S, i, x]
+
+=== SORT PILE ===
+6 of Clubs
+King of Hearts
+4 of Hearts
+
+=== MAIN PILE ===
+King of Spades
+2 of Hearts
+9 of Hearts
+6 of Hearts
+Ace of Hearts
+7 of Spades
+
+Merging SORT PILE and MAIN PILE...
+
+1. King of Spades
+2. 2 of Hearts
+3. 9 of Hearts
+4. 6 of Hearts
+5. Ace of Hearts
+6. 7 of Spades
+7. ->> 6 of Clubs <<-
+8. King of Hearts
+9. 4 of Hearts
+
+Sorting cards...
+mode = 1
+data = [o, f]
+
+=== SORT PILE ===
+2 of Hearts
+King of Spades
+
+=== MAIN PILE ===
+9 of Hearts
+6 of Hearts
+Ace of Hearts
+7 of Spades
+6 of Clubs
+King of Hearts
+4 of Hearts
+
+Merging SORT PILE and MAIN PILE...
+
+1. 9 of Hearts
+2. 6 of Hearts
+3. Ace of Hearts
+4. 7 of Spades
+5. ->> 6 of Clubs <<-
+6. King of Hearts
+7. 4 of Hearts
+8. 2 of Hearts
+9. King of Spades
+
+Sorting cards...
+mode = 2
+data = [C, l, u, b, s]
+
+=== SORT PILE ===
+6 of Clubs
+7 of Spades
+Ace of Hearts
+6 of Hearts
+9 of Hearts
+
+=== MAIN PILE ===
+King of Hearts
+4 of Hearts
+2 of Hearts
+King of Spades
+
+Merging SORT PILE and MAIN PILE...
+
+1. King of Hearts
+2. 4 of Hearts
+3. 2 of Hearts
+4. King of Spades
+5. ->> 6 of Clubs <<-
+6. 7 of Spades
+7. Ace of Hearts
+8. 6 of Hearts
+9. 9 of Hearts
+
+Sorting cards...
+mode = 3
+data = [m, a, g, i, c]
+
+=== SORT PILE ===
+6 of Clubs
+King of Spades
+2 of Hearts
+4 of Hearts
+King of Hearts
+
+=== MAIN PILE ===
+7 of Spades
+Ace of Hearts
+6 of Hearts
+9 of Hearts
+
+Merging SORT PILE and MAIN PILE...
+
+1. 7 of Spades
+2. Ace of Hearts
+3. 6 of Hearts
+4. 9 of Hearts
+5. ->> 6 of Clubs <<-
+6. King of Spades
+7. 2 of Hearts
+8. 4 of Hearts
+9. King of Hearts
+
+,-------------------------------------------.
+|                                           |
+|             END ROUND: 1                  |
+|                                           |
+`-------------------------------------------'
+
+,-------------------------------------------.
+|                                           |
+|           START ROUND: 2                  |
+|                                           |
+`-------------------------------------------'
+1. 3 of Clubs
+2. 10 of Diamonds
+3. 6 of Hearts
+4. 10 of Spades
+5. 9 of Spades
+6. Ace of Clubs
+7. 4 of Spades
+8. 6 of Diamonds
+9. 8 of Hearts
+
+Card chosen: 8 of Hearts
+Planting chosen card at index 3...
+
+1. 3 of Clubs
+2. 10 of Diamonds
+3. ->> 8 of Hearts <<-
+4. 10 of Spades
+5. 9 of Spades
+6. Ace of Clubs
+7. 4 of Spades
+8. 6 of Diamonds
+9. 6 of Hearts
+
+Sorting cards...
+mode = 0
+data = [E, i, g, h, t]
+
+=== SORT PILE ===
+9 of Spades
+10 of Spades
+8 of Hearts
+10 of Diamonds
+3 of Clubs
+
+=== MAIN PILE ===
+Ace of Clubs
+4 of Spades
+6 of Diamonds
+6 of Hearts
+
+Merging SORT PILE and MAIN PILE...
+
+1. Ace of Clubs
+2. 4 of Spades
+3. 6 of Diamonds
+4. 6 of Hearts
+5. 9 of Spades
+6. 10 of Spades
+7. ->> 8 of Hearts <<-
+8. 10 of Diamonds
+9. 3 of Clubs
+
+Sorting cards...
+mode = 1
+data = [o, f]
+
+=== SORT PILE ===
+4 of Spades
+Ace of Clubs
+
+=== MAIN PILE ===
+6 of Diamonds
+6 of Hearts
+9 of Spades
+10 of Spades
+8 of Hearts
+10 of Diamonds
+3 of Clubs
+
+Merging SORT PILE and MAIN PILE...
+
+1. 6 of Diamonds
+2. 6 of Hearts
+3. 9 of Spades
+4. 10 of Spades
+5. ->> 8 of Hearts <<-
+6. 10 of Diamonds
+7. 3 of Clubs
+8. 4 of Spades
+9. Ace of Clubs
+
+Sorting cards...
+mode = 2
+data = [H, e, a, r, t, s]
+
+=== SORT PILE ===
+10 of Diamonds
+8 of Hearts
+10 of Spades
+9 of Spades
+6 of Hearts
+6 of Diamonds
+
+=== MAIN PILE ===
+3 of Clubs
+4 of Spades
+Ace of Clubs
+
+Merging SORT PILE and MAIN PILE...
+
+1. 3 of Clubs
+2. 4 of Spades
+3. Ace of Clubs
+4. 10 of Diamonds
+5. ->> 8 of Hearts <<-
+6. 10 of Spades
+7. 9 of Spades
+8. 6 of Hearts
+9. 6 of Diamonds
+
+Sorting cards...
+mode = 3
+data = [m, a, g, i, c]
+
+=== SORT PILE ===
+8 of Hearts
+10 of Diamonds
+Ace of Clubs
+4 of Spades
+3 of Clubs
+
+=== MAIN PILE ===
+10 of Spades
+9 of Spades
+6 of Hearts
+6 of Diamonds
+
+Merging SORT PILE and MAIN PILE...
+
+1. 10 of Spades
+2. 9 of Spades
+3. 6 of Hearts
+4. 6 of Diamonds
+5. ->> 8 of Hearts <<-
+6. 10 of Diamonds
+7. Ace of Clubs
+8. 4 of Spades
+9. 3 of Clubs
+
+,-------------------------------------------.
+|                                           |
+|             END ROUND: 2                  |
+|                                           |
+`-------------------------------------------'
+
+,-------------------------------------------.
+|                                           |
+|           START ROUND: 3                  |
+|                                           |
+`-------------------------------------------'
+1. 2 of Hearts
+2. 5 of Diamonds
+3. Jack of Spades
+4. 8 of Hearts
+5. Queen of Diamonds
+6. Jack of Diamonds
+7. 6 of Clubs
+8. Ace of Hearts
+9. 9 of Spades
+
+Card chosen: 9 of Spades
+Planting chosen card at index 3...
+
+1. 2 of Hearts
+2. 5 of Diamonds
+3. ->> 9 of Spades <<-
+4. 8 of Hearts
+5. Queen of Diamonds
+6. Jack of Diamonds
+7. 6 of Clubs
+8. Ace of Hearts
+9. Jack of Spades
+
+Sorting cards...
+mode = 0
+data = [N, i, n, e]
+
+=== SORT PILE ===
+8 of Hearts
+9 of Spades
+5 of Diamonds
+2 of Hearts
+
+=== MAIN PILE ===
+Queen of Diamonds
+Jack of Diamonds
+6 of Clubs
+Ace of Hearts
+Jack of Spades
+
+Merging SORT PILE and MAIN PILE...
+
+1. Queen of Diamonds
+2. Jack of Diamonds
+3. 6 of Clubs
+4. Ace of Hearts
+5. Jack of Spades
+6. 8 of Hearts
+7. ->> 9 of Spades <<-
+8. 5 of Diamonds
+9. 2 of Hearts
+
+Sorting cards...
+mode = 1
+data = [o, f]
+
+=== SORT PILE ===
+Jack of Diamonds
+Queen of Diamonds
+
+=== MAIN PILE ===
+6 of Clubs
+Ace of Hearts
+Jack of Spades
+8 of Hearts
+9 of Spades
+5 of Diamonds
+2 of Hearts
+
+Merging SORT PILE and MAIN PILE...
+
+1. 6 of Clubs
+2. Ace of Hearts
+3. Jack of Spades
+4. 8 of Hearts
+5. ->> 9 of Spades <<-
+6. 5 of Diamonds
+7. 2 of Hearts
+8. Jack of Diamonds
+9. Queen of Diamonds
+
+Sorting cards...
+mode = 2
+data = [S, p, a, d, e, s]
+
+=== SORT PILE ===
+5 of Diamonds
+9 of Spades
+8 of Hearts
+Jack of Spades
+Ace of Hearts
+6 of Clubs
+
+=== MAIN PILE ===
+2 of Hearts
+Jack of Diamonds
+Queen of Diamonds
+
+Merging SORT PILE and MAIN PILE...
+
+1. 2 of Hearts
+2. Jack of Diamonds
+3. Queen of Diamonds
+4. 5 of Diamonds
+5. ->> 9 of Spades <<-
+6. 8 of Hearts
+7. Jack of Spades
+8. Ace of Hearts
+9. 6 of Clubs
+
+Sorting cards...
+mode = 3
+data = [m, a, g, i, c]
+
+=== SORT PILE ===
+9 of Spades
+5 of Diamonds
+Queen of Diamonds
+Jack of Diamonds
+2 of Hearts
+
+=== MAIN PILE ===
+8 of Hearts
+Jack of Spades
+Ace of Hearts
+6 of Clubs
+
+Merging SORT PILE and MAIN PILE...
+
+1. 8 of Hearts
+2. Jack of Spades
+3. Ace of Hearts
+4. 6 of Clubs
+5. ->> 9 of Spades <<-
+6. 5 of Diamonds
+7. Queen of Diamonds
+8. Jack of Diamonds
+9. 2 of Hearts
+
+,-------------------------------------------.
+|                                           |
+|             END ROUND: 3                  |
+|                                           |
+`-------------------------------------------'
+
+,-------------------------------------------.
+|                                           |
+|           START ROUND: 4                  |
+|                                           |
+`-------------------------------------------'
+1. 5 of Diamonds
+2. 5 of Spades
+3. 4 of Diamonds
+4. 9 of Spades
+5. Ace of Diamonds
+6. 4 of Hearts
+7. 9 of Clubs
+8. 4 of Clubs
+9. Ace of Clubs
+
+Card chosen: Ace of Clubs
+Planting chosen card at index 3...
+
+1. 5 of Diamonds
+2. 5 of Spades
+3. ->> Ace of Clubs <<-
+4. 9 of Spades
+5. Ace of Diamonds
+6. 4 of Hearts
+7. 9 of Clubs
+8. 4 of Clubs
+9. 4 of Diamonds
+
+Sorting cards...
+mode = 0
+data = [A, c, e]
+
+=== SORT PILE ===
+Ace of Clubs
+5 of Spades
+5 of Diamonds
+
+=== MAIN PILE ===
+9 of Spades
+Ace of Diamonds
+4 of Hearts
+9 of Clubs
+4 of Clubs
+4 of Diamonds
+
+Merging SORT PILE and MAIN PILE...
+
+1. 9 of Spades
+2. Ace of Diamonds
+3. 4 of Hearts
+4. 9 of Clubs
+5. 4 of Clubs
+6. 4 of Diamonds
+7. ->> Ace of Clubs <<-
+8. 5 of Spades
+9. 5 of Diamonds
+
+Sorting cards...
+mode = 1
+data = [o, f]
+
+=== SORT PILE ===
+Ace of Diamonds
+9 of Spades
+
+=== MAIN PILE ===
+4 of Hearts
+9 of Clubs
+4 of Clubs
+4 of Diamonds
+Ace of Clubs
+5 of Spades
+5 of Diamonds
+
+Merging SORT PILE and MAIN PILE...
+
+1. 4 of Hearts
+2. 9 of Clubs
+3. 4 of Clubs
+4. 4 of Diamonds
+5. ->> Ace of Clubs <<-
+6. 5 of Spades
+7. 5 of Diamonds
+8. Ace of Diamonds
+9. 9 of Spades
+
+Sorting cards...
+mode = 2
+data = [C, l, u, b, s]
+
+=== SORT PILE ===
+Ace of Clubs
+4 of Diamonds
+4 of Clubs
+9 of Clubs
+4 of Hearts
+
+=== MAIN PILE ===
+5 of Spades
+5 of Diamonds
+Ace of Diamonds
+9 of Spades
+
+Merging SORT PILE and MAIN PILE...
+
+1. 5 of Spades
+2. 5 of Diamonds
+3. Ace of Diamonds
+4. 9 of Spades
+5. ->> Ace of Clubs <<-
+6. 4 of Diamonds
+7. 4 of Clubs
+8. 9 of Clubs
+9. 4 of Hearts
+
+Sorting cards...
+mode = 3
+data = [m, a, g, i, c]
+
+=== SORT PILE ===
+Ace of Clubs
+9 of Spades
+Ace of Diamonds
+5 of Diamonds
+5 of Spades
+
+=== MAIN PILE ===
+4 of Diamonds
+4 of Clubs
+9 of Clubs
+4 of Hearts
+
+Merging SORT PILE and MAIN PILE...
+
+1. 4 of Diamonds
+2. 4 of Clubs
+3. 9 of Clubs
+4. 4 of Hearts
+5. ->> Ace of Clubs <<-
+6. 9 of Spades
+7. Ace of Diamonds
+8. 5 of Diamonds
+9. 5 of Spades
+
+,-------------------------------------------.
+|                                           |
+|             END ROUND: 4                  |
+|                                           |
+`-------------------------------------------'
+
+,-------------------------------------------.
+|                                           |
+|           START ROUND: 5                  |
+|                                           |
+`-------------------------------------------'
+1. Queen of Diamonds
+2. Queen of Spades
+3. 7 of Spades
+4. 9 of Diamonds
+5. Queen of Hearts
+6. Ace of Hearts
+7. 9 of Hearts
+8. Jack of Spades
+9. King of Diamonds
+
+Card chosen: King of Diamonds
+Planting chosen card at index 3...
+
+1. Queen of Diamonds
+2. Queen of Spades
+3. ->> King of Diamonds <<-
+4. 9 of Diamonds
+5. Queen of Hearts
+6. Ace of Hearts
+7. 9 of Hearts
+8. Jack of Spades
+9. 7 of Spades
+
+Sorting cards...
+mode = 0
+data = [K, i, n, g]
+
+=== SORT PILE ===
+9 of Diamonds
+King of Diamonds
+Queen of Spades
+Queen of Diamonds
+
+=== MAIN PILE ===
+Queen of Hearts
+Ace of Hearts
+9 of Hearts
+Jack of Spades
+7 of Spades
+
+Merging SORT PILE and MAIN PILE...
+
+1. Queen of Hearts
+2. Ace of Hearts
+3. 9 of Hearts
+4. Jack of Spades
+5. 7 of Spades
+6. 9 of Diamonds
+7. ->> King of Diamonds <<-
+8. Queen of Spades
+9. Queen of Diamonds
+
+Sorting cards...
+mode = 1
+data = [o, f]
+
+=== SORT PILE ===
+Ace of Hearts
+Queen of Hearts
+
+=== MAIN PILE ===
+9 of Hearts
+Jack of Spades
+7 of Spades
+9 of Diamonds
+King of Diamonds
+Queen of Spades
+Queen of Diamonds
+
+Merging SORT PILE and MAIN PILE...
+
+1. 9 of Hearts
+2. Jack of Spades
+3. 7 of Spades
+4. 9 of Diamonds
+5. ->> King of Diamonds <<-
+6. Queen of Spades
+7. Queen of Diamonds
+8. Ace of Hearts
+9. Queen of Hearts
+
+Sorting cards...
+mode = 2
+data = [D, i, a, m, o, n, d, s]
+
+=== SORT PILE ===
+Ace of Hearts
+Queen of Diamonds
+Queen of Spades
+King of Diamonds
+9 of Diamonds
+7 of Spades
+Jack of Spades
+9 of Hearts
+
+=== MAIN PILE ===
+Queen of Hearts
+
+Merging SORT PILE and MAIN PILE...
+
+1. Queen of Hearts
+2. Ace of Hearts
+3. Queen of Diamonds
+4. Queen of Spades
+5. ->> King of Diamonds <<-
+6. 9 of Diamonds
+7. 7 of Spades
+8. Jack of Spades
+9. 9 of Hearts
+
+Sorting cards...
+mode = 3
+data = [m, a, g, i, c]
+
+=== SORT PILE ===
+King of Diamonds
+Queen of Spades
+Queen of Diamonds
+Ace of Hearts
+Queen of Hearts
+
+=== MAIN PILE ===
+9 of Diamonds
+7 of Spades
+Jack of Spades
+9 of Hearts
+
+Merging SORT PILE and MAIN PILE...
+
+1. 9 of Diamonds
+2. 7 of Spades
+3. Jack of Spades
+4. 9 of Hearts
+5. ->> King of Diamonds <<-
+6. Queen of Spades
+7. Queen of Diamonds
+8. Ace of Hearts
+9. Queen of Hearts
+
+,-------------------------------------------.
+|                                           |
+|             END ROUND: 5                  |
+|                                           |
+`-------------------------------------------'
+
+,-------------------------------------------.
+|                                           |
+|           START ROUND: 6                  |
+|                                           |
+`-------------------------------------------'
+1. 9 of Hearts
+2. 4 of Hearts
+3. 5 of Clubs
+4. Ace of Hearts
+5. 4 of Spades
+6. 9 of Clubs
+7. Ace of Clubs
+8. Queen of Diamonds
+9. 6 of Spades
+
+Card chosen: 6 of Spades
+Planting chosen card at index 3...
+
+1. 9 of Hearts
+2. 4 of Hearts
+3. ->> 6 of Spades <<-
+4. Ace of Hearts
+5. 4 of Spades
+6. 9 of Clubs
+7. Ace of Clubs
+8. Queen of Diamonds
+9. 5 of Clubs
+
+Sorting cards...
+mode = 0
+data = [S, i, x]
+
+=== SORT PILE ===
+6 of Spades
+4 of Hearts
+9 of Hearts
+
+=== MAIN PILE ===
+Ace of Hearts
+4 of Spades
+9 of Clubs
+Ace of Clubs
+Queen of Diamonds
+5 of Clubs
+
+Merging SORT PILE and MAIN PILE...
+
+1. Ace of Hearts
+2. 4 of Spades
+3. 9 of Clubs
+4. Ace of Clubs
+5. Queen of Diamonds
+6. 5 of Clubs
+7. ->> 6 of Spades <<-
+8. 4 of Hearts
+9. 9 of Hearts
+
+Sorting cards...
+mode = 1
+data = [o, f]
+
+=== SORT PILE ===
+4 of Spades
+Ace of Hearts
+
+=== MAIN PILE ===
+9 of Clubs
+Ace of Clubs
+Queen of Diamonds
+5 of Clubs
+6 of Spades
+4 of Hearts
+9 of Hearts
+
+Merging SORT PILE and MAIN PILE...
+
+1. 9 of Clubs
+2. Ace of Clubs
+3. Queen of Diamonds
+4. 5 of Clubs
+5. ->> 6 of Spades <<-
+6. 4 of Hearts
+7. 9 of Hearts
+8. 4 of Spades
+9. Ace of Hearts
+
+Sorting cards...
+mode = 2
+data = [S, p, a, d, e, s]
+
+=== SORT PILE ===
+4 of Hearts
+6 of Spades
+5 of Clubs
+Queen of Diamonds
+Ace of Clubs
+9 of Clubs
+
+=== MAIN PILE ===
+9 of Hearts
+4 of Spades
+Ace of Hearts
+
+Merging SORT PILE and MAIN PILE...
+
+1. 9 of Hearts
+2. 4 of Spades
+3. Ace of Hearts
+4. 4 of Hearts
+5. ->> 6 of Spades <<-
+6. 5 of Clubs
+7. Queen of Diamonds
+8. Ace of Clubs
+9. 9 of Clubs
+
+Sorting cards...
+mode = 3
+data = [m, a, g, i, c]
+
+=== SORT PILE ===
+6 of Spades
+4 of Hearts
+Ace of Hearts
+4 of Spades
+9 of Hearts
+
+=== MAIN PILE ===
+5 of Clubs
+Queen of Diamonds
+Ace of Clubs
+9 of Clubs
+
+Merging SORT PILE and MAIN PILE...
+
+1. 5 of Clubs
+2. Queen of Diamonds
+3. Ace of Clubs
+4. 9 of Clubs
+5. ->> 6 of Spades <<-
+6. 4 of Hearts
+7. Ace of Hearts
+8. 4 of Spades
+9. 9 of Hearts
+
+,-------------------------------------------.
+|                                           |
+|             END ROUND: 6                  |
+|                                           |
+`-------------------------------------------'
+
+,-------------------------------------------.
+|                                           |
+|           START ROUND: 7                  |
+|                                           |
+`-------------------------------------------'
+1. Jack of Spades
+2. 10 of Diamonds
+3. Jack of Hearts
+4. 2 of Diamonds
+5. Ace of Hearts
+6. 2 of Clubs
+7. 8 of Spades
+8. King of Diamonds
+9. Ace of Clubs
+
+Card chosen: Ace of Clubs
+Planting chosen card at index 3...
+
+1. Jack of Spades
+2. 10 of Diamonds
+3. ->> Ace of Clubs <<-
+4. 2 of Diamonds
+5. Ace of Hearts
+6. 2 of Clubs
+7. 8 of Spades
+8. King of Diamonds
+9. Jack of Hearts
+
+Sorting cards...
+mode = 0
+data = [A, c, e]
+
+=== SORT PILE ===
+Ace of Clubs
+10 of Diamonds
+Jack of Spades
+
+=== MAIN PILE ===
+2 of Diamonds
+Ace of Hearts
+2 of Clubs
+8 of Spades
+King of Diamonds
+Jack of Hearts
+
+Merging SORT PILE and MAIN PILE...
+
+1. 2 of Diamonds
+2. Ace of Hearts
+3. 2 of Clubs
+4. 8 of Spades
+5. King of Diamonds
+6. Jack of Hearts
+7. ->> Ace of Clubs <<-
+8. 10 of Diamonds
+9. Jack of Spades
+
+Sorting cards...
+mode = 1
+data = [o, f]
+
+=== SORT PILE ===
+Ace of Hearts
+2 of Diamonds
+
+=== MAIN PILE ===
+2 of Clubs
+8 of Spades
+King of Diamonds
+Jack of Hearts
+Ace of Clubs
+10 of Diamonds
+Jack of Spades
+
+Merging SORT PILE and MAIN PILE...
+
+1. 2 of Clubs
+2. 8 of Spades
+3. King of Diamonds
+4. Jack of Hearts
+5. ->> Ace of Clubs <<-
+6. 10 of Diamonds
+7. Jack of Spades
+8. Ace of Hearts
+9. 2 of Diamonds
+
+Sorting cards...
+mode = 2
+data = [C, l, u, b, s]
+
+=== SORT PILE ===
+Ace of Clubs
+Jack of Hearts
+King of Diamonds
+8 of Spades
+2 of Clubs
+
+=== MAIN PILE ===
+10 of Diamonds
+Jack of Spades
+Ace of Hearts
+2 of Diamonds
+
+Merging SORT PILE and MAIN PILE...
+
+1. 10 of Diamonds
+2. Jack of Spades
+3. Ace of Hearts
+4. 2 of Diamonds
+5. ->> Ace of Clubs <<-
+6. Jack of Hearts
+7. King of Diamonds
+8. 8 of Spades
+9. 2 of Clubs
+
+Sorting cards...
+mode = 3
+data = [m, a, g, i, c]
+
+=== SORT PILE ===
+Ace of Clubs
+2 of Diamonds
+Ace of Hearts
+Jack of Spades
+10 of Diamonds
+
+=== MAIN PILE ===
+Jack of Hearts
+King of Diamonds
+8 of Spades
+2 of Clubs
+
+Merging SORT PILE and MAIN PILE...
+
+1. Jack of Hearts
+2. King of Diamonds
+3. 8 of Spades
+4. 2 of Clubs
+5. ->> Ace of Clubs <<-
+6. 2 of Diamonds
+7. Ace of Hearts
+8. Jack of Spades
+9. 10 of Diamonds
+
+,-------------------------------------------.
+|                                           |
+|             END ROUND: 7                  |
+|                                           |
+`-------------------------------------------'
+
+,-------------------------------------------.
+|                                           |
+|           START ROUND: 8                  |
+|                                           |
+`-------------------------------------------'
+1. 10 of Clubs
+2. 3 of Hearts
+3. Jack of Diamonds
+4. 8 of Spades
+5. 2 of Spades
+6. 4 of Diamonds
+7. 4 of Hearts
+8. 9 of Diamonds
+9. 10 of Spades
+
+Card chosen: 10 of Spades
+Planting chosen card at index 3...
+
+1. 10 of Clubs
+2. 3 of Hearts
+3. ->> 10 of Spades <<-
+4. 8 of Spades
+5. 2 of Spades
+6. 4 of Diamonds
+7. 4 of Hearts
+8. 9 of Diamonds
+9. Jack of Diamonds
+
+Sorting cards...
+mode = 0
+data = [T, e, n]
+
+=== SORT PILE ===
+10 of Spades
+3 of Hearts
+10 of Clubs
+
+=== MAIN PILE ===
+8 of Spades
+2 of Spades
+4 of Diamonds
+4 of Hearts
+9 of Diamonds
+Jack of Diamonds
+
+Merging SORT PILE and MAIN PILE...
+
+1. 8 of Spades
+2. 2 of Spades
+3. 4 of Diamonds
+4. 4 of Hearts
+5. 9 of Diamonds
+6. Jack of Diamonds
+7. ->> 10 of Spades <<-
+8. 3 of Hearts
+9. 10 of Clubs
+
+Sorting cards...
+mode = 1
+data = [o, f]
+
+=== SORT PILE ===
+2 of Spades
+8 of Spades
+
+=== MAIN PILE ===
+4 of Diamonds
+4 of Hearts
+9 of Diamonds
+Jack of Diamonds
+10 of Spades
+3 of Hearts
+10 of Clubs
+
+Merging SORT PILE and MAIN PILE...
+
+1. 4 of Diamonds
+2. 4 of Hearts
+3. 9 of Diamonds
+4. Jack of Diamonds
+5. ->> 10 of Spades <<-
+6. 3 of Hearts
+7. 10 of Clubs
+8. 2 of Spades
+9. 8 of Spades
+
+Sorting cards...
+mode = 2
+data = [S, p, a, d, e, s]
+
+=== SORT PILE ===
+3 of Hearts
+10 of Spades
+Jack of Diamonds
+9 of Diamonds
+4 of Hearts
+4 of Diamonds
+
+=== MAIN PILE ===
+10 of Clubs
+2 of Spades
+8 of Spades
+
+Merging SORT PILE and MAIN PILE...
+
+1. 10 of Clubs
+2. 2 of Spades
+3. 8 of Spades
+4. 3 of Hearts
+5. ->> 10 of Spades <<-
+6. Jack of Diamonds
+7. 9 of Diamonds
+8. 4 of Hearts
+9. 4 of Diamonds
+
+Sorting cards...
+mode = 3
+data = [m, a, g, i, c]
+
+=== SORT PILE ===
+10 of Spades
+3 of Hearts
+8 of Spades
+2 of Spades
+10 of Clubs
+
+=== MAIN PILE ===
+Jack of Diamonds
+9 of Diamonds
+4 of Hearts
+4 of Diamonds
+
+Merging SORT PILE and MAIN PILE...
+
+1. Jack of Diamonds
+2. 9 of Diamonds
+3. 4 of Hearts
+4. 4 of Diamonds
+5. ->> 10 of Spades <<-
+6. 3 of Hearts
+7. 8 of Spades
+8. 2 of Spades
+9. 10 of Clubs
+
+,-------------------------------------------.
+|                                           |
+|             END ROUND: 8                  |
+|                                           |
+`-------------------------------------------'
+
+,-------------------------------------------.
+|                                           |
+|           START ROUND: 9                  |
+|                                           |
+`-------------------------------------------'
+1. 6 of Hearts
+2. 3 of Diamonds
+3. 5 of Hearts
+4. 7 of Clubs
+5. 5 of Diamonds
+6. King of Hearts
+7. Ace of Clubs
+8. 7 of Hearts
+9. 5 of Spades
+
+Card chosen: 5 of Spades
+Planting chosen card at index 3...
+
+1. 6 of Hearts
+2. 3 of Diamonds
+3. ->> 5 of Spades <<-
+4. 7 of Clubs
+5. 5 of Diamonds
+6. King of Hearts
+7. Ace of Clubs
+8. 7 of Hearts
+9. 5 of Hearts
+
+Sorting cards...
+mode = 0
+data = [F, i, v, e]
+
+=== SORT PILE ===
+7 of Clubs
+5 of Spades
+3 of Diamonds
+6 of Hearts
+
+=== MAIN PILE ===
+5 of Diamonds
+King of Hearts
+Ace of Clubs
+7 of Hearts
+5 of Hearts
+
+Merging SORT PILE and MAIN PILE...
+
+1. 5 of Diamonds
+2. King of Hearts
+3. Ace of Clubs
+4. 7 of Hearts
+5. 5 of Hearts
+6. 7 of Clubs
+7. ->> 5 of Spades <<-
+8. 3 of Diamonds
+9. 6 of Hearts
+
+Sorting cards...
+mode = 1
+data = [o, f]
+
+=== SORT PILE ===
+King of Hearts
+5 of Diamonds
+
+=== MAIN PILE ===
+Ace of Clubs
+7 of Hearts
+5 of Hearts
+7 of Clubs
+5 of Spades
+3 of Diamonds
+6 of Hearts
+
+Merging SORT PILE and MAIN PILE...
+
+1. Ace of Clubs
+2. 7 of Hearts
+3. 5 of Hearts
+4. 7 of Clubs
+5. ->> 5 of Spades <<-
+6. 3 of Diamonds
+7. 6 of Hearts
+8. King of Hearts
+9. 5 of Diamonds
+
+Sorting cards...
+mode = 2
+data = [S, p, a, d, e, s]
+
+=== SORT PILE ===
+3 of Diamonds
+5 of Spades
+7 of Clubs
+5 of Hearts
+7 of Hearts
+Ace of Clubs
+
+=== MAIN PILE ===
+6 of Hearts
+King of Hearts
+5 of Diamonds
+
+Merging SORT PILE and MAIN PILE...
+
+1. 6 of Hearts
+2. King of Hearts
+3. 5 of Diamonds
+4. 3 of Diamonds
+5. ->> 5 of Spades <<-
+6. 7 of Clubs
+7. 5 of Hearts
+8. 7 of Hearts
+9. Ace of Clubs
+
+Sorting cards...
+mode = 3
+data = [m, a, g, i, c]
+
+=== SORT PILE ===
+5 of Spades
+3 of Diamonds
+5 of Diamonds
+King of Hearts
+6 of Hearts
+
+=== MAIN PILE ===
+7 of Clubs
+5 of Hearts
+7 of Hearts
+Ace of Clubs
+
+Merging SORT PILE and MAIN PILE...
+
+1. 7 of Clubs
+2. 5 of Hearts
+3. 7 of Hearts
+4. Ace of Clubs
+5. ->> 5 of Spades <<-
+6. 3 of Diamonds
+7. 5 of Diamonds
+8. King of Hearts
+9. 6 of Hearts
+
+,-------------------------------------------.
+|                                           |
+|             END ROUND: 9                  |
+|                                           |
+`-------------------------------------------'
