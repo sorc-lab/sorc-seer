@@ -1,3 +1,6 @@
+(Only use when needed to make a clone of an object instead of needing a new
+instance)
+
 Create objects based on a template of an existing object through cloning.
 
 **
