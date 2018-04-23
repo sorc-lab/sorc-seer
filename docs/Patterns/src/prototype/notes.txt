@@ -1,0 +1,34 @@
+Create objects based on a template of an existing object through cloning.
+
+**
+Instead of going to the trouble of creating object from scratch every time, you
+can make copies of an original instance and modify it as required.
+
+
+,--------.           ,---------------.
+| Client |  ------>  | <<interface>> |
+`--------'           | Prototype     |
+                     |_______________|
+                     | + clone()     |
+                     `---------------'
+                         ^        ^
+                         |        |
+              .-----------        -----------.
+              |                              |
+              |                              |
+     ,--------------------.        ,--------------------.
+     | ConcretePrototype1 |        | ConcretePrototype2 |
+     |____________________|        |____________________|
+     | + clone()          |        | + clone()          |
+     `--------------------'        `--------------------'
+     
+
+'Prototype' interface declares a method for cloning itself, while the
+'ConcretePrototype' implements the operation for cloning itself.
+
+Should be used when composition, create and representation of objects should be
+decoupled from the system. Or, classes to be created are specified at runetime,
+or you need to hide the complexity of creating new instance from the client, or
+creating an object is an expensive operation and it would be more efficient to
+copy an object, or objects are required that are similar to existing objects.
+
