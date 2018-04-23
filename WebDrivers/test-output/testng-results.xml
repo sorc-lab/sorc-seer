@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="7049" started-at="2018-04-23T23:07:28Z" finished-at="2018-04-23T23:07:35Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="7049" started-at="2018-04-23T23:07:28Z" finished-at="2018-04-23T23:07:35Z">
+      <class name="phantomjs.TestPhantomJS">
+        <test-method status="PASS" signature="setup()[pri:0, instance:phantomjs.TestPhantomJS@34c4973]" name="setup" is-config="true" duration-ms="6690" started-at="2018-04-23T23:07:28Z" finished-at="2018-04-23T23:07:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="phantomTest()[pri:0, instance:phantomjs.TestPhantomJS@34c4973]" name="phantomTest" duration-ms="345" started-at="2018-04-23T23:07:35Z" finished-at="2018-04-23T23:07:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- phantomTest -->
+      </class> <!-- phantomjs.TestPhantomJS -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
