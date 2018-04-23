@@ -1,0 +1,8 @@
+GoF shows a much more complex Builder pattern (pg.97).
+Didn't read the whole spec., but it uses an interface for building complex
+mazes. It uses object(s) and multiple 'builders' that each build the obj. in a
+different way.
+
+Should be looked at closer when implementing 'Procedural Generation of Modular
+Formats' algorithms.
+ 
