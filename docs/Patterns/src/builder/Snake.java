@@ -19,7 +19,7 @@ import java.util.Arrays;
  */
 public class Snake
 {
-	private final String _name; // pass name to constructor
+	private final String _name;
 	private int _hp;
 	private boolean _hasPoison;
 	private double _dps;
@@ -27,21 +27,7 @@ public class Snake
 	private boolean _canSummon;
 	private String[] _lootTable;
 	
-	public Snake(String name) { this._name = name; }
-	
-	public Snake(
-		String name, int hp, boolean hasPoison, double dps, int movementSpeed,
-		boolean canSummon, String[] lootTable
-	)
-	{
-		this._name = name;
-		this._hp = hp;
-		this._hasPoison = hasPoison;
-		this._dps = dps;
-		this._movementSpeed = movementSpeed;
-		this._canSummon = canSummon;
-		this._lootTable = lootTable;
-	}
+	private Snake(String name) { this._name = name; }
 	
 	public String getName() { return _name; }
 	
@@ -81,5 +67,71 @@ public class Snake
 		String movementSpeed = "Speed: " + String.valueOf(_movementSpeed) +"\n";
 		String lootTable = "Loot: " + Arrays.toString(_lootTable) + "\n";
 		return name + hp + hasPoison + dps + movementSpeed + lootTable;
+	}
+	
+	public static class Builder
+	{
+		private final String _name; // important field--pass to constructor
+		private int _hp;
+		private boolean _hasPoison;
+		private double _dps;
+		private int _movementSpeed;
+		private boolean _canSummon;
+		private String[] _lootTable;
+		
+		public Builder(String name)
+		{
+			this._name = name;
+		}
+		
+		public Builder setHp(int hp)
+		{
+			this._hp = hp;
+			return this; // return builder each time--use fluent interface
+		}
+		
+		public Builder setPoison(boolean hasPoison)
+		{
+			this._hasPoison = hasPoison;
+			return this;
+		}
+		
+		public Builder setDps(double dps)
+		{
+			this._dps = dps;
+			return this;
+		}
+		
+		public Builder setMovementSpeed(int movementSpeed)
+		{
+			this._movementSpeed = movementSpeed;
+			return this;
+		}
+		
+		public Builder setSummon(boolean canSummon)
+		{
+			this._canSummon = canSummon;
+			return this;
+		}
+		
+		public Builder setLootTable(String[] lootTable)
+		{
+			this._lootTable = lootTable;
+			return this;
+		}
+		
+		// creates snake obj.--always in fully instantiated state when returned
+		public Snake build()
+		{
+			// Builder is IN Snake class, we can invoke its private constructor
+			Snake snake = new Snake(_name);
+			snake._hp = this._hp;
+			snake._hasPoison = this._hasPoison;
+			snake._dps = this._dps;
+			snake._movementSpeed = this._movementSpeed;
+			snake._canSummon = this._canSummon;
+			snake._lootTable = this._lootTable;
+			return snake;
+		}
 	}
 }
