@@ -1,7 +1,6 @@
 package tarot;
 
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
@@ -24,8 +23,6 @@ public class SetupWebDriver
 		);	
 		_driver = new PhantomJSDriver(capability);
 		_driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		
 		return _driver;
 	}
-
 }
