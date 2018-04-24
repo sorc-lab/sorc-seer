@@ -22,11 +22,12 @@ public class Main
 		String pageTitle = (String) js.executeScript("return document.title");
 		System.out.println("Page title: " + pageTitle);
 		
+		// replace w/ fluent wait
 		Thread.sleep(2000); // probably needs try/catch
 		
 		try {
-			driver.switchTo().frame(0);
-		} catch(NoSuchFrameException e) {
+			driver.switchTo().frame(driver.findElement(By.name("FRA")));
+		} catch (NoSuchFrameException e) {
 			System.out.println(e.getMessage());
 		}
 		
@@ -37,7 +38,8 @@ public class Main
 		driver.switchTo().defaultContent(); // cannot switch frame index w/o it
 		
 		try {
-			driver.switchTo().frame(1);
+			//driver.switchTo().frame(1);
+			driver.switchTo().frame(driver.findElement(By.name("FRB")));
 		} catch(NoSuchFrameException e) {
 			System.out.println(e.getMessage());
 		}
