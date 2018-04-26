@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchFrameException;
 import org.openqa.selenium.WebElement;
 
-public class ATAHandler extends PhantomDriver
+public class ATANavigator extends PhantomDriver
 {
 	public static final String HOME = "http://www.ata-tarot.com/resource/cards/";
 	public static final String NAVIGATION_FRAME = "FRA";
@@ -103,4 +103,6 @@ public class ATAHandler extends PhantomDriver
 		}
 		return isValid;
 	}
+	
+	public void navigateToLink(WebElement link) { link.click(); }
 }

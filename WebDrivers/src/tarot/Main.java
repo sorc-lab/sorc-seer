@@ -20,20 +20,13 @@ public class Main extends PhantomDriver
 		PhantomDriver phantomDriver = new PhantomDriver();
 		phantomDriver.initializePhantomDriver();
 		
-		ATAHandler ATA = new ATAHandler();
-		ATA.navigateHomepage();
-		ATA.switchToDefaultFrame();
-		ATA.switchToNavigationFrame();
+		ATADataHarvester ATADataHarvester = new ATADataHarvester();
+		ATADataHarvester.harvest();
 		
-		List<WebElement> navigationLinks = ATA.getAllNavigationLinks();
-		// helper.generateTxtFiles(String site)
-			// checks if 'Tarot' dir exists, creates it if not
-			// navigates to link[i]
-			// switches to default, then data frame
-			// scrapes data
-			// checks the site, either "ata" or "trusted"
-			// writes to file via 'cardstring_<site>.txt'
-			// repeat
+		
+		
+
+
 		
 		Thread.sleep(2000);
 		driver.switchTo().defaultContent(); // cannot switch frame index w/o it
