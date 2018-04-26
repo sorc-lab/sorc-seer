@@ -30,13 +30,6 @@ public class Main extends PhantomDriver
 		List<WebElement> navigationLinks = ATA.getAllNavigationLinks();
 		
 		
-		
-
-		By cardLinkTxt = By.partialLinkText("King of Swords");
-		WebElement card = (new WebDriverWait(driver, 10))
-			.until(ExpectedConditions.presenceOfElementLocated(cardLinkTxt));
-		card.click();
-		
 		Thread.sleep(2000);
 		driver.switchTo().defaultContent(); // cannot switch frame index w/o it
 		
@@ -55,13 +48,12 @@ public class Main extends PhantomDriver
 		
 		int i = 0;
 		for (WebElement elem : elems) {
-			System.out.println(elem.getText());
+			//System.out.println(elem.getText());
 			dataTxt[i] = elem.getText();
 			i++;
 		}
 				
 		data.put("King of Swords", dataTxt);
-		System.out.println(data.get("King of Swords"));
 		
 		FileWriter fileWriter = new FileWriter("king_of_swords.txt");
 		String newLine = System.getProperty("line.separator"); // more portable than '\n'

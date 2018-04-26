@@ -59,27 +59,48 @@ public class ATAHandler extends PhantomDriver
 		navigationLinks.remove(0);
 		navigationLinks.remove(0);
 		
-		// check if links match CARDS
-		// if not, loop through manually doing a try/catch wait for each
-		// announce this is taking place so that user knows it may take a while
-		if (_checkNavigationLinks(navigationLinks))
-			System.out.println("SUCCESS: Obtained all navigation links");
-		else
-			System.out.println("FAILED: Missing navigation links");
+		try {
+			if (_checkNavigationLinks(navigationLinks))
+				return navigationLinks;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println(
+				"Making second attempt at acquiring navigation links..."
+			);
+			Helper helper = new Helper();
 			
+			// clear out first attempt at acquiring navigation links
+			navigationLinks.clear();
+			
+			for (int i = 0; i < CARDS.length; i++) {
+				By locator = By.partialLinkText(CARDS[i]);
+				WebElement navLink = helper.getPresentWebElement(locator);
+				navigationLinks.add(navLink);
+			}
+		}
+		
 		return navigationLinks; 
 	}
 	
 	private boolean _checkNavigationLinks(List<WebElement> links)
+	throws Exception
 	{
+		boolean isValid = true;
+		
 		if (links.size() == CARDS.length) {
 			for (int i = 0; i < CARDS.length; i++) {
 				String linkTxt = links.get(i).getText();
 				if (!linkTxt.equals(CARDS[i])) {
-					return false;
+					isValid = false;
+					throw new Exception(
+						"Acquired links did not match expected."
+					);
 				}
 			}
+		} else {
+			isValid = false;
+			throw new Exception("Invalid number of links acquired.");
 		}
-		return true;
+		return isValid;
 	}
 }
