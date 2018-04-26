@@ -7,7 +7,6 @@ import java.util.StringTokenizer;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchFrameException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -27,6 +26,11 @@ public class Main extends PhantomDriver
 		ATA.navigateHomepage();
 		ATA.switchToDefaultFrame();
 		ATA.switchToNavigationFrame();
+		
+		List<WebElement> navigationLinks = ATA.getAllNavigationLinks();
+		
+		
+		
 
 		By cardLinkTxt = By.partialLinkText("King of Swords");
 		WebElement card = (new WebDriverWait(driver, 10))
