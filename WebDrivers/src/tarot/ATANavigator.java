@@ -10,6 +10,7 @@ public class ATANavigator extends PhantomDriver
 {
 	public static final String HOME = "http://www.ata-tarot.com/resource/cards/";
 	public static final String NAVIGATION_FRAME = "FRA";
+	public static final String DATA_FRAME = "FRB";
 	
 	public static final String[] CARDS = { "The Fool", "The Magician",
 		"The High Priestess", "The Empress", "The Emperor",
@@ -44,6 +45,16 @@ public class ATANavigator extends PhantomDriver
 		By navigationFrame = By.name(NAVIGATION_FRAME);
 		try {
 			driver.switchTo().frame(driver.findElement(navigationFrame));
+		} catch (NoSuchFrameException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	public void switchToDataFrame()
+	{
+		By dataFrame = By.name(DATA_FRAME);
+		try {
+			driver.switchTo().frame(driver.findElement(dataFrame));
 		} catch (NoSuchFrameException e) {
 			System.out.println(e.getMessage());
 		}
@@ -104,5 +115,5 @@ public class ATANavigator extends PhantomDriver
 		return isValid;
 	}
 	
-	public void navigateToLink(WebElement link) { link.click(); }
+	public void navigateToLink(final WebElement link) { link.click(); }
 }
