@@ -5,11 +5,11 @@ import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-public class SetupWebDriver
+public class PhantomDriver
 {
-	private WebDriver _driver;
+	public static WebDriver driver;
 	
-	public WebDriver getWebDriver()
+	public void initializePhantomDriver()
 	{
 		String baseDir = System.getProperty("user.dir");
 		String phantomjs = baseDir + "/WebDriverDependencies/phantomjs.exe";
@@ -20,8 +20,6 @@ public class SetupWebDriver
 			PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
 			phantomjs
 		);	
-		_driver = new PhantomJSDriver(capability);
-		//_driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		return _driver;
+		driver = new PhantomJSDriver(capability);
 	}
 }
