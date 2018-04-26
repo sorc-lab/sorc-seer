@@ -8,8 +8,6 @@ import java.util.StringTokenizer;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchFrameException;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Main extends PhantomDriver
 {
@@ -28,7 +26,14 @@ public class Main extends PhantomDriver
 		ATA.switchToNavigationFrame();
 		
 		List<WebElement> navigationLinks = ATA.getAllNavigationLinks();
-		
+		// helper.generateTxtFiles(String site)
+			// checks if 'Tarot' dir exists, creates it if not
+			// navigates to link[i]
+			// switches to default, then data frame
+			// scrapes data
+			// checks the site, either "ata" or "trusted"
+			// writes to file via 'cardstring_<site>.txt'
+			// repeat
 		
 		Thread.sleep(2000);
 		driver.switchTo().defaultContent(); // cannot switch frame index w/o it
