@@ -1,5 +1,6 @@
 package tarot;
 
+import java.io.FileWriter;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -69,6 +70,15 @@ public class Main
 				
 		data.put("King of Swords", dataTxt);
 		System.out.println(data.get("King of Swords"));
+		
+		FileWriter fileWriter = new FileWriter("king_of_swords.txt");
+		String newLine = System.getProperty("line.separator"); // more portable than '\n'
+		for (i = 0; i < dataTxt.length; i++) {
+			fileWriter.write(dataTxt[i] + newLine);
+		}
+		fileWriter.close();
+		
+		
 		
 		
 		// KEEP FOR A BIT
