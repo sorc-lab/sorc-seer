@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -16,7 +17,11 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Main
-{	
+{
+	private static final int LINE_LENGTH = 80;
+	private static final String SPACE = " ";
+	private static final String EMPTY_STRING = "";
+	
 	public static void main(String[] args) throws Exception
 	{
 		SetupWebDriver setup = new SetupWebDriver();
@@ -73,8 +78,15 @@ public class Main
 		
 		FileWriter fileWriter = new FileWriter("king_of_swords.txt");
 		String newLine = System.getProperty("line.separator"); // more portable than '\n'
+		
+		
+		
+		
+		
 		for (i = 0; i < dataTxt.length; i++) {
-			fileWriter.write(dataTxt[i] + newLine);
+			String tmp = getPreviewLines(dataTxt[i]);
+			fileWriter.write(tmp + newLine);
+			fileWriter.write(newLine);
 		}
 		fileWriter.close();
 		
@@ -106,5 +118,33 @@ public class Main
 			*/
 		
 		
+	}
+	
+	public static String getPreviewLines(final String input) 
+	{
+	    final StringTokenizer token = new StringTokenizer(input, SPACE);
+	    final StringBuilder output = new StringBuilder(input.length());
+
+	    int lineLen = 0;
+
+	    while (token.hasMoreTokens()) 
+	    {
+	        final String word = token.nextToken() + SPACE;
+
+	        if (lineLen + word.length() - 1 > LINE_LENGTH) 
+	        {
+	            output.append(System.lineSeparator());
+	            lineLen = 0;
+	        }
+
+	        output.append(word);
+
+	        if (word.contains(System.lineSeparator())) 
+	            lineLen = word.replaceAll("\\s+", EMPTY_STRING).length(); //$NON-NLS-1$
+	        else
+	            lineLen += word.length();
+	    }
+
+	    return output.toString();
 	}
 }
