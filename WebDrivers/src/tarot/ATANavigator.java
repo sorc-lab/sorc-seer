@@ -118,4 +118,14 @@ public class ATANavigator extends PhantomDriver
 	}
 	
 	public void navigateToLink(final WebElement link) { link.click(); }
+	
+	public void navigateToNextLink(By linkLocator)
+	{
+		Helper helper = new Helper();
+		WebElement link = helper.getPresentWebElement(linkLocator);
+		navigateToLink(link);
+		
+		ATANavigator nav = new ATANavigator();
+		nav.switchToDataFrame();
+	}
 }

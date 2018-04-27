@@ -1,6 +1,6 @@
 package tarot;
 
-import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -21,45 +21,26 @@ public class ATADataHarvester extends PhantomDriver
 		ATAFileGenerator fileGenerator = new ATAFileGenerator();
 		fileGenerator.generateDirectory();
 		
-		Helper helper = new Helper();
-		
-		int navLinksCount = navLinkElements.size();
-		for (int j = 0; j < navLinksCount; j++) {
+		for (int i = 0; i < navLinkElements.size(); i++) {
 			nav.switchToNavigationFrame();
 			
-			String linkText = navLinkTexts[j];
+			String linkText = navLinkTexts[i];
 			System.out.println(
 				"Harvesting data: " + linkText + " ..."
 			);
 			
-			/** navigateToNextLink ========================================== */
 			By linkLocator = By.partialLinkText(linkText);
-			WebElement link = helper.getPresentWebElement(linkLocator);
-			link.click();
-			nav.switchToDataFrame();
-			/** ============================================================= */
-			
+			nav.navigateToNextLink(linkLocator);
 			
 			HashMap<String, String[]> data = new HashMap<String, String[]>();
 			String[] paragraphs = getParagraphs();
 			data.put(linkText, paragraphs);
 			
-			/** writeToFiles (needs better name and needs to place into separate dirs */
-			fileGenerator.generateTextFile(linkText);
-			String fileName = fileGenerator.getFileName();
-			
-			FileWriter fileWriter = new FileWriter("Tarot/" + fileName);
-			String newLine = System.getProperty("line.separator");
-			fileWriter.write("ATA:" + newLine);
-			
-			for (int k = 0; k < paragraphs.length; k++) {
-				String preview = fileGenerator.getPreviewLines(paragraphs[k]);
-				fileWriter.write(preview + newLine);
-				fileWriter.write(newLine);
+			try {
+				fileGenerator.writeToFile(linkText, paragraphs);
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
-			
-			fileWriter.close();
-			/** ============================================================= */
 		}	
 	}
 	
