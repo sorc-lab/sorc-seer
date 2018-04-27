@@ -15,13 +15,34 @@ public class ATADataHarvester extends PhantomDriver
 		nav.navigateHomepage();
 		nav.switchToDefaultFrame();
 		nav.switchToNavigationFrame();
+		
 		List<WebElement> navigationLinks = nav.getAllNavigationLinks();
+		int navigationLinksCount = navigationLinks.size();
+		String[] navigationLinkTexts = new String[navigationLinksCount];
+		
+		int i = 0;
+		for (WebElement link : navigationLinks) {
+			navigationLinkTexts[i] = link.getText();
+			i++;
+		}
 		
 		ATAFileGenerator fileGenerator = new ATAFileGenerator();
 		fileGenerator.generateDirectory();
+		Helper helper = new Helper();
 		
-		for (WebElement link : navigationLinks) {
+		for (int j = 0; j < navigationLinksCount; j++) {
+			nav.switchToDefaultFrame();
+			nav.switchToNavigationFrame();
+			
+			String linkText = navigationLinkTexts[j];
+			System.out.println(
+				"Harvesting data: " + linkText + " ..."
+			);
+			
+			By linkLocator = By.partialLinkText(linkText);
+			WebElement link = helper.getPresentWebElement(linkLocator);
 			link.click();
+
 			nav.switchToDefaultFrame();
 			nav.switchToDataFrame();
 			HashMap<String, String[]> data = new HashMap<String, String[]>();
@@ -30,14 +51,15 @@ public class ATADataHarvester extends PhantomDriver
 			int numberOfParagraphs = elements.size();
 			String[] paragraphs = new String[numberOfParagraphs];
 			
-			int i = 0;
+			i = 0;
 			for (WebElement element : elements) {
 				paragraphs[i] = element.getText();
 				i++;
 			}
 			
-			data.put(link.getText(), paragraphs);
-			fileGenerator.generateTextFile(link);
+			data.put(linkText, paragraphs);
+			
+			fileGenerator.generateTextFile(linkText);
 			String fileName = fileGenerator.getFileName();
 			
 			FileWriter fileWriter = new FileWriter(fileName);

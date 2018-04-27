@@ -3,8 +3,6 @@ package tarot;
 import java.io.File;
 import java.util.StringTokenizer;
 
-import org.openqa.selenium.WebElement;
-
 public class ATAFileGenerator implements FileGenerator
 {
 	private static final int LINE_LENGTH = 80;
@@ -21,9 +19,9 @@ public class ATAFileGenerator implements FileGenerator
 	}
 	
 	@Override
-	public void generateTextFile(final WebElement element)
+	public void generateTextFile(final String text)
 	{
-		String fileName = _generateFileName(element);
+		String fileName = _generateFileName(text);
 		this._fileName = fileName;
 	}
 	
@@ -34,9 +32,9 @@ public class ATAFileGenerator implements FileGenerator
 		return _fileName;
 	}
 	
-	private String _generateFileName(WebElement elem)
+	private String _generateFileName(final String text)
 	{
-		return elem.getText().replaceAll(" ", "_").toLowerCase() + "_ata.txt";
+		return text.replaceAll(" ", "_").toLowerCase() + "_ata.txt";
 	}
 	
 	@Override
