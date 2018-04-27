@@ -65,6 +65,7 @@ public class ATAFileGenerator implements FileGenerator
 	    return output.toString();
 	}	
 	
+	@Override
 	public void writeToFile(String linkText, String[] paragraphs)
 	throws Exception
 	{
