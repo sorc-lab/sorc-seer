@@ -13,66 +13,83 @@ public class ATADataHarvester extends PhantomDriver
 	{
 		ATANavigator nav = new ATANavigator(); 
 		nav.navigateHomepage();
-		nav.switchToDefaultFrame();
 		nav.switchToNavigationFrame();
 		
-		List<WebElement> navigationLinks = nav.getAllNavigationLinks();
-		int navigationLinksCount = navigationLinks.size();
-		String[] navigationLinkTexts = new String[navigationLinksCount];
-		
-		int i = 0;
-		for (WebElement link : navigationLinks) {
-			navigationLinkTexts[i] = link.getText();
-			i++;
-		}
+		List<WebElement> navLinkElements = nav.getAllNavigationLinkElements();
+		String[] navLinkTexts = getTextValuesFromLinkElements(navLinkElements);
 		
 		ATAFileGenerator fileGenerator = new ATAFileGenerator();
 		fileGenerator.generateDirectory();
+		
 		Helper helper = new Helper();
 		
-		for (int j = 0; j < navigationLinksCount; j++) {
-			nav.switchToDefaultFrame();
+		int navLinksCount = navLinkElements.size();
+		for (int j = 0; j < navLinksCount; j++) {
 			nav.switchToNavigationFrame();
 			
-			String linkText = navigationLinkTexts[j];
+			String linkText = navLinkTexts[j];
 			System.out.println(
 				"Harvesting data: " + linkText + " ..."
 			);
 			
+			/** navigateToNextLink ========================================== */
 			By linkLocator = By.partialLinkText(linkText);
 			WebElement link = helper.getPresentWebElement(linkLocator);
 			link.click();
-
-			nav.switchToDefaultFrame();
 			nav.switchToDataFrame();
+			/** ============================================================= */
+			
+			
 			HashMap<String, String[]> data = new HashMap<String, String[]>();
-			
-			List<WebElement> elements = driver.findElements(By.tagName("p")); 
-			int numberOfParagraphs = elements.size();
-			String[] paragraphs = new String[numberOfParagraphs];
-			
-			i = 0;
-			for (WebElement element : elements) {
-				paragraphs[i] = element.getText();
-				i++;
-			}
-			
+			String[] paragraphs = getParagraphs();
 			data.put(linkText, paragraphs);
 			
+			/** writeToFiles (needs better name and needs to place into separate dirs */
 			fileGenerator.generateTextFile(linkText);
 			String fileName = fileGenerator.getFileName();
 			
-			FileWriter fileWriter = new FileWriter(fileName);
+			FileWriter fileWriter = new FileWriter("Tarot/" + fileName);
 			String newLine = System.getProperty("line.separator");
 			fileWriter.write("ATA:" + newLine);
 			
-			for (i = 0; i < paragraphs.length; i++) {
-				String preview = fileGenerator.getPreviewLines(paragraphs[i]);
+			for (int k = 0; k < paragraphs.length; k++) {
+				String preview = fileGenerator.getPreviewLines(paragraphs[k]);
 				fileWriter.write(preview + newLine);
 				fileWriter.write(newLine);
 			}
 			
-			fileWriter.close();		
+			fileWriter.close();
+			/** ============================================================= */
+		}	
+	}
+	
+	public String[] getTextValuesFromLinkElements(List<WebElement> links)
+	{
+		int linksCount = links.size();
+		String[] textValues = new String[linksCount];
+		
+		int i = 0;
+		for (WebElement link : links) {
+			textValues[i] = link.getText();
+			i++;
 		}
+		
+		return textValues;
+	}
+	
+	// TODO: Add some error handling
+	public String[] getParagraphs()
+	{
+		List<WebElement> elements = driver.findElements(By.tagName("p")); 
+		int numberOfParagraphs = elements.size();
+		String[] paragraphs = new String[numberOfParagraphs];
+		
+		int i = 0;
+		for (WebElement element : elements) {
+			paragraphs[i] = element.getText();
+			i++;
+		}
+		
+		return paragraphs;
 	}
 }

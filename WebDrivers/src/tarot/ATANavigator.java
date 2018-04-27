@@ -38,10 +38,11 @@ public class ATANavigator extends PhantomDriver
 	};
 	
 	public void navigateHomepage() { driver.get(HOME); }
-	public void switchToDefaultFrame() { driver.switchTo().defaultContent(); }
+	private void _switchToDefaultFrame() { driver.switchTo().defaultContent(); }
 	
 	public void switchToNavigationFrame()
 	{
+		_switchToDefaultFrame();
 		By navigationFrame = By.name(NAVIGATION_FRAME);
 		try {
 			driver.switchTo().frame(driver.findElement(navigationFrame));
@@ -52,6 +53,7 @@ public class ATANavigator extends PhantomDriver
 	
 	public void switchToDataFrame()
 	{
+		_switchToDefaultFrame();
 		By dataFrame = By.name(DATA_FRAME);
 		try {
 			driver.switchTo().frame(driver.findElement(dataFrame));
@@ -60,9 +62,9 @@ public class ATANavigator extends PhantomDriver
 		}
 	}
 	
-	public List<WebElement> getAllNavigationLinks()
+	public List<WebElement> getAllNavigationLinkElements()
 	{
-		switchToDefaultFrame();
+		_switchToDefaultFrame();
 		switchToNavigationFrame();
 		List<WebElement> navigationLinks = driver.findElements(By.tagName("a"));
 		
