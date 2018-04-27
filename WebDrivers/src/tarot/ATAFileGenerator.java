@@ -65,7 +65,6 @@ public class ATAFileGenerator implements FileGenerator
 	    return output.toString();
 	}	
 	
-	// TODO: ADD TO INTERFACE
 	public void writeToFile(String linkText, String[] paragraphs)
 	throws Exception
 	{
