@@ -3,7 +3,7 @@ cannot be used (and tested) independently from this class and this is called a
 hard dependency. The following example shows a class which has no hard
 dependencies.
 
-1. Service components should be designed with base class or interface. It’s
+1. Service components should be designed with base class or interface. It's
    better to prefer interfaces or abstract classes that would define contract
    for the services.
 2. Consumer classes should be written in terms of service interface.
@@ -36,4 +36,15 @@ EmailServiceInjector
 SMSServiceInjector
 
 
-
+PROS:
+	- Separation of concerns
+	- Boilerplate code reduction in app. classes because all work to initialize
+	  dependencies is handled by the injector component
+	- Configurable components makes apps. easily extendable
+	- Unit testing is easy w/ mock objs.
+	
+CONS:
+	- If overused it can lead to maintenance issues because effect of changes
+	  are known at runtime
+	- DI in Java hides the service class dependencies that can lead to runtime
+	  errors that would have been caught at compile time
