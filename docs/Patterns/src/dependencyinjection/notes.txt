@@ -1,3 +1,7 @@
+NOTE: The pattern being shown here is using "Interface Injection"
+      Other examples: Constructor Injection (w/ PicoContainer)
+                      Setter Injection (w/ Spring Framework)
+
 If the Java class creates an instance of another class via the new operator, it
 cannot be used (and tested) independently from this class and this is called a
 hard dependency. The following example shows a class which has no hard
