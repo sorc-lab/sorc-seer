@@ -1,14 +1,16 @@
-package tarot;
+package seer.ata;
 
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchFrameException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class ATANavigator extends PhantomDriver
-{
-	public static final String HOME = "http://www.ata-tarot.com/resource/cards/";
+import seer.Helper;
+
+public class ATANavigator {
+	public static final String HOME="http://www.ata-tarot.com/resource/cards/";
 	public static final String NAVIGATION_FRAME = "FRA";
 	public static final String DATA_FRAME = "FRB";
 	
@@ -37,36 +39,37 @@ public class ATANavigator extends PhantomDriver
 		"King of Wands"
 	};
 	
-	public void navigateHomepage() { driver.get(HOME); }
-	private void _switchToDefaultFrame() { driver.switchTo().defaultContent(); }
+	private WebDriver _driver;
 	
-	public void switchToNavigationFrame()
-	{
+	public ATANavigator(WebDriver driver) { this._driver = driver; }
+	
+	public void navigateHomepage() { _driver.get(HOME); }
+	private void _switchToDefaultFrame() {_driver.switchTo().defaultContent();}
+	
+	public void switchToNavigationFrame() {
 		_switchToDefaultFrame();
 		By navigationFrame = By.name(NAVIGATION_FRAME);
 		try {
-			driver.switchTo().frame(driver.findElement(navigationFrame));
+			_driver.switchTo().frame(_driver.findElement(navigationFrame));
 		} catch (NoSuchFrameException e) {
 			System.out.println(e.getMessage());
 		}
 	}
 	
-	public void switchToDataFrame()
-	{
+	public void switchToDataFrame() {
 		_switchToDefaultFrame();
 		By dataFrame = By.name(DATA_FRAME);
 		try {
-			driver.switchTo().frame(driver.findElement(dataFrame));
+			_driver.switchTo().frame(_driver.findElement(dataFrame));
 		} catch (NoSuchFrameException e) {
 			System.out.println(e.getMessage());
 		}
 	}
 	
-	public List<WebElement> getAllNavigationLinkElements()
-	{
+	public List<WebElement> getAllNavigationLinkElements() {
 		_switchToDefaultFrame();
 		switchToNavigationFrame();
-		List<WebElement> navigationLinks = driver.findElements(By.tagName("a"));
+		List<WebElement> navigationLinks = _driver.findElements(By.tagName("a"));
 		
 		// remove 'Introduction' and 'Back to Resources' links 
 		navigationLinks.remove(0);
@@ -80,7 +83,7 @@ public class ATANavigator extends PhantomDriver
 			System.err.println(
 				"Making second attempt at acquiring navigation links..."
 			);
-			Helper helper = new Helper();
+			Helper helper = new Helper(_driver);
 			
 			// clear out first attempt at acquiring navigation links
 			navigationLinks.clear();
@@ -91,7 +94,6 @@ public class ATANavigator extends PhantomDriver
 				navigationLinks.add(navLink);
 			}
 		}
-		
 		return navigationLinks; 
 	}
 	
@@ -119,13 +121,10 @@ public class ATANavigator extends PhantomDriver
 	
 	public void navigateToLink(final WebElement link) { link.click(); }
 	
-	public void navigateToNextLink(By linkLocator)
-	{
-		Helper helper = new Helper();
+	public void navigateToNextLink(By linkLocator) {
+		Helper helper = new Helper(_driver);
 		WebElement link = helper.getPresentWebElement(linkLocator);
 		navigateToLink(link);
-		
-		ATANavigator nav = new ATANavigator();
-		nav.switchToDataFrame();
+		this.switchToDataFrame();
 	}
 }

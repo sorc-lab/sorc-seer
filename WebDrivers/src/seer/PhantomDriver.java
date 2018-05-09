@@ -1,16 +1,15 @@
-package tarot;
+package seer;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-public class PhantomDriver
-{
-	public static WebDriver driver;
+/** Add SorcDriver interface if more drivers are added */
+public class PhantomDriver {
+	private WebDriver _driver;
 	
-	public void initializePhantomDriver()
-	{
+	public PhantomDriver() {
 		String baseDir = System.getProperty("user.dir");
 		String phantomjs = baseDir + "/WebDriverDependencies/phantomjs.exe";
 		
@@ -20,6 +19,8 @@ public class PhantomDriver
 			PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
 			phantomjs
 		);	
-		driver = new PhantomJSDriver(capability);
+		this._driver = new PhantomJSDriver(capability);
 	}
+	
+	public WebDriver getPhantomDriver() { return this._driver; }
 }

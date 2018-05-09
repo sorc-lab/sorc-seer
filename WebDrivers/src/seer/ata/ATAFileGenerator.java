@@ -1,8 +1,10 @@
-package tarot;
+package seer.ata;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.util.StringTokenizer;
+
+import seer.FileGenerator;
 
 public class ATAFileGenerator implements FileGenerator
 {

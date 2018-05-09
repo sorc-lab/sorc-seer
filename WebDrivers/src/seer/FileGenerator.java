@@ -1,4 +1,4 @@
-package tarot;
+package seer;
 
 public interface FileGenerator
 {

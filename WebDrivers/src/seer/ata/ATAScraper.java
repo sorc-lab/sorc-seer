@@ -1,17 +1,20 @@
-package tarot;
+package seer.ata;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class ATADataHarvester extends PhantomDriver
-{
-	public void harvest() throws Exception
-	{
-		ATANavigator nav = new ATANavigator(); 
+public class ATAScraper {
+	private WebDriver _driver;
+	
+	public ATAScraper(WebDriver driver) { this._driver = driver; }
+	
+	public void scrape() throws Exception {
+		ATANavigator nav = new ATANavigator(_driver);
 		nav.navigateHomepage();
 		nav.switchToNavigationFrame();
 		
@@ -44,8 +47,7 @@ public class ATADataHarvester extends PhantomDriver
 		}	
 	}
 	
-	public String[] getTextValuesFromLinkElements(List<WebElement> links)
-	{
+	public String[] getTextValuesFromLinkElements(List<WebElement> links) {
 		int linksCount = links.size();
 		String[] textValues = new String[linksCount];
 		
@@ -54,14 +56,12 @@ public class ATADataHarvester extends PhantomDriver
 			textValues[i] = link.getText();
 			i++;
 		}
-		
 		return textValues;
 	}
 	
 	// TODO: Add some error handling
-	public String[] getParagraphs()
-	{
-		List<WebElement> elements = driver.findElements(By.tagName("p")); 
+	public String[] getParagraphs() {
+		List<WebElement> elements = _driver.findElements(By.tagName("p")); 
 		int numberOfParagraphs = elements.size();
 		String[] paragraphs = new String[numberOfParagraphs];
 		
@@ -70,7 +70,6 @@ public class ATADataHarvester extends PhantomDriver
 			paragraphs[i] = element.getText();
 			i++;
 		}
-		
 		return paragraphs;
 	}
 }
