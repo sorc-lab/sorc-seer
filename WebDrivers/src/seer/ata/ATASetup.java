@@ -2,6 +2,7 @@ package seer.ata;
 
 import org.openqa.selenium.WebDriver;
 
+import seer.ScraperIO;
 import seer.Setup;
 
 public class ATASetup implements Setup {
@@ -12,13 +13,13 @@ public class ATASetup implements Setup {
 	private WebDriver _driver;
 	private ATANavigator _nav;
 	private FrameSwitch _frameSwitch;
-	private ATAIO _io;
+	private ScraperIO _io;
 	
 	public ATASetup(WebDriver driver) {
 		this._driver = driver;
 		_nav = new ATANavigator(_driver);
 		_frameSwitch = new FrameSwitch(_driver);
-		_io = new ATAIO();
+		_io = new ScraperIO("ATATarot", "_ata.txt");
 	}
 	
 	@Override

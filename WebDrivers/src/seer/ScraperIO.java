@@ -1,30 +1,35 @@
-package seer.ata;
+package seer;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.StringTokenizer;
 
-public class ATAIO {
+public class ScraperIO {
 	private static final int LINE_LENGTH = 80;
 	private static final String SPACE = " ";
 	private static final String EMPTY_STRING = "";
-	private static final String NEW_LINE=System.getProperty("line.separator");
-	private static final String ROOT_DIR = "ATATarot";
-	private static final String FILE_EXT = "_ata.txt";
+	private static final String NEW_LINE = System.getProperty("line.separator");
 	
+	private String _rootDir;
+	private String _fileExt;
 	private String _fileName;
 	private String _dir;
+	
+	public ScraperIO(String rootDir, String fileExt) {
+		this._rootDir = rootDir;
+		this._fileExt = fileExt;
+	}
 	
 	public void createDirectory(String directory) {
 		this._dir = directory;
 		File dir = new File(_dir);
 		dir.mkdir();
 	}
-		
+	
 	public void createTextFileFromLinkText(String linkText) throws Exception {
 		String fileName = _dir + "/" + linkText.replaceAll(" ", "_")
-			.toLowerCase() + FILE_EXT;
+			.toLowerCase() + _fileExt;
 		this._fileName = fileName;
 		File file = new File(_fileName);
 		file.createNewFile();
@@ -32,7 +37,7 @@ public class ATAIO {
 	
 	public void createDirectoryFromLinkText(String linkText) {
 		String formatLinkText = linkText.replaceAll(" ", "_");
-		String path = ROOT_DIR + "/" + formatLinkText;
+		String path = _rootDir + "/" + formatLinkText;
 		File dir = new File(path);
 		_dir = path;
 		dir.mkdir();

@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import seer.ScraperIO;
 import seer.ata.ATAGetData;
 
 // TODO: Implement via Scraper interface
@@ -14,14 +15,14 @@ public class ATAScraper {
 	private WebDriver _driver;
 	private ATANavigator _nav;
 	private FrameSwitch _frameSwitch;
-	private ATAIO _io;
+	private ScraperIO _io;
 	private ATAGetData _getData;
 	
 	public ATAScraper(WebDriver driver) {
 		this._driver = driver;
 		_nav = new ATANavigator(_driver);
 		_frameSwitch = new FrameSwitch(_driver);
-		_io = new ATAIO();
+		_io = new ScraperIO("ATATarot", "_ata.txt");
 		_getData = new ATAGetData(_driver);
 	}
 	
