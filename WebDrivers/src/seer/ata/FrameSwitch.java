@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchFrameException;
 import org.openqa.selenium.WebDriver;
 
+// TODO: Try to refactor similar functionality and move try/catch(s) out
 public class FrameSwitch {
 	public static  String NAVIGATION_FRAME = "FRA";
 	public static  String DATA_FRAME = "FRB";

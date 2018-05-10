@@ -56,6 +56,7 @@ public class ATANavigator implements Navigator {
 		navigationLinks.remove(0);
 		navigationLinks.remove(0);
 		
+		// TODO: Move error checking into its own function
 		try {
 			if (checkNavigationLinks(navigationLinks))
 				return navigationLinks;

@@ -13,10 +13,10 @@ public class Main {
 		Setup setup = new ATASetup(driver);
 		setup.setupScraper();
 		
-		
 		// TODO: Fix to be interface w/ type Scraper
 		ATAScraper ATAScraper = new ATAScraper(driver);
 		
+		// TODO: Move into separate function
 		try {
 			ATAScraper.scrape();
 		} catch (IOException e) {

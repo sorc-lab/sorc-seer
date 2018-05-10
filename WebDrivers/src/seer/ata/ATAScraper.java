@@ -12,6 +12,7 @@ import org.openqa.selenium.WebElement;
 import seer.FileGenerator;
 import seer.Navigator;
 
+// TODO: Implement via Scraper interface
 public class ATAScraper {
 	private WebDriver _driver;
 	private Navigator _nav;
@@ -48,6 +49,7 @@ public class ATAScraper {
 		}	
 	}
 	
+	// TODO: Fix and move to FileGenerator
 	public void insert(String linkText, String[] paragraphs) throws Exception {
 		try {
 			_fileGen.writeToFile(linkText, paragraphs);

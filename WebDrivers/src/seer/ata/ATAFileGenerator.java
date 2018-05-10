@@ -22,27 +22,24 @@ public class ATAFileGenerator implements FileGenerator
 	}
 	
 	@Override
-	public void generateTextFile(final String text)
-	{
+	public void generateTextFile(final String text) {
 		String fileName = _generateFileName(text);
 		this._fileName = fileName;
 	}
 	
 	@Override
-	public String getFileName()
-	{
+	public String getFileName() {
 		if (_fileName == null) { return ""; }
 		return _fileName;
 	}
 	
-	private String _generateFileName(final String text)
-	{
+	private String _generateFileName(final String text) {
 		return text.replaceAll(" ", "_").toLowerCase() + "_ata.txt";
 	}
 	
+	// TODO: Clarify this function
 	@Override
-	public String getPreviewLines(final String input) 
-	{
+	public String getPreviewLines(final String input) {
 	    final StringTokenizer token = new StringTokenizer(input, SPACE);
 	    final StringBuilder output = new StringBuilder(input.length());
 
@@ -67,6 +64,7 @@ public class ATAFileGenerator implements FileGenerator
 	    return output.toString();
 	}	
 	
+	// TODO: Fix this so that you do not need both an insert() AND writeToFile()
 	@Override
 	public void writeToFile(String linkText, String[] paragraphs)
 	throws Exception
@@ -89,7 +87,6 @@ public class ATAFileGenerator implements FileGenerator
 			fileWriter.write(preview + newLine);
 			fileWriter.write(newLine);
 		}
-		
 		fileWriter.close();
 	}
 }
