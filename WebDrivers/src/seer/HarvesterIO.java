@@ -5,7 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.StringTokenizer;
 
-public class ScraperIO {
+public class HarvesterIO {
 	private static final int LINE_LENGTH = 80;
 	private static final String SPACE = " ";
 	private static final String EMPTY_STRING = "";
@@ -16,7 +16,7 @@ public class ScraperIO {
 	private String _fileName;
 	private String _dir;
 	
-	public ScraperIO(String rootDir, String fileExt) {
+	public HarvesterIO(String rootDir, String fileExt) {
 		this._rootDir = rootDir;
 		this._fileExt = fileExt;
 	}

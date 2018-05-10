@@ -1,26 +1,17 @@
 package seer;
 
-import java.io.IOException;
-
 import org.openqa.selenium.WebDriver;
 
-import seer.ata.ATAScraper;
+import seer.ata.ATAHarvester;
 import seer.ata.ATASetup;
 
 public class Main {	
 	public static void main(String[] args) throws Exception {
 		WebDriver driver = new PhantomDriver().getPhantomDriver();
 		Setup setup = new ATASetup(driver);
-		setup.setupScraper();
+		setup.setupHarvester();
 		
-		// TODO: Fix to be interface w/ type Scraper
-		ATAScraper ATAScraper = new ATAScraper(driver);
-		
-		// TODO: Move into separate function
-		try {
-			ATAScraper.scrape();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		ATAHarvester ATAHarvester = new ATAHarvester(driver);
+		ATAHarvester.harvest();		
 	}	
 }

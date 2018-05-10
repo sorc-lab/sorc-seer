@@ -1,5 +1,5 @@
 package seer;
 
 public interface Setup {
-	void setupScraper();
+	void setupHarvester();
 }
