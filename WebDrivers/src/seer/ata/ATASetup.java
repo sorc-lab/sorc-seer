@@ -6,7 +6,7 @@ import seer.HarvesterIO;
 import seer.Setup;
 
 public class ATASetup implements Setup {
-	private static final String ROOT_DIR = "ATATarot";
+	public static final String ROOT_DIR = "ATATarot";
 	public static final String HOMEPAGE_URL = 
 		"http://www.ata-tarot.com/resource/cards/index.html";
 	
