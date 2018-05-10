@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 
 import seer.FileGenerator;
 import seer.Navigator;
+import seer.ata.ATAGetData;
 
 // TODO: Implement via Scraper interface
 public class ATAScraper {
@@ -18,19 +19,21 @@ public class ATAScraper {
 	private Navigator _nav;
 	private FrameSwitch _frameSwitch;
 	private FileGenerator _fileGen;
+	private ATAGetData _getData;
 	
 	public ATAScraper(WebDriver driver) {
 		this._driver = driver;
-		_nav = new ATANavigator(this._driver);
+		_nav = new ATANavigator(_driver);
 		_frameSwitch = new FrameSwitch(_driver);
 		_fileGen = new ATAFileGenerator();
+		_getData = new ATAGetData(_driver);
 	}
 	
 	public void scrape() throws Exception {
-		List<WebElement> navLinkElements = _nav.getAllNavigationLinkElements();
-		String[] navLinkTexts = getTextValuesFromLinkElements(navLinkElements);
-		
-		// this is the only part that should be in this function
+		List<WebElement>navLinkElements=_getData.getAllNavigationLinkElements();
+		String[] navLinkTexts = _getData.getTextValuesFromLinkElements(
+			navLinkElements
+		);
 		for (int i = 0; i < navLinkElements.size(); i++) {
 			_frameSwitch.switchToNavigationFrame();
 			
@@ -43,7 +46,7 @@ public class ATAScraper {
 			_nav.navigateToNextLink(linkLocator);
 			
 			Map<String, String[]> data = new HashMap<String, String[]>();
-			String[] paragraphs = getParagraphs();
+			String[] paragraphs = _getData.getParagraphs();
 			data.put(linkText, paragraphs);
 			insert(linkText, paragraphs);
 		}	
@@ -56,31 +59,5 @@ public class ATAScraper {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public String[] getTextValuesFromLinkElements(List<WebElement> links) {
-		int linksCount = links.size();
-		String[] textValues = new String[linksCount];
-		
-		int i = 0;
-		for (WebElement link : links) {
-			textValues[i] = link.getText();
-			i++;
-		}
-		return textValues;
-	}
-	
-	// TODO: Add some error handling
-	public String[] getParagraphs() {
-		List<WebElement> elements = _driver.findElements(By.tagName("p")); 
-		int numberOfParagraphs = elements.size();
-		String[] paragraphs = new String[numberOfParagraphs];
-		
-		int i = 0;
-		for (WebElement element : elements) {
-			paragraphs[i] = element.getText();
-			i++;
-		}
-		return paragraphs;
 	}
 }
