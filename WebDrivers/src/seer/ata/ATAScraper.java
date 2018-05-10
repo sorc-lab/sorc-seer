@@ -10,13 +10,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import seer.FileGenerator;
-import seer.Navigator;
 import seer.ata.ATAGetData;
 
 // TODO: Implement via Scraper interface
 public class ATAScraper {
 	private WebDriver _driver;
-	private Navigator _nav;
+	private ATANavigator _nav;
 	private FrameSwitch _frameSwitch;
 	private FileGenerator _fileGen;
 	private ATAGetData _getData;

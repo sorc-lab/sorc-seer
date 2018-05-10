@@ -5,27 +5,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import seer.ata.ATAGetData;
-import seer.Navigator;
+import seer.AbstractNavigator;
 
-// TODO: Make this extend from an AbstractClass
-public class ATANavigator implements Navigator {
-	public static  String HOME="http://www.ata-tarot.com/resource/cards/index.html";
-		
+public class ATANavigator extends AbstractNavigator {
 	private WebDriver _driver;
 	private FrameSwitch _frameSwitch;
 	private ATAGetData _getData;
 	
 	public ATANavigator(WebDriver driver) {
+		super(driver);
 		this._driver = driver;
 		_frameSwitch = new FrameSwitch(_driver);
 		_getData = new ATAGetData(_driver);
 	}
-	
-	@Override
-	public void navigateToHomepage() { _driver.get(HOME); }
-	
-	@Override
-	public void navigateToLink(WebElement link) { link.click(); }
 	
 	@Override
 	public void navigateToNextLink(By linkLocator) {
