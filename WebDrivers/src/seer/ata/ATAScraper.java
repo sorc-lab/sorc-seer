@@ -3,29 +3,35 @@ package seer.ata;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import seer.FileGenerator;
+import seer.Navigator;
+
 public class ATAScraper {
 	private WebDriver _driver;
+	private Navigator _nav;
+	private FrameSwitch _frameSwitch;
+	private FileGenerator _fileGen;
 	
-	public ATAScraper(WebDriver driver) { this._driver = driver; }
+	public ATAScraper(WebDriver driver) {
+		this._driver = driver;
+		_nav = new ATANavigator(this._driver);
+		_frameSwitch = new FrameSwitch(_driver);
+		_fileGen = new ATAFileGenerator();
+	}
 	
 	public void scrape() throws Exception {
-		ATANavigator nav = new ATANavigator(_driver);
-		nav.navigateHomepage();
-		nav.switchToNavigationFrame();
-		
-		List<WebElement> navLinkElements = nav.getAllNavigationLinkElements();
+		List<WebElement> navLinkElements = _nav.getAllNavigationLinkElements();
 		String[] navLinkTexts = getTextValuesFromLinkElements(navLinkElements);
 		
-		ATAFileGenerator fileGenerator = new ATAFileGenerator();
-		fileGenerator.generateDirectory();
-		
+		// this is the only part that should be in this function
 		for (int i = 0; i < navLinkElements.size(); i++) {
-			nav.switchToNavigationFrame();
+			_frameSwitch.switchToNavigationFrame();
 			
 			String linkText = navLinkTexts[i];
 			System.out.println(
@@ -33,18 +39,21 @@ public class ATAScraper {
 			);
 			
 			By linkLocator = By.partialLinkText(linkText);
-			nav.navigateToNextLink(linkLocator);
+			_nav.navigateToNextLink(linkLocator);
 			
-			HashMap<String, String[]> data = new HashMap<String, String[]>();
+			Map<String, String[]> data = new HashMap<String, String[]>();
 			String[] paragraphs = getParagraphs();
 			data.put(linkText, paragraphs);
-			
-			try {
-				fileGenerator.writeToFile(linkText, paragraphs);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			insert(linkText, paragraphs);
 		}	
+	}
+	
+	public void insert(String linkText, String[] paragraphs) throws Exception {
+		try {
+			_fileGen.writeToFile(linkText, paragraphs);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public String[] getTextValuesFromLinkElements(List<WebElement> links) {

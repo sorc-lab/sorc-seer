@@ -19,8 +19,8 @@ public class PhantomDriver {
 			PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
 			phantomjs
 		);	
-		this._driver = new PhantomJSDriver(capability);
+		_driver = new PhantomJSDriver(capability);
 	}
 	
-	public WebDriver getPhantomDriver() { return this._driver; }
+	public WebDriver getPhantomDriver() { return _driver; }
 }

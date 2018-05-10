@@ -3,18 +3,15 @@ package seer.ata;
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchFrameException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import seer.Helper;
+import seer.Navigator;
 
-public class ATANavigator {
-	public static final String HOME="http://www.ata-tarot.com/resource/cards/";
-	public static final String NAVIGATION_FRAME = "FRA";
-	public static final String DATA_FRAME = "FRB";
-	
-	public static final String[] CARDS = { "The Fool", "The Magician",
+public class ATANavigator implements Navigator {
+	public static  String HOME="http://www.ata-tarot.com/resource/cards/index.html";
+	public static  String[] LINKS = { "The Fool", "The Magician",
 		"The High Priestess", "The Empress", "The Emperor",
 		"The Hierophant", "The Lovers", "The Chariot", "Strength",
 		"The Hermit", "Wheel of Fortune", "Justice", "The Hanged Man",
@@ -40,43 +37,27 @@ public class ATANavigator {
 	};
 	
 	private WebDriver _driver;
+	private FrameSwitch _frameSwitch;
 	
-	public ATANavigator(WebDriver driver) { this._driver = driver; }
-	
-	public void navigateHomepage() { _driver.get(HOME); }
-	private void _switchToDefaultFrame() {_driver.switchTo().defaultContent();}
-	
-	public void switchToNavigationFrame() {
-		_switchToDefaultFrame();
-		By navigationFrame = By.name(NAVIGATION_FRAME);
-		try {
-			_driver.switchTo().frame(_driver.findElement(navigationFrame));
-		} catch (NoSuchFrameException e) {
-			System.out.println(e.getMessage());
-		}
+	public ATANavigator(WebDriver driver) {
+		this._driver = driver;
+		this._frameSwitch = new FrameSwitch(_driver);
 	}
 	
-	public void switchToDataFrame() {
-		_switchToDefaultFrame();
-		By dataFrame = By.name(DATA_FRAME);
-		try {
-			_driver.switchTo().frame(_driver.findElement(dataFrame));
-		} catch (NoSuchFrameException e) {
-			System.out.println(e.getMessage());
-		}
-	}
+	@Override
+	public void navigateToHomepage() { _driver.get(HOME); }
 	
+	@Override
 	public List<WebElement> getAllNavigationLinkElements() {
-		_switchToDefaultFrame();
-		switchToNavigationFrame();
-		List<WebElement> navigationLinks = _driver.findElements(By.tagName("a"));
+		_frameSwitch.switchToNavigationFrame();
+		List<WebElement> navigationLinks=_driver.findElements(By.tagName("a"));
 		
 		// remove 'Introduction' and 'Back to Resources' links 
 		navigationLinks.remove(0);
 		navigationLinks.remove(0);
 		
 		try {
-			if (_checkNavigationLinks(navigationLinks))
+			if (checkNavigationLinks(navigationLinks))
 				return navigationLinks;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -88,8 +69,8 @@ public class ATANavigator {
 			// clear out first attempt at acquiring navigation links
 			navigationLinks.clear();
 			
-			for (int i = 0; i < CARDS.length; i++) {
-				By locator = By.partialLinkText(CARDS[i]);
+			for (int i = 0; i < LINKS.length; i++) {
+				By locator = By.partialLinkText(LINKS[i]);
 				WebElement navLink = helper.getPresentWebElement(locator);
 				navigationLinks.add(navLink);
 			}
@@ -97,15 +78,16 @@ public class ATANavigator {
 		return navigationLinks; 
 	}
 	
-	private boolean _checkNavigationLinks(List<WebElement> links)
+	@Override
+	public boolean checkNavigationLinks(List<WebElement> links)
 	throws Exception
 	{
 		boolean isValid = true;
 		
-		if (links.size() == CARDS.length) {
-			for (int i = 0; i < CARDS.length; i++) {
+		if (links.size() == LINKS.length) {
+			for (int i = 0; i < LINKS.length; i++) {
 				String linkTxt = links.get(i).getText();
-				if (!linkTxt.equals(CARDS[i])) {
+				if (!linkTxt.equals(LINKS[i])) {
 					isValid = false;
 					throw new Exception(
 						"Acquired links did not match expected."
@@ -119,12 +101,14 @@ public class ATANavigator {
 		return isValid;
 	}
 	
-	public void navigateToLink(final WebElement link) { link.click(); }
+	@Override
+	public void navigateToLink(WebElement link) { link.click(); }
 	
+	@Override
 	public void navigateToNextLink(By linkLocator) {
 		Helper helper = new Helper(_driver);
 		WebElement link = helper.getPresentWebElement(linkLocator);
 		navigateToLink(link);
-		this.switchToDataFrame();
+		_frameSwitch.switchToDataFrame();
 	}
 }

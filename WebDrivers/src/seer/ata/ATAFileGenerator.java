@@ -11,13 +11,13 @@ public class ATAFileGenerator implements FileGenerator
 	private static final int LINE_LENGTH = 80;
 	private static final String SPACE = " ";
 	private static final String EMPTY_STRING = "";
+	private static final String DIR = "ATATarot";
 	
 	private String _fileName;
 	
 	@Override
-	public void generateDirectory()
-	{
-		File dir = new File("Tarot");
+	public void generateDirectory() {
+		File dir = new File(DIR);
 		dir.mkdir();
 	}
 	
@@ -75,11 +75,11 @@ public class ATAFileGenerator implements FileGenerator
 		String fileName = getFileName();
 		
 		linkText = linkText.replaceAll(" ", "_");
-		File dir = new File("Tarot/" + linkText);
+		File dir = new File(DIR + "/" + linkText);
 		dir.mkdir();
 		
 		FileWriter fileWriter = new FileWriter(
-			"Tarot/" + linkText + "/" + fileName
+			DIR + "/" + linkText + "/" + fileName
 		);
 		String newLine = System.getProperty("line.separator");
 		fileWriter.write("ATA:" + newLine);
