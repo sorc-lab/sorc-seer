@@ -20,7 +20,6 @@ public class PhantomDriver {
 			phantomjs
 		);	
 		_driver = new PhantomJSDriver(capability);
-	}
-	
+	}	
 	public WebDriver getPhantomDriver() { return _driver; }
 }

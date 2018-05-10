@@ -43,7 +43,6 @@ public class HarvesterIO {
 		dir.mkdir();
 	}
 	
-	// TODO: Clarify this function, rename or refactor if needed
 	public String getPreviewLines(String input) {
 	    StringTokenizer token = new StringTokenizer(input, SPACE);
 	    StringBuilder output = new StringBuilder(input.length());
