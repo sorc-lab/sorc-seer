@@ -2,27 +2,29 @@ package seer.ata;
 
 import org.openqa.selenium.WebDriver;
 
-import seer.FileGenerator;
 import seer.Setup;
 
 public class ATASetup implements Setup {
+	private static final String ROOT_DIR = "ATATarot";
+	public static final String HOMEPAGE_URL = 
+		"http://www.ata-tarot.com/resource/cards/index.html";
+	
 	private WebDriver _driver;
 	private ATANavigator _nav;
 	private FrameSwitch _frameSwitch;
-	private FileGenerator _fileGen;
-	private String _homepage="http://www.ata-tarot.com/resource/cards/index.html";
+	private ATAIO _io;
 	
 	public ATASetup(WebDriver driver) {
 		this._driver = driver;
 		_nav = new ATANavigator(_driver);
 		_frameSwitch = new FrameSwitch(_driver);
-		_fileGen = new ATAFileGenerator();
+		_io = new ATAIO();
 	}
 	
 	@Override
 	public void setupScraper() {
-		_nav.navigateToHomepage(_homepage);
+		_nav.navigateToHomepage(HOMEPAGE_URL);
 		_frameSwitch.switchToNavigationFrame();
-		_fileGen.generateDirectory();
+		_io.createDirectory(ROOT_DIR);
 	}
 }
