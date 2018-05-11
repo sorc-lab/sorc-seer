@@ -1,8 +1,18 @@
 package seer.tt;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+
+import javax.imageio.ImageIO;
+import javax.net.ssl.HttpsURLConnection;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -21,7 +31,6 @@ public class TTHarvester extends AbstractHarvester {
 	private TTGetData _getData;
 	private List<WebElement> _navLinkElements;
 	private String[] _navLinkTexts;
-	private HashMap<String, String[]> _data;
 
 	public TTHarvester(WebDriver driver) {
 		super(ROOT_DIR, FILE_EXT);
@@ -35,7 +44,6 @@ public class TTHarvester extends AbstractHarvester {
 		
 		_navLinkTexts = _getData
 			.getTextValuesFromLinkElements(_navLinkElements);
-		_data = new HashMap<String, String[]>();
 	}
 
 	@Override
@@ -63,6 +71,19 @@ public class TTHarvester extends AbstractHarvester {
 			
 			paragraphs_ = data;
 			performHarvesterIO_();
+			
+			
+			
+			//_downloadImage();
+			String imgsrcTest = _getImageSRC();
+			URL imgURL = _getImageURL(imgsrcTest);
+			
+			// outputs the same values
+			System.out.println(imgsrcTest); // String
+			System.out.println(imgURL); // URL
+			
+			
+			
 			_nav.navigateToHomepage(HOMEPAGE_URL);
 		}
 	}
@@ -82,5 +103,36 @@ public class TTHarvester extends AbstractHarvester {
 			}
 		}
 		return navLinkElements;
+	}
+	
+	// https://stackoverflow.com/questions/35430198/cant-get-input-stream-from-url-java
+	private void _downloadImage() {
+		String imageSRC = _getImageSRC();
+		try {
+			InputStream inputStream = new URL(imageSRC).openStream();
+			
+			BufferedImage saveImage = ImageIO.read(inputStream);
+			ImageIO.write(saveImage, "png", new File(imageSRC));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private String _getImageSRC() {
+		By locator = By.tagName("img");
+		List<WebElement> images = _driver.findElements(locator);
+		WebElement imageElement = images.get(1);
+		String imageSRC = imageElement.getAttribute("src");
+		return imageSRC;
+	}
+	
+	private URL _getImageURL(String imageSRC) {
+		try {
+			URL imageURL = new URL(imageSRC);
+			return imageURL;
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }
