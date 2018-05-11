@@ -1,6 +1,5 @@
 package seer.ata;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -20,7 +19,6 @@ public class ATAHarvester extends AbstractHarvester {
 	private ATAGetData _getData;
 	private List<WebElement> _navLinkElements;
 	private String[] _navLinkTexts;
-	private HashMap<String, String[]> _data;
 	
 	public ATAHarvester(WebDriver driver) {
 		super(ROOT_DIR, FILE_EXT);
@@ -33,7 +31,6 @@ public class ATAHarvester extends AbstractHarvester {
 		_navLinkElements = _getData.getAllNavigationLinkElements();
 		_navLinkTexts    = _getData
 			.getTextValuesFromLinkElements(_navLinkElements);
-		_data = new HashMap<String, String[]>();
 	}
 	
 	@Override
@@ -47,7 +44,6 @@ public class ATAHarvester extends AbstractHarvester {
 			_nav.navigateToNextLink(linkLocator);
 			
 			paragraphs_ = _getData.getParagraphs();
-			_data.put(linkText_, paragraphs_);
 			performHarvesterIO_();
 		}
 	}

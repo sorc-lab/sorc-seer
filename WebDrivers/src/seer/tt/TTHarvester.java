@@ -45,18 +45,23 @@ public class TTHarvester extends AbstractHarvester {
 			System.out.println("Harvesting data: " + linkText_ + " ...");
 			
 			By linkLocator = By.partialLinkText(linkText_);
-			_nav.navigateToNextLink(linkLocator);
+			WebElement link = _getData.getPresentWebElement(linkLocator);
+			_nav.navigateToLink(link);
 			
 			paragraphs_ = _getData.getParagraphs();
+			String[] data = {
+				_getData.getHeader(),
+				_getData.getSummary(),
+				paragraphs_[2],
+				"Past",
+				paragraphs_[3],
+				"Present",
+				paragraphs_[4],
+				"Future",
+				paragraphs_[5]
+			};
 			
-			
-			// START TEST
-			for (int j = 0; j < paragraphs_.length; j++) {
-				System.out.println(paragraphs_[j]);
-			}
-			// END TEST
-			
-			_data.put(linkText_, paragraphs_);
+			paragraphs_ = data;
 			performHarvesterIO_();
 			_nav.navigateToHomepage(HOMEPAGE_URL);
 		}
