@@ -7,6 +7,7 @@ import seer.Setup;
 
 public class ATASetup implements Setup {
 	public static final String ROOT_DIR = "ATATarot";
+	public static final String FILE_EXT = "_ata.txt";
 	public static final String HOMEPAGE_URL = 
 		"http://www.ata-tarot.com/resource/cards/index.html";
 	
@@ -19,7 +20,7 @@ public class ATASetup implements Setup {
 		this._driver = driver;
 		_nav = new ATANavigator(_driver);
 		_frameSwitch = new FrameSwitch(_driver);
-		_io = new HarvesterIO("ATATarot", "_ata.txt");
+		_io = new HarvesterIO(ROOT_DIR, FILE_EXT);
 	}
 	
 	@Override

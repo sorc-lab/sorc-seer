@@ -20,8 +20,7 @@ public class Main {
 		
 		Setup setupTT = new TTSetup(driver);
 		setupTT.setupHarvester();
-		
-		//TTHarvester TTHarvester = new TTHarvester(driver);
-		//TTHarvester.harvest();
+		TTHarvester TTHarvester = new TTHarvester(driver);
+		TTHarvester.harvest();
 	}	
 }

@@ -11,6 +11,9 @@ import seer.AbstractHarvester;
 import seer.ata.ATAGetData;
 
 public class ATAHarvester extends AbstractHarvester {
+	public static final String ROOT_DIR = "ATATarot";
+	public static final String FILE_EXT = "_ata.txt";
+	
 	private WebDriver _driver;
 	private ATANavigator _nav;
 	private FrameSwitch _frameSwitch;
@@ -20,11 +23,13 @@ public class ATAHarvester extends AbstractHarvester {
 	private HashMap<String, String[]> _data;
 	
 	public ATAHarvester(WebDriver driver) {
-		super("ATATarot", "_ata.txt");
+		super(ROOT_DIR, FILE_EXT);
 		this._driver = driver;
+		
 		_nav         = new ATANavigator(_driver);
 		_frameSwitch = new FrameSwitch(_driver);
 		_getData     = new ATAGetData(_driver);
+		
 		_navLinkElements = _getData.getAllNavigationLinkElements();
 		_navLinkTexts    = _getData
 			.getTextValuesFromLinkElements(_navLinkElements);
