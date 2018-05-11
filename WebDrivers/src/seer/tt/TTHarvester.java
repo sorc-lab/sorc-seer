@@ -1,7 +1,13 @@
 package seer.tt;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -15,8 +21,10 @@ import javax.imageio.ImageIO;
 import javax.net.ssl.HttpsURLConnection;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import seer.AbstractHarvester;
 
@@ -74,13 +82,7 @@ public class TTHarvester extends AbstractHarvester {
 			
 			
 			
-			//_downloadImage();
-			String imgsrcTest = _getImageSRC();
-			URL imgURL = _getImageURL(imgsrcTest);
-			
-			// outputs the same values
-			System.out.println(imgsrcTest); // String
-			System.out.println(imgURL); // URL
+			_saveImage();
 			
 			
 			
@@ -105,34 +107,66 @@ public class TTHarvester extends AbstractHarvester {
 		return navLinkElements;
 	}
 	
-	// https://stackoverflow.com/questions/35430198/cant-get-input-stream-from-url-java
-	private void _downloadImage() {
-		String imageSRC = _getImageSRC();
-		try {
-			InputStream inputStream = new URL(imageSRC).openStream();
-			
-			BufferedImage saveImage = ImageIO.read(inputStream);
-			ImageIO.write(saveImage, "png", new File(imageSRC));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	private String _getImageSRC() {
+	// TODO: Refactor for readability via this code:
+	// https://www.avajava.com/tutorials/lessons/how-do-i-save-an-image-from-a-url-to-a-file.html
+	private void _saveImage() throws IOException {
 		By locator = By.tagName("img");
 		List<WebElement> images = _driver.findElements(locator);
 		WebElement imageElement = images.get(1);
-		String imageSRC = imageElement.getAttribute("src");
-		return imageSRC;
+		String imageUrl = imageElement.getAttribute("src");
+		
+		
+		
+		
+		
+		URL url = new URL(imageUrl);
+		
+		// avoid 403 Forbidden response. trick server. we look like a browser
+		HttpURLConnection httpcon = (HttpURLConnection) url.openConnection();
+	    httpcon.addRequestProperty("User-Agent", "Mozilla/4.0");
+		
+		
+		
+		
+		
+		//InputStream in = new BufferedInputStream(url.openStream());
+	    InputStream in = httpcon.getInputStream();
+	    
+	    
+		ByteArrayOutputStream out = new ByteArrayOutputStream();
+		byte[] buf = new byte[1024];
+		int n = 0;
+		while (-1!=(n=in.read(buf))) { // ???
+			out.write(buf, 0, n);
+		}
+		out.close();
+		in.close();
+		byte[] response = out.toByteArray();
+		
+		FileOutputStream fos = new FileOutputStream("M://test.png");
+		fos.write(response);
+		fos.close();
 	}
 	
-	private URL _getImageURL(String imageSRC) {
-		try {
-			URL imageURL = new URL(imageSRC);
-			return imageURL;
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
