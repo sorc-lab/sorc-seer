@@ -73,7 +73,6 @@ public class HarvesterIO {
 	{
 		try {
 			FileWriter fileWriter = new FileWriter(_fileName);
-			fileWriter.write("ATA:" + NEW_LINE);
 			for (int i = 0; i < paragraphs.length; i++) {
 				String preview = getPreviewLines(paragraphs[i]);
 				fileWriter.write(preview + NEW_LINE);

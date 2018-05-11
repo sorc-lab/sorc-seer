@@ -13,6 +13,8 @@ import seer.AbstractHarvester;
 public class TTHarvester extends AbstractHarvester {
 	public static final String ROOT_DIR = "TTTarot";
 	public static final String FILE_EXT = "_tt.txt";
+	public static final String HOMEPAGE_URL =
+			"https://www.trustedtarot.com/card-meanings/";
 	
 	private WebDriver _driver;
 	private TTNavigator _nav;
@@ -46,8 +48,17 @@ public class TTHarvester extends AbstractHarvester {
 			_nav.navigateToNextLink(linkLocator);
 			
 			paragraphs_ = _getData.getParagraphs();
+			
+			
+			// START TEST
+			for (int j = 0; j < paragraphs_.length; j++) {
+				System.out.println(paragraphs_[j]);
+			}
+			// END TEST
+			
 			_data.put(linkText_, paragraphs_);
 			performHarvesterIO_();
+			_nav.navigateToHomepage(HOMEPAGE_URL);
 		}
 	}
 	
