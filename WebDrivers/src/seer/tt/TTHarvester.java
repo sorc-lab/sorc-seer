@@ -1,30 +1,17 @@
 package seer.tt;
 
-import java.awt.AWTException;
-import java.awt.Robot;
-import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.imageio.ImageIO;
-import javax.net.ssl.HttpsURLConnection;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 
 import seer.AbstractHarvester;
 
@@ -78,14 +65,8 @@ public class TTHarvester extends AbstractHarvester {
 			};
 			
 			paragraphs_ = data;
-			performHarvesterIO_();
-			
-			
-			
+			performHarvesterIO_();		
 			_saveImage();
-			
-			
-			
 			_nav.navigateToHomepage(HOMEPAGE_URL);
 		}
 	}
@@ -107,66 +88,30 @@ public class TTHarvester extends AbstractHarvester {
 		return navLinkElements;
 	}
 	
-	// TODO: Refactor for readability via this code:
-	// https://www.avajava.com/tutorials/lessons/how-do-i-save-an-image-from-a-url-to-a-file.html
 	private void _saveImage() throws IOException {
-		By locator = By.tagName("img");
-		List<WebElement> images = _driver.findElements(locator);
+		List<WebElement> images = _driver.findElements(By.tagName("img"));
 		WebElement imageElement = images.get(1);
-		String imageUrl = imageElement.getAttribute("src");
-		
-		
-		
-		
-		
-		URL url = new URL(imageUrl);
+		String imageURL = imageElement.getAttribute("src");
+		URL url = new URL(imageURL);
 		
 		// avoid 403 Forbidden response. trick server. we look like a browser
 		HttpURLConnection httpcon = (HttpURLConnection) url.openConnection();
 	    httpcon.addRequestProperty("User-Agent", "Mozilla/4.0");
+	    
+	    String[] splitUrl = imageURL.split("/");
+	    String getFileName = splitUrl[splitUrl.length - 1];
+	    String fileDestination =
+	    	ROOT_DIR + "/" + linkText_.replaceAll(" ", "_") + "/" + getFileName;
 		
-		
-		
-		
-		
-		//InputStream in = new BufferedInputStream(url.openStream());
 	    InputStream in = httpcon.getInputStream();
+	    OutputStream out = new FileOutputStream(fileDestination);
+	    byte[] buf = new byte[2048];
+	    int length;
 	    
+	    while ((length = in.read(buf)) != -1)
+	    	out.write(buf, 0, length);
 	    
-		ByteArrayOutputStream out = new ByteArrayOutputStream();
-		byte[] buf = new byte[1024];
-		int n = 0;
-		while (-1!=(n=in.read(buf))) { // ???
-			out.write(buf, 0, n);
-		}
-		out.close();
-		in.close();
-		byte[] response = out.toByteArray();
-		
-		FileOutputStream fos = new FileOutputStream("M://test.png");
-		fos.write(response);
-		fos.close();
+	    in.close();
+	    out.close();
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
