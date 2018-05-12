@@ -93,25 +93,25 @@ public class TTHarvester extends AbstractHarvester {
 		WebElement imageElement = images.get(1);
 		String imageURL = imageElement.getAttribute("src");
 		URL url = new URL(imageURL);
-		
+
 		// avoid 403 Forbidden response. trick server. we look like a browser
 		HttpURLConnection httpcon = (HttpURLConnection) url.openConnection();
-	    httpcon.addRequestProperty("User-Agent", "Mozilla/4.0");
-	    
-	    String[] splitUrl = imageURL.split("/");
-	    String getFileName = splitUrl[splitUrl.length - 1];
-	    String fileDestination =
-	    	ROOT_DIR + "/" + linkText_.replaceAll(" ", "_") + "/" + getFileName;
-		
-	    InputStream in = httpcon.getInputStream();
-	    OutputStream out = new FileOutputStream(fileDestination);
-	    byte[] buf = new byte[2048];
-	    int length;
-	    
-	    while ((length = in.read(buf)) != -1)
-	    	out.write(buf, 0, length);
-	    
-	    in.close();
-	    out.close();
+		httpcon.addRequestProperty("User-Agent", "Mozilla/4.0");
+
+		String[] splitUrl = imageURL.split("/");
+		String getFileName = splitUrl[splitUrl.length - 1];
+		String fileDestination = ROOT_DIR + "/" + linkText_.replaceAll(" ", "_")
+			+ "/" + getFileName;
+
+		InputStream in = httpcon.getInputStream();
+		OutputStream out = new FileOutputStream(fileDestination);
+		byte[] buf = new byte[2048];
+		int length;
+
+		while ((length = in.read(buf)) != -1)
+			out.write(buf, 0, length);
+
+		in.close();
+		out.close();
 	}
 }
