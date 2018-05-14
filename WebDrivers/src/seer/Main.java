@@ -20,7 +20,7 @@ public class Main {
 	public static final String ATA_DIR = "ATATarot";
 	public static final String ATA_FILE_EXT = "_ata.txt";
 	public static final String TT_DIR = "TTTarot";
-	public static final String TT_FILE_EXT = "_tt.txt";
+	public static final String TT_FILE_EXT = "_meaning_tt.txt";
 
 	public static void main(String[] args) throws Exception {
 		WebDriver driver = new PhantomDriver().getPhantomDriver();
@@ -42,23 +42,18 @@ public class Main {
 	private static void _tearDown() {
 		List<String> folders = _findFoldersInDirectory(ATA_DIR);
 		for (String folderName : folders) {
-			// folder contains data needed for _readAllBytes
-			// folder contains the same file name as TT dir filenames
-			// make new file /w same file name, minus the "_ata"
-			// write TT data to it, then append the ATA data to it
-			// copy over the .png
-
 			String ATAFilePath = ATA_DIR + "/" + folderName;
 			File ATAFolder = new File(ATAFilePath);
 			File[] ATAFiles = ATAFolder.listFiles();
+			String expectedATAFileName = folderName
+					.toLowerCase() + ATA_FILE_EXT;
+			
+			String ATAData;
 
-			// store ATAData
+			// find data file and store it
 			for (File ATAFile : ATAFiles) {
 				String ATAFileName = ATAFile.getName();
-				String expectedATAFileName = folderName
-						.toLowerCase() + ATA_FILE_EXT;
-
-				String ATAData;
+				
 
 				if (ATAFileName.equals(expectedATAFileName))
 					ATAData = _readAllBytes(ATAFilePath + "/" + ATAFileName);
@@ -67,9 +62,25 @@ public class Main {
 			String TTFilePath = TT_DIR + "/" + folderName + "_Meaning";
 			File TTFolder = new File(TTFilePath);
 			File[] TTFiles = TTFolder.listFiles();
+			String expectedTTFileName = folderName
+					.toLowerCase() + TT_FILE_EXT;
+			
+			String expectedTTImageName = folderName
+					.replace("_", "-")
+					.toLowerCase() + ".png";
+			
+			String TTData;
+			File TTImage;
 
+			// find data and image files and store them separately
 			for (File TTFile : TTFiles) {
-				System.out.println(TTFile.getName());
+				String TTFileName = TTFile.getName();
+				
+				if (TTFileName.equals(expectedTTFileName)) {
+					TTData = _readAllBytes(TTFilePath + "/" + TTFileName);
+				} else if (TTFileName.equals(expectedTTImageName)) {
+					TTImage = new File(TTFilePath + TTFile);
+				}
 			}
 		}
 	}
