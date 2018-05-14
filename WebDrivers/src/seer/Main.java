@@ -14,6 +14,7 @@ import java.nio.file.attribute.UserPrincipal;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.WebDriver;
 
 import seer.ata.ATAGetData;
@@ -45,6 +46,7 @@ public class Main {
 		 */
 	}
 
+	// TODO: Refactor
 	private static void _tearDown() throws IOException {
 		List<String> folders = _findFoldersInDirectory(ATA_DIR);
 		File ATAFolder = null;
@@ -96,7 +98,7 @@ public class Main {
 				}
 			}
 			
-			// 1. Create new file w/ TTData and ATAData
+			// Create new file w/ TTData and ATAData
 			String newFilePath = ATA_DIR + "/" + folderName;
 			File newFile = new File(
 					newFilePath + "/" + folderName.toLowerCase() + ".txt");
@@ -109,28 +111,20 @@ public class Main {
 			writer.write(ATAData);
 			writer.close();
 			
-			// 2. Copy .png file into dir.
+			// Copy .png file into dir.
 			File destDir = new File(newFilePath + "/" + TTImageName);
 			
 			Path src = TTImage.toPath();
 			Path dest = destDir.toPath();
 			Files.copy(src, dest, StandardCopyOption.REPLACE_EXISTING);
-			
-			// 3. Delete old ATA file w/ _ata.txt ext.
-			// SEE ATADataFile.delete() above
-			
-			// 4. Then, outside of this loop, delete TTTarot dir. and rename
-			//    ATATarot to be "TarotData"
 		}
 		
-		// java.nio.file.Files.getOwner(file.toPath())
-		UserPrincipal owner = Files.getOwner(TTFolder.toPath());
-		System.out.println(owner.toString()); // SORC-WORK01\Mac (User)
+		File TTDir = new File(TT_DIR);
+		FileUtils.forceDelete(TTDir);
 		
-		/*File newDirName = new File(ATA_DIR + "/" + "TarotData");
-		TTFolder.delete();
-		boolean testRenameDir = ATAFolder.renameTo(newDirName);
-		System.out.println(testRenameDir);*/
+		File ATADir = new File(ATA_DIR);
+		File newDirName = new File("TarotData");
+		ATADir.renameTo(newDirName);
 	}
 
 	private static String _readAllBytes(String filePath) {
