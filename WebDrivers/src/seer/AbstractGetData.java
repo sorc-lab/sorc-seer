@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public abstract class AbstractGetData {
 	private WebDriver _driver;
 	
-	protected  String[] links_ = { "The Fool", "The Magician",
+	protected String[] links_ = { "The Fool", "The Magician",
 		"The High Priestess", "The Empress", "The Emperor",
 		"The Hierophant", "The Lovers", "The Chariot", "Strength",
 		"The Hermit", "Wheel of Fortune", "Justice", "The Hanged Man",
