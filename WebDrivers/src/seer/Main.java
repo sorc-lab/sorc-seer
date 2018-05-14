@@ -2,9 +2,15 @@ package seer;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URI;
+import java.nio.file.CopyOption;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.nio.file.attribute.UserPrincipal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,38 +45,44 @@ public class Main {
 		 */
 	}
 
-	private static void _tearDown() {
+	private static void _tearDown() throws IOException {
 		List<String> folders = _findFoldersInDirectory(ATA_DIR);
+		File ATAFolder = null;
+		File TTFolder = null;
+		
 		for (String folderName : folders) {
 			String ATAFilePath = ATA_DIR + "/" + folderName;
-			File ATAFolder = new File(ATAFilePath);
+			ATAFolder = new File(ATAFilePath);
 			File[] ATAFiles = ATAFolder.listFiles();
 			String expectedATAFileName = folderName
 					.toLowerCase() + ATA_FILE_EXT;
 			
-			String ATAData;
+			String ATAData = "";
 
 			// find data file and store it
 			for (File ATAFile : ATAFiles) {
 				String ATAFileName = ATAFile.getName();
 				
-
-				if (ATAFileName.equals(expectedATAFileName))
+				// read file into memory and delete from disc
+				if (ATAFileName.equals(expectedATAFileName)) {
 					ATAData = _readAllBytes(ATAFilePath + "/" + ATAFileName);
+					File ATADataFile = new File(
+							ATAFilePath + "/" + ATAFileName);
+					
+					ATADataFile.delete();
+				}
 			}
 
 			String TTFilePath = TT_DIR + "/" + folderName + "_Meaning";
-			File TTFolder = new File(TTFilePath);
+			TTFolder = new File(TTFilePath);
+			
 			File[] TTFiles = TTFolder.listFiles();
 			String expectedTTFileName = folderName
 					.toLowerCase() + TT_FILE_EXT;
 			
-			String expectedTTImageName = folderName
-					.replace("_", "-")
-					.toLowerCase() + ".png";
-			
-			String TTData;
-			File TTImage;
+			String TTData = "";
+			String TTImageName = "";
+			File TTImage = null;
 
 			// find data and image files and store them separately
 			for (File TTFile : TTFiles) {
@@ -78,11 +90,47 @@ public class Main {
 				
 				if (TTFileName.equals(expectedTTFileName)) {
 					TTData = _readAllBytes(TTFilePath + "/" + TTFileName);
-				} else if (TTFileName.equals(expectedTTImageName)) {
-					TTImage = new File(TTFilePath + TTFile);
+				} else if (TTFileName.contains(".png")) {
+					TTImageName = TTFile.getName();
+					TTImage = new File(TTFilePath + "/" + TTImageName);
 				}
 			}
+			
+			// 1. Create new file w/ TTData and ATAData
+			String newFilePath = ATA_DIR + "/" + folderName;
+			File newFile = new File(
+					newFilePath + "/" + folderName.toLowerCase() + ".txt");
+			
+			newFile.createNewFile();
+			
+			FileWriter writer = new FileWriter(newFile);
+			writer.write(TTData);
+			writer.write("\n---\n\n");
+			writer.write(ATAData);
+			writer.close();
+			
+			// 2. Copy .png file into dir.
+			File destDir = new File(newFilePath + "/" + TTImageName);
+			
+			Path src = TTImage.toPath();
+			Path dest = destDir.toPath();
+			Files.copy(src, dest, StandardCopyOption.REPLACE_EXISTING);
+			
+			// 3. Delete old ATA file w/ _ata.txt ext.
+			// SEE ATADataFile.delete() above
+			
+			// 4. Then, outside of this loop, delete TTTarot dir. and rename
+			//    ATATarot to be "TarotData"
 		}
+		
+		// java.nio.file.Files.getOwner(file.toPath())
+		UserPrincipal owner = Files.getOwner(TTFolder.toPath());
+		System.out.println(owner.toString()); // SORC-WORK01\Mac (User)
+		
+		/*File newDirName = new File(ATA_DIR + "/" + "TarotData");
+		TTFolder.delete();
+		boolean testRenameDir = ATAFolder.renameTo(newDirName);
+		System.out.println(testRenameDir);*/
 	}
 
 	private static String _readAllBytes(String filePath) {
