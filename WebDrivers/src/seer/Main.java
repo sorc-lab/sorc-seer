@@ -29,8 +29,10 @@ public class Main {
 	public static final String TT_DIR = "TTTarot";
 	public static final String TT_FILE_EXT = "_meaning_tt.txt";
 	
+	private static String _ATAFolderName;
 	private static String _ATAData;
 	private static String _TTData;
+	private static File _TTImage;
 
 	public static void main(String[] args) throws Exception {
 		WebDriver driver = new PhantomDriver().getPhantomDriver();
@@ -55,11 +57,12 @@ public class Main {
 		File ATAFolder = null;
 		File TTFolder = null;
 		
-		for (String folderName : folders) {
-			String ATAFilePath = ATA_DIR + "/" + folderName;
+		for (String ATAFolderName : folders) {
+			_ATAFolderName = ATAFolderName;
+			String ATAFilePath = ATA_DIR + "/" + _ATAFolderName;
 			ATAFolder = new File(ATAFilePath);
 			File[] ATAFiles = ATAFolder.listFiles();
-			String expectedATAFileName = folderName
+			String expectedATAFileName = _ATAFolderName
 					.toLowerCase() + ATA_FILE_EXT;
 
 			// find data file and store it
@@ -76,16 +79,13 @@ public class Main {
 				}
 			}
 
-			String TTFilePath = TT_DIR + "/" + folderName + "_Meaning";
+			String TTFilePath = TT_DIR + "/" + _ATAFolderName + "_Meaning";
 			TTFolder = new File(TTFilePath);
 			
 			File[] TTFiles = TTFolder.listFiles();
-			String expectedTTFileName = folderName
+			String expectedTTFileName = _ATAFolderName
 					.toLowerCase() + TT_FILE_EXT;
 			
-			String TTImageName = "";
-			File TTImage = null;
-
 			// find data and image files and store them separately
 			for (File TTFile : TTFiles) {
 				String TTFileName = TTFile.getName();
@@ -93,20 +93,12 @@ public class Main {
 				if (TTFileName.equals(expectedTTFileName)) {
 					_TTData = _readAllBytes(TTFilePath + "/" + TTFileName);
 				} else if (TTFileName.contains(".png")) {
-					TTImageName = TTFile.getName();
-					TTImage = new File(TTFilePath + "/" + TTImageName);
+					_TTImage = new File(TTFilePath + "/" + TTFile.getName());
 				}
 			}
 			
-			_combineData(folderName);
-						
-			// Copy .png file into dir.
-			File destDir = new File(
-					_getATAFilePath(folderName) + "/" + TTImageName);
-			
-			Path src = TTImage.toPath();
-			Path dest = destDir.toPath();
-			Files.copy(src, dest, StandardCopyOption.REPLACE_EXISTING);
+			_combineData();
+			_copyTTImage();
 		}
 		
 		_deleteTTDir();
@@ -143,10 +135,10 @@ public class Main {
 		return foldersInDirectory;
 	}
 	
-	private static void _combineData(String folderName) {
-		String newFilePath = _getATAFilePath(folderName);
+	private static void _combineData() {
+		String newFilePath = _getATAFilePath();
 		File newFile = new File( // _getNewFIlePath()
-				newFilePath + "/" + folderName.toLowerCase() + ".txt");
+				newFilePath + "/" + _ATAFolderName.toLowerCase() + ".txt");
 		try {
 			newFile.createNewFile();
 			FileWriter writer = new FileWriter(newFile);
@@ -159,8 +151,8 @@ public class Main {
 		}
 	}
 	
-	private static String _getATAFilePath(String folderName) {
-		return ATA_DIR + "/" + folderName;
+	private static String _getATAFilePath() {
+		return ATA_DIR + "/" + _ATAFolderName;
 	}
 	
 	private static void _deleteTTDir() {
@@ -176,5 +168,17 @@ public class Main {
 		File ATADir = new File(ATA_DIR);
 		File newDirName = new File(newName);
 		ATADir.renameTo(newDirName);
+	}
+	
+	private static void _copyTTImage() {
+		File destDir = new File(
+				_getATAFilePath() + "/" + _TTImage.getName());
+		Path src = _TTImage.toPath();
+		Path dest = destDir.toPath();
+		try {
+			Files.copy(src, dest, StandardCopyOption.REPLACE_EXISTING);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
