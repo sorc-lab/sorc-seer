@@ -28,6 +28,9 @@ public class Main {
 	public static final String ATA_FILE_EXT = "_ata.txt";
 	public static final String TT_DIR = "TTTarot";
 	public static final String TT_FILE_EXT = "_meaning_tt.txt";
+	
+	private static String _ATAData;
+	private static String _TTData;
 
 	public static void main(String[] args) throws Exception {
 		WebDriver driver = new PhantomDriver().getPhantomDriver();
@@ -58,8 +61,6 @@ public class Main {
 			File[] ATAFiles = ATAFolder.listFiles();
 			String expectedATAFileName = folderName
 					.toLowerCase() + ATA_FILE_EXT;
-			
-			String ATAData = "";
 
 			// find data file and store it
 			for (File ATAFile : ATAFiles) {
@@ -67,7 +68,7 @@ public class Main {
 				
 				// read file into memory and delete from disc
 				if (ATAFileName.equals(expectedATAFileName)) {
-					ATAData = _readAllBytes(ATAFilePath + "/" + ATAFileName);
+					_ATAData = _readAllBytes(ATAFilePath + "/" + ATAFileName);
 					File ATADataFile = new File(
 							ATAFilePath + "/" + ATAFileName);
 					
@@ -82,7 +83,6 @@ public class Main {
 			String expectedTTFileName = folderName
 					.toLowerCase() + TT_FILE_EXT;
 			
-			String TTData = "";
 			String TTImageName = "";
 			File TTImage = null;
 
@@ -91,28 +91,18 @@ public class Main {
 				String TTFileName = TTFile.getName();
 				
 				if (TTFileName.equals(expectedTTFileName)) {
-					TTData = _readAllBytes(TTFilePath + "/" + TTFileName);
+					_TTData = _readAllBytes(TTFilePath + "/" + TTFileName);
 				} else if (TTFileName.contains(".png")) {
 					TTImageName = TTFile.getName();
 					TTImage = new File(TTFilePath + "/" + TTImageName);
 				}
 			}
 			
-			// Create new file w/ TTData and ATAData
-			String newFilePath = ATA_DIR + "/" + folderName;
-			File newFile = new File(
-					newFilePath + "/" + folderName.toLowerCase() + ".txt");
-			
-			newFile.createNewFile();
-			
-			FileWriter writer = new FileWriter(newFile);
-			writer.write(TTData);
-			writer.write("\n---\n\n");
-			writer.write(ATAData);
-			writer.close();
-			
+			_combineData(folderName);
+						
 			// Copy .png file into dir.
-			File destDir = new File(newFilePath + "/" + TTImageName);
+			File destDir = new File(
+					_getATAFilePath(folderName) + "/" + TTImageName);
 			
 			Path src = TTImage.toPath();
 			Path dest = destDir.toPath();
@@ -156,4 +146,53 @@ public class Main {
 
 		return foldersInDirectory;
 	}
+	
+	private static void _combineData(String folderName) {
+		String newFilePath = _getATAFilePath(folderName);
+		File newFile = new File( // _getNewFIlePath()
+				newFilePath + "/" + folderName.toLowerCase() + ".txt");
+		try {
+			newFile.createNewFile();
+			FileWriter writer = new FileWriter(newFile);
+			writer.write(_TTData);
+			writer.write("\n---\n\n");
+			writer.write(_ATAData);
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private static String _getATAFilePath(String folderName) {
+		return ATA_DIR + "/" + folderName;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
