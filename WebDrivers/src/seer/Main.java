@@ -109,12 +109,8 @@ public class Main {
 			Files.copy(src, dest, StandardCopyOption.REPLACE_EXISTING);
 		}
 		
-		File TTDir = new File(TT_DIR);
-		FileUtils.forceDelete(TTDir);
-		
-		File ATADir = new File(ATA_DIR);
-		File newDirName = new File("TarotData");
-		ATADir.renameTo(newDirName);
+		_deleteTTDir();
+		_renameATADir("TarotData");
 	}
 
 	private static String _readAllBytes(String filePath) {
@@ -167,32 +163,18 @@ public class Main {
 		return ATA_DIR + "/" + folderName;
 	}
 	
+	private static void _deleteTTDir() {
+		try {
+			File TTDir = new File(TT_DIR);
+			FileUtils.forceDelete(TTDir);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	private static void _renameATADir(String newName) {
+		File ATADir = new File(ATA_DIR);
+		File newDirName = new File(newName);
+		ATADir.renameTo(newDirName);
+	}
 }
