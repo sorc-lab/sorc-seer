@@ -55,7 +55,6 @@ public class Main {
 	private static void _tearDown() throws IOException {
 		List<String> folders = _findFoldersInDirectory(ATA_DIR);
 		File ATAFolder = null;
-		File TTFolder = null;
 		
 		for (String ATAFolderName : folders) {
 			_ATAFolderName = ATAFolderName;
@@ -78,25 +77,8 @@ public class Main {
 					ATADataFile.delete();
 				}
 			}
-
-			String TTFilePath = TT_DIR + "/" + _ATAFolderName + "_Meaning";
-			TTFolder = new File(TTFilePath);
 			
-			File[] TTFiles = TTFolder.listFiles();
-			String expectedTTFileName = _ATAFolderName
-					.toLowerCase() + TT_FILE_EXT;
-			
-			// find data and image files and store them separately
-			for (File TTFile : TTFiles) {
-				String TTFileName = TTFile.getName();
-				
-				if (TTFileName.equals(expectedTTFileName)) {
-					_TTData = _readAllBytes(TTFilePath + "/" + TTFileName);
-				} else if (TTFileName.contains(".png")) {
-					_TTImage = new File(TTFilePath + "/" + TTFile.getName());
-				}
-			}
-			
+			_storeTTFiles();			
 			_combineData();
 			_copyTTImage();
 		}
@@ -137,7 +119,7 @@ public class Main {
 	
 	private static void _combineData() {
 		String newFilePath = _getATAFilePath();
-		File newFile = new File( // _getNewFIlePath()
+		File newFile = new File(
 				newFilePath + "/" + _ATAFolderName.toLowerCase() + ".txt");
 		try {
 			newFile.createNewFile();
@@ -173,12 +155,33 @@ public class Main {
 	private static void _copyTTImage() {
 		File destDir = new File(
 				_getATAFilePath() + "/" + _TTImage.getName());
+		
 		Path src = _TTImage.toPath();
 		Path dest = destDir.toPath();
+		
 		try {
 			Files.copy(src, dest, StandardCopyOption.REPLACE_EXISTING);
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	private static void _storeTTFiles() {
+		String TTFilePath = TT_DIR + "/" + _ATAFolderName + "_Meaning";
+		File TTFolder = new File(TTFilePath);
+		File[] TTFiles = TTFolder.listFiles();
+		String expectedTTFileName = _ATAFolderName
+				.toLowerCase() + TT_FILE_EXT;
+		
+		// find data and image files and store them separately
+		for (File TTFile : TTFiles) {
+			String TTFileName = TTFile.getName();
+			
+			if (TTFileName.equals(expectedTTFileName)) {
+				_TTData = _readAllBytes(TTFilePath + "/" + TTFileName);
+			} else if (TTFileName.contains(".png")) {
+				_TTImage = new File(TTFilePath + "/" + TTFile.getName());
+			}
 		}
 	}
 }
