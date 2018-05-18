@@ -33,6 +33,9 @@ public class Main {
 	private static String _ATAData;
 	private static String _TTData;
 	private static File _TTImage;
+	private static String _expectedATAFileName;
+	private static File[] _ATAFiles;
+	private static String _ATAFilePath;
 
 	public static void main(String[] args) throws Exception {
 		WebDriver driver = new PhantomDriver().getPhantomDriver();
@@ -51,34 +54,19 @@ public class Main {
 		 */
 	}
 
-	// TODO: Refactor
 	private static void _tearDown() throws IOException {
 		List<String> folders = _findFoldersInDirectory(ATA_DIR);
 		File ATAFolder = null;
 		
 		for (String ATAFolderName : folders) {
 			_ATAFolderName = ATAFolderName;
-			String ATAFilePath = ATA_DIR + "/" + _ATAFolderName;
-			ATAFolder = new File(ATAFilePath);
-			File[] ATAFiles = ATAFolder.listFiles();
-			String expectedATAFileName = _ATAFolderName
+			_ATAFilePath = ATA_DIR + "/" + _ATAFolderName;
+			ATAFolder = new File(_ATAFilePath);
+			_ATAFiles = ATAFolder.listFiles();
+			_expectedATAFileName = _ATAFolderName
 					.toLowerCase() + ATA_FILE_EXT;
-
-			// find data file and store it
-			for (File ATAFile : ATAFiles) {
-				String ATAFileName = ATAFile.getName();
-				
-				// read file into memory and delete from disc
-				if (ATAFileName.equals(expectedATAFileName)) {
-					_ATAData = _readAllBytes(ATAFilePath + "/" + ATAFileName);
-					File ATADataFile = new File(
-							ATAFilePath + "/" + ATAFileName);
-					
-					ATADataFile.delete();
-				}
-			}
-			
-			_storeTTFiles();			
+			_setATADataAndDeleteFromDisc();			
+			_setTTDataAndTTImage();
 			_combineData();
 			_copyTTImage();
 		}
@@ -166,7 +154,7 @@ public class Main {
 		}
 	}
 	
-	private static void _storeTTFiles() {
+	private static void _setTTDataAndTTImage() {
 		String TTFilePath = TT_DIR + "/" + _ATAFolderName + "_Meaning";
 		File TTFolder = new File(TTFilePath);
 		File[] TTFiles = TTFolder.listFiles();
@@ -181,6 +169,22 @@ public class Main {
 				_TTData = _readAllBytes(TTFilePath + "/" + TTFileName);
 			} else if (TTFileName.contains(".png")) {
 				_TTImage = new File(TTFilePath + "/" + TTFile.getName());
+			}
+		}
+	}
+	
+	private static void _setATADataAndDeleteFromDisc() {
+		// find data file and store it
+		for (File ATAFile : _ATAFiles) {
+			String ATAFileName = ATAFile.getName();
+			
+			// read file into memory and delete from disc
+			if (ATAFileName.equals(_expectedATAFileName)) {
+				_ATAData = _readAllBytes(_ATAFilePath + "/" + ATAFileName);
+				File ATADataFile = new File(
+						_ATAFilePath + "/" + ATAFileName);
+				
+				ATADataFile.delete();
 			}
 		}
 	}
