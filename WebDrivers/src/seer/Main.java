@@ -39,19 +39,19 @@ public class Main {
 
 	public static void main(String[] args) throws Exception {
 		WebDriver driver = new PhantomDriver().getPhantomDriver();
+		
+		// TODO: _setup(Object Setup), use generics + make AbstractSetup
+		Setup setupATA = new ATASetup(driver);
+		setupATA.setupHarvester();
+		ATAHarvester ATAHarvester = new ATAHarvester(driver);
+		ATAHarvester.harvest();
+
+		Setup setupTT = new TTSetup(driver);
+		setupTT.setupHarvester();
+		TTHarvester TTHarvester = new TTHarvester(driver);
+		TTHarvester.harvest();
+		
 		_tearDown();
-
-		/*
-		 * Setup setupATA = new ATASetup(driver); setupATA.setupHarvester();
-		 * ATAHarvester ATAHarvester = new ATAHarvester(driver);
-		 * ATAHarvester.harvest();
-		 */
-
-		/*
-		 * Setup setupTT = new TTSetup(driver); setupTT.setupHarvester();
-		 * TTHarvester TTHarvester = new TTHarvester(driver);
-		 * TTHarvester.harvest();
-		 */
 	}
 
 	private static void _tearDown() throws IOException {
@@ -65,7 +65,7 @@ public class Main {
 			_ATAFiles = ATAFolder.listFiles();
 			_expectedATAFileName = _ATAFolderName
 					.toLowerCase() + ATA_FILE_EXT;
-			_setATADataAndDeleteFromDisc();			
+			_setATADataAndDeleteFromDisc();
 			_setTTDataAndTTImage();
 			_combineData();
 			_copyTTImage();
