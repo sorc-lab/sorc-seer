@@ -8,14 +8,11 @@ public class ATASetup {
 	public static final String HOMEPAGE_URL = 
 		"http://www.ata-tarot.com/resource/cards/index.html";
 	
-	private static ATANavigator _nav;
 	private static FrameSwitch _frameSwitch;
 	private static HarvesterIO _io;
 	
 	public static void setupHarvester() {
-		// TODO: Consider ATANavigator as util. class
-		_nav = new ATANavigator();
-		_nav.navigateToHomepage(HOMEPAGE_URL);
+		ATANavigator.navigateToHomepage(HOMEPAGE_URL);
 		
 		_frameSwitch = new FrameSwitch();
 		_frameSwitch.switchToNavigationFrame();
