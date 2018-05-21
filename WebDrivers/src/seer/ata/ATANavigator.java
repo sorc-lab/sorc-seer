@@ -6,18 +6,11 @@ import org.openqa.selenium.WebElement;
 
 import seer.ata.ATAGetData;
 import seer.AbstractNavigator;
+import seer.PhantomDriver;
 
 public class ATANavigator extends AbstractNavigator {
-	private WebDriver _driver;
 	private FrameSwitch _frameSwitch;
 	private ATAGetData _getData;
-	
-	public ATANavigator(WebDriver driver) {
-		super(driver);
-		this._driver = driver;
-		_frameSwitch = new FrameSwitch(_driver);
-		_getData = new ATAGetData(_driver);
-	}
 	
 	@Override
 	public void navigateToNextLink(By linkLocator) {

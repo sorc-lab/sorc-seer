@@ -3,6 +3,7 @@ package seer.ata;
 import org.openqa.selenium.WebDriver;
 
 import seer.HarvesterIO;
+import seer.PhantomDriver;
 import seer.Setup;
 
 public class ATASetup implements Setup {
@@ -16,16 +17,19 @@ public class ATASetup implements Setup {
 	private FrameSwitch _frameSwitch;
 	private HarvesterIO _io;
 	
-	public ATASetup(WebDriver driver) {
-		this._driver = driver;
-		_nav = new ATANavigator(_driver);
-		_frameSwitch = new FrameSwitch(_driver);
+	public ATASetup() {
+		
+		
+		//_frameSwitch = new FrameSwitch(_driver);
 		_io = new HarvesterIO(ROOT_DIR, FILE_EXT);
 	}
 	
 	@Override
 	public void setupHarvester() {
+		_nav = new ATANavigator(); // TODO: Consider ATANavigator as util. class
 		_nav.navigateToHomepage(HOMEPAGE_URL);
+		
+		_frameSwitch = new FrameSwitch();
 		_frameSwitch.switchToNavigationFrame();
 		_io.createDirectory(ROOT_DIR);
 	}

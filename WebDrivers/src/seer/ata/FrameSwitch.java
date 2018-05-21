@@ -4,13 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchFrameException;
 import org.openqa.selenium.WebDriver;
 
+import seer.PhantomDriver;
+
 public class FrameSwitch {
 	public static  String NAVIGATION_FRAME = "FRA";
 	public static  String DATA_FRAME = "FRB";
 	
-	WebDriver _driver;
-	
-	public FrameSwitch(WebDriver driver) { this._driver = driver; }
+	WebDriver _driver = PhantomDriver.getPhantomDriver();
 	
 	private void _switchToDefaultFrame() {_driver.switchTo().defaultContent();}
 	

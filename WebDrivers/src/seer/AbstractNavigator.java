@@ -5,9 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public abstract class AbstractNavigator {
-	private WebDriver _driver;
+	private WebDriver _driver = PhantomDriver.getPhantomDriver();
 	
-	public AbstractNavigator(WebDriver driver) { this._driver = driver; }
 	public void navigateToHomepage(String url) { _driver.get(url); }
 	public void navigateToLink(WebElement link) { link.click(); }
 	abstract public void navigateToNextLink(By linkLocator);

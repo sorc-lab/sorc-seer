@@ -38,20 +38,20 @@ public class Main {
 	private static String _ATAFilePath;
 
 	public static void main(String[] args) throws Exception {
-		WebDriver driver = new PhantomDriver().getPhantomDriver();
-		
 		// TODO: _setup(Object Setup), use generics + make AbstractSetup
-		Setup setupATA = new ATASetup(driver);
+		Setup setupATA = new ATASetup();
 		setupATA.setupHarvester();
-		ATAHarvester ATAHarvester = new ATAHarvester(driver);
-		ATAHarvester.harvest();
+		//ATAHarvester ATAHarvester = new ATAHarvester(driver);
+		//ATAHarvester.harvest();
 
+		/*
 		Setup setupTT = new TTSetup(driver);
 		setupTT.setupHarvester();
 		TTHarvester TTHarvester = new TTHarvester(driver);
 		TTHarvester.harvest();
+		*/
 		
-		_tearDown();
+		//_tearDown();
 	}
 
 	private static void _tearDown() throws IOException {
