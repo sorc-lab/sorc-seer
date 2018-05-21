@@ -23,12 +23,11 @@ public class TTGetData extends AbstractGetData {
 	}
 	
 	// TODO: Check navigation links
+	/*
 	@Override
 	protected boolean checkNavigationLinks_(List<WebElement> navLinks)
-			throws Exception {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	throws Exception { return false; }
+	*/
 	
 	public String getHeader() {
 		By locator = By.tagName("h1");

@@ -38,9 +38,7 @@ public class Main {
 	private static String _ATAFilePath;
 
 	public static void main(String[] args) throws Exception {
-		// TODO: _setup(Object Setup), use generics + make AbstractSetup
-		Setup setupATA = new ATASetup();
-		setupATA.setupHarvester();
+		ATASetup.setupHarvester();
 		//ATAHarvester ATAHarvester = new ATAHarvester(driver);
 		//ATAHarvester.harvest();
 

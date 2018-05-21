@@ -4,7 +4,6 @@ public class Main
 {
 	public static void main(String[] args)
 	{
-		// TODO: Move to config. file
 		NetworkEntity[] network = {
 				new NetworkEntity("SORC-JMPBX", "10.10.43.140"),
 				new NetworkEntity("SORC-DROPSTORE","10.10.43.141"),
