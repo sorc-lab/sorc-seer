@@ -7,14 +7,16 @@ import org.openqa.selenium.WebDriver;
 import seer.PhantomDriver;
 
 public class FrameSwitch {
-	public static  String NAVIGATION_FRAME = "FRA";
-	public static  String DATA_FRAME = "FRB";
+	public static final String NAVIGATION_FRAME = "FRA";
+	public static final String DATA_FRAME = "FRB";
 	
-	WebDriver _driver = PhantomDriver.getPhantomDriver();
+	private static WebDriver _driver = PhantomDriver.getPhantomDriver();
 	
-	private void _switchToDefaultFrame() {_driver.switchTo().defaultContent();}
+	private static void _switchToDefaultFrame() {
+		_driver.switchTo().defaultContent();
+	}
 	
-	public void switchToNavigationFrame() {
+	public static void switchToNavigationFrame() {
 		_switchToDefaultFrame();
 		By navigationFrame = By.name(NAVIGATION_FRAME);
 		try {
@@ -24,7 +26,7 @@ public class FrameSwitch {
 		}
 	}
 	
-	public void switchToDataFrame() {
+	public static void switchToDataFrame() {
 		_switchToDefaultFrame();
 		By dataFrame = By.name(DATA_FRAME);
 		try {

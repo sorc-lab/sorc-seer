@@ -8,14 +8,11 @@ public class ATASetup {
 	public static final String HOMEPAGE_URL = 
 		"http://www.ata-tarot.com/resource/cards/index.html";
 	
-	private static FrameSwitch _frameSwitch;
 	private static HarvesterIO _io;
 	
 	public static void setupHarvester() {
 		ATANavigator.navigateToHomepage(HOMEPAGE_URL);
-		
-		_frameSwitch = new FrameSwitch();
-		_frameSwitch.switchToNavigationFrame();
+		FrameSwitch.switchToNavigationFrame();
 		
 		// TODO: Fix HarvesterIO so that it does not need a constructor
 		_io = new HarvesterIO(ROOT_DIR, FILE_EXT);
