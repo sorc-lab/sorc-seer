@@ -39,12 +39,15 @@ public class Main {
 
 	public static void main(String[] args) throws Exception {
 		ATASetup.setupHarvester();
-		//ATAHarvester ATAHarvester = new ATAHarvester(driver);
-		//ATAHarvester.harvest();
 		
 		// TEST START
 		System.out.println(PhantomDriver.getPhantomDriver().getTitle());
 		// TEST END
+		
+		ATAHarvester ATAHarvester = new ATAHarvester();
+		ATAHarvester.harvest();
+		
+
 
 		/*
 		Setup setupTT = new TTSetup(driver);

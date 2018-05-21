@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class AbstractGetData {
-	private WebDriver _driver;
+	private WebDriver _driver = PhantomDriver.getPhantomDriver();
 	
 	protected String[] links_ = { "The Fool", "The Magician",
 		"The High Priestess", "The Empress", "The Emperor",
@@ -35,8 +35,6 @@ public abstract class AbstractGetData {
 		"Page of Wands", "Knight of Wands", "Queen of Wands",
 		"King of Wands"
 	};
-	
-	public AbstractGetData(WebDriver driver) { this._driver = driver; }
 	
 	public WebElement getPresentWebElement(By locator) {
 		WebElement element = (new WebDriverWait(_driver, 10))

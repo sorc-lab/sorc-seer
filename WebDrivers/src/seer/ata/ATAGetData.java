@@ -7,20 +7,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import seer.AbstractGetData;
+import seer.PhantomDriver;
 
 public class ATAGetData extends AbstractGetData {
-	private WebDriver _driver;
-	private ATAFrameSwitch _frameSwitch;
-	
-	public ATAGetData(WebDriver driver) {
-		super(driver);
-		this._driver = driver;
-		_frameSwitch = new ATAFrameSwitch(_driver);
-	}
+	private static WebDriver _driver = PhantomDriver.getPhantomDriver();
 	
 	@Override
 	public List<WebElement> getAllNavigationLinkElements() {
-		_frameSwitch.switchToNavigationFrame();
+		ATAFrameSwitch.switchToNavigationFrame();
 		List<WebElement> navLinks=_driver.findElements(By.tagName("a"));
 		navLinks.remove(0); // remove first two links
 		navLinks.remove(0);

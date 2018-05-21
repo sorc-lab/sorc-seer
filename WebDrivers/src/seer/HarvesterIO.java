@@ -11,15 +11,15 @@ public class HarvesterIO {
 	private static final String EMPTY_STRING = "";
 	private static final String NEW_LINE = System.getProperty("line.separator");
 	
-	private String _fileName;
+	private static String _fileName;
 	
 	public static void createDirectory(String directory) {
 		File dir = new File(directory);
 		dir.mkdir();
 	}
 	
-	public void createTextFileFromLinkText(String fileExt, String linkText)
-	throws Exception
+	public static void createTextFileFromLinkText(String fileExt,
+			String linkText) throws Exception
 	{
 		String fileName = _dir + "/" + linkText.replaceAll(" ", "_")
 			.toLowerCase() + fileExt;
@@ -28,7 +28,7 @@ public class HarvesterIO {
 		file.createNewFile();
 	}
 	
-	public void createDirectoryFromLinkText(String rootDir, String linkText) {
+	public static void createDirectoryFromLinkText(String rootDir, String linkText) {
 		String formatLinkText = linkText.replaceAll(" ", "_");
 		String path = rootDir + "/" + formatLinkText;
 		File dir = new File(path);
@@ -36,7 +36,7 @@ public class HarvesterIO {
 		dir.mkdir();
 	}
 	
-	public String getPreviewLines(String input) {
+	public static String getPreviewLines(String input) {
 	    StringTokenizer token = new StringTokenizer(input, SPACE);
 	    StringBuilder output = new StringBuilder(input.length());
 
@@ -61,8 +61,8 @@ public class HarvesterIO {
 	    return output.toString();
 	}	
 	
-	public void writeToFile(String linkText, String[] paragraphs)
-	throws Exception
+	public static void writeToFile(String linkText, String[] paragraphs) 
+			throws Exception
 	{
 		try {
 			FileWriter fileWriter = new FileWriter(_fileName);

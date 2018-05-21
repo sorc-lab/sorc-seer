@@ -7,12 +7,13 @@ import seer.ata.ATAGetData;
 import seer.Navigator;
 
 public class ATANavigator extends Navigator {
-	private static ATAFrameSwitch _frameSwitch;
 	private static ATAGetData _getData;
 	
 	public static void navigateToNextLink(By linkLocator) {
+		_getData = new ATAGetData(); // TODO: Fix if ATAGetData is static util.
+		
 		WebElement link = _getData.getPresentWebElement(linkLocator);
 		navigateToLink(link);
-		_frameSwitch.switchToDataFrame();
+		ATAFrameSwitch.switchToDataFrame();
 	}
 }

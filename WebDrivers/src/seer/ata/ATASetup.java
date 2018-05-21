@@ -4,7 +4,6 @@ import seer.HarvesterIO;
 
 public class ATASetup {
 	public static final String ROOT_DIR = "ATATarot";
-	public static final String FILE_EXT = "_ata.txt";
 	public static final String HOMEPAGE_URL = 
 		"http://www.ata-tarot.com/resource/cards/index.html";
 	
