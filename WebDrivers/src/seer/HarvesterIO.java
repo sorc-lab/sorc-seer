@@ -11,33 +11,26 @@ public class HarvesterIO {
 	private static final String EMPTY_STRING = "";
 	private static final String NEW_LINE = System.getProperty("line.separator");
 	
-	private String _rootDir;
-	private String _fileExt;
 	private String _fileName;
-	private String _dir;
 	
-	public HarvesterIO(String rootDir, String fileExt) {
-		this._rootDir = rootDir;
-		this._fileExt = fileExt;
-	}
-	
-	public void createDirectory(String directory) {
-		this._dir = directory;
-		File dir = new File(_dir);
+	public static void createDirectory(String directory) {
+		File dir = new File(directory);
 		dir.mkdir();
 	}
 	
-	public void createTextFileFromLinkText(String linkText) throws Exception {
+	public void createTextFileFromLinkText(String fileExt, String linkText)
+	throws Exception
+	{
 		String fileName = _dir + "/" + linkText.replaceAll(" ", "_")
-			.toLowerCase() + _fileExt;
+			.toLowerCase() + fileExt;
 		this._fileName = fileName;
 		File file = new File(_fileName);
 		file.createNewFile();
 	}
 	
-	public void createDirectoryFromLinkText(String linkText) {
+	public void createDirectoryFromLinkText(String rootDir, String linkText) {
 		String formatLinkText = linkText.replaceAll(" ", "_");
-		String path = _rootDir + "/" + formatLinkText;
+		String path = rootDir + "/" + formatLinkText;
 		File dir = new File(path);
 		_dir = path;
 		dir.mkdir();

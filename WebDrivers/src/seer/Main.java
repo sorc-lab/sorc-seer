@@ -41,6 +41,10 @@ public class Main {
 		ATASetup.setupHarvester();
 		//ATAHarvester ATAHarvester = new ATAHarvester(driver);
 		//ATAHarvester.harvest();
+		
+		// TEST START
+		System.out.println(PhantomDriver.getPhantomDriver().getTitle());
+		// TEST END
 
 		/*
 		Setup setupTT = new TTSetup(driver);
