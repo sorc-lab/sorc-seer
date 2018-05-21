@@ -6,37 +6,45 @@ import java.io.IOException;
 import java.util.StringTokenizer;
 
 public class HarvesterIO {
-	private static final int LINE_LENGTH = 80;
-	private static final String SPACE = " ";
-	private static final String EMPTY_STRING = "";
-	private static final String NEW_LINE = System.getProperty("line.separator");
+	public static final int LINE_LENGTH = 80;
+	public static final String SPACE = " ";
+	public static final String EMPTY_STRING = "";
+	public static final String NEW_LINE = System.getProperty("line.separator");
 	
-	private static String _fileName;
+	private String _rootDir;
+	private String _fileExt;
+	private String _fileName;
+	private String _dir;
 	
-	public static void createDirectory(String directory) {
+	public HarvesterIO(String rootDir, String fileExt) {
+		this._rootDir = rootDir;
+		this._fileExt = fileExt;
+	}
+	
+	public void createDirectory(String directory) {
+		_dir = directory;
 		File dir = new File(directory);
 		dir.mkdir();
 	}
 	
-	public static void createTextFileFromLinkText(String fileExt,
-			String linkText) throws Exception
+	public void createTextFileFromLinkText(String linkText) throws Exception
 	{
 		String fileName = _dir + "/" + linkText.replaceAll(" ", "_")
-			.toLowerCase() + fileExt;
+			.toLowerCase() + _fileExt;
 		this._fileName = fileName;
 		File file = new File(_fileName);
 		file.createNewFile();
 	}
 	
-	public static void createDirectoryFromLinkText(String rootDir, String linkText) {
+	public void createDirectoryFromLinkText(String linkText) {
 		String formatLinkText = linkText.replaceAll(" ", "_");
-		String path = rootDir + "/" + formatLinkText;
+		String path = _rootDir + "/" + formatLinkText;
 		File dir = new File(path);
 		_dir = path;
 		dir.mkdir();
 	}
 	
-	public static String getPreviewLines(String input) {
+	public String getPreviewLines(String input) {
 	    StringTokenizer token = new StringTokenizer(input, SPACE);
 	    StringBuilder output = new StringBuilder(input.length());
 
@@ -61,7 +69,7 @@ public class HarvesterIO {
 	    return output.toString();
 	}	
 	
-	public static void writeToFile(String linkText, String[] paragraphs) 
+	public void writeToFile(String linkText, String[] paragraphs) 
 			throws Exception
 	{
 		try {

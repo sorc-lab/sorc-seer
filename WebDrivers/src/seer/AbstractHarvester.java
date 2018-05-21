@@ -3,24 +3,19 @@ package seer;
 import java.io.IOException;
 
 public abstract class AbstractHarvester {
-	private String _rootDir;
-	private String _fileExt;
 	protected static String linkText_;
 	protected static String[] paragraphs_;
+	protected HarvesterIO io_;
 	
-	public AbstractHarvester(String rootDir, String fileExt) {
-		this._rootDir = rootDir;
-		this._fileExt = fileExt;
+	protected AbstractHarvester(String rootDir, String fileExt) {
+		io_ = new HarvesterIO(rootDir, fileExt);
 	}
 	
-	public String getRootDir() { return _rootDir; }
-	public String getFileExt() { return _fileExt; }
-	
 	protected void performHarvesterIO_() throws Exception {
-		try {
-			HarvesterIO.createDirectoryFromLinkText(_rootDir, linkText_);
-			HarvesterIO.createTextFileFromLinkText(_fileExt, linkText_);
-			HarvesterIO.writeToFile(linkText_, paragraphs_);
+		try {			
+			io_.createDirectoryFromLinkText(linkText_);
+			io_.createTextFileFromLinkText(linkText_);
+			io_.writeToFile(linkText_, paragraphs_);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
