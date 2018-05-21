@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 import seer.PhantomDriver;
 
-public class FrameSwitch {
+public class ATAFrameSwitch {
 	public static final String NAVIGATION_FRAME = "FRA";
 	public static final String DATA_FRAME = "FRB";
 	

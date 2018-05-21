@@ -15,7 +15,7 @@ public class ATAHarvester extends AbstractHarvester {
 	
 	private WebDriver _driver;
 	private ATANavigator _nav;
-	private FrameSwitch _frameSwitch;
+	private ATAFrameSwitch _frameSwitch;
 	private ATAGetData _getData;
 	private List<WebElement> _navLinkElements;
 	private String[] _navLinkTexts;
@@ -25,7 +25,7 @@ public class ATAHarvester extends AbstractHarvester {
 		this._driver = driver;
 		
 		_nav         = new ATANavigator(_driver);
-		_frameSwitch = new FrameSwitch(_driver);
+		_frameSwitch = new ATAFrameSwitch(_driver);
 		_getData     = new ATAGetData(_driver);
 		
 		_navLinkElements = _getData.getAllNavigationLinkElements();

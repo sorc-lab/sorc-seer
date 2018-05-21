@@ -10,12 +10,12 @@ import seer.AbstractGetData;
 
 public class ATAGetData extends AbstractGetData {
 	private WebDriver _driver;
-	private FrameSwitch _frameSwitch;
+	private ATAFrameSwitch _frameSwitch;
 	
 	public ATAGetData(WebDriver driver) {
 		super(driver);
 		this._driver = driver;
-		_frameSwitch = new FrameSwitch(_driver);
+		_frameSwitch = new ATAFrameSwitch(_driver);
 	}
 	
 	@Override

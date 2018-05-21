@@ -1,6 +1,7 @@
 package seer.ata;
 
 import seer.HarvesterIO;
+import seer.PhantomDriver;
 
 public class ATASetup {
 	public static final String ROOT_DIR = "ATATarot";
@@ -12,7 +13,11 @@ public class ATASetup {
 	
 	public static void setupHarvester() {
 		ATANavigator.navigateToHomepage(HOMEPAGE_URL);
-		FrameSwitch.switchToNavigationFrame();
+		ATAFrameSwitch.switchToNavigationFrame();
+		
+		// TEST
+		System.out.println(PhantomDriver.getPhantomDriver().getTitle());
+		// ***
 		
 		// TODO: Fix HarvesterIO so that it does not need a constructor
 		_io = new HarvesterIO(ROOT_DIR, FILE_EXT);

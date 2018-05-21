@@ -7,7 +7,7 @@ import seer.ata.ATAGetData;
 import seer.Navigator;
 
 public class ATANavigator extends Navigator {
-	private static FrameSwitch _frameSwitch;
+	private static ATAFrameSwitch _frameSwitch;
 	private static ATAGetData _getData;
 	
 	public static void navigateToNextLink(By linkLocator) {
