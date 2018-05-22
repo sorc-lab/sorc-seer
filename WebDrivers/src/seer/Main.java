@@ -40,12 +40,8 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 		ATASetup.setupHarvester();
 		
-		// TEST START
-		System.out.println(PhantomDriver.getPhantomDriver().getTitle());
-		// TEST END
-		
-		ATAHarvester ATAHarvester = new ATAHarvester();
-		ATAHarvester.harvest();
+		/*ATAHarvester ATAHarvester = new ATAHarvester();
+		ATAHarvester.harvest();*/
 		
 
 

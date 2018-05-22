@@ -11,8 +11,8 @@ import seer.PhantomDriver;
 import seer.ata.ATAGetData;
 
 public class ATAHarvester extends AbstractHarvester {
-	public static final String ROOT_DIR = "ATATarot";
-	public static final String FILE_EXT = "_ata.txt";
+	public static final String ATA_DATA_DIR = "ATATarot";
+	public static final String ATA_DATA_FILE_EXT = "_ata.txt";
 	
 	private ATAGetData _getData;
 	private List<WebElement> _navLinkElements;
@@ -20,7 +20,7 @@ public class ATAHarvester extends AbstractHarvester {
 	
 	public ATAHarvester() {
 		// TODO: Look into removing AbstractHarvester
-		super(ROOT_DIR, FILE_EXT);
+		super(ATA_DATA_DIR, ATA_DATA_FILE_EXT);
 		
 		// TODO: Look into making this a static util. class--would lose Abstract
 		_getData = new ATAGetData();

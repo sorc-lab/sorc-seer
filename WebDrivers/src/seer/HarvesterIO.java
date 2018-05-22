@@ -10,40 +10,41 @@ public class HarvesterIO {
 	public static final String SPACE = " ";
 	public static final String EMPTY_STRING = "";
 	public static final String NEW_LINE = System.getProperty("line.separator");
+	public static final String ROOT_DIR = System.getProperty("user.dir");
 	
-	private String _rootDir;
-	private String _fileExt;
-	private String _fileName;
-	private String _dir;
+	private String _harvesterDataDir;
+	private String _dataFileExt;
+	private String _fileName; // TODO: Review the appropriateness of this...
 	
-	public HarvesterIO(String rootDir, String fileExt) {
-		this._rootDir = rootDir;
-		this._fileExt = fileExt;
+	public HarvesterIO(String harvesterDataDir, String dataFileExt) {
+		this._harvesterDataDir = harvesterDataDir;
+		this._dataFileExt = dataFileExt;
 	}
 	
+	// TODO: This seems wrong (_dir being set for later use? Side effects...)
 	public void createDirectory(String directory) {
-		_dir = directory;
 		File dir = new File(directory);
 		dir.mkdir();
 	}
 	
-	public void createTextFileFromLinkText(String linkText) throws Exception
-	{
-		String fileName = _dir + "/" + linkText.replaceAll(" ", "_")
-			.toLowerCase() + _fileExt;
+	// TODO: Should run a checker for _dir set, else throws exception
+	public void createTextFileFromLinkText(String linkText) throws Exception {
+		String fileName = ROOT_DIR + "/" + linkText.replaceAll(" ", "_")
+			.toLowerCase() + _dataFileExt;
 		this._fileName = fileName;
 		File file = new File(_fileName);
 		file.createNewFile();
 	}
 	
+	// TODO: Add same checker and exception seen in createTextFileFromLinkText
 	public void createDirectoryFromLinkText(String linkText) {
 		String formatLinkText = linkText.replaceAll(" ", "_");
-		String path = _rootDir + "/" + formatLinkText;
+		String path = _harvesterDataDir + "/" + formatLinkText;
 		File dir = new File(path);
-		_dir = path;
 		dir.mkdir();
 	}
 	
+	// TODO: Review and understand this code better
 	public String getPreviewLines(String input) {
 	    StringTokenizer token = new StringTokenizer(input, SPACE);
 	    StringBuilder output = new StringBuilder(input.length());
@@ -69,7 +70,8 @@ public class HarvesterIO {
 	    return output.toString();
 	}	
 	
-	public void writeToFile(String linkText, String[] paragraphs) 
+	// TODO: Depends on _fileName private var--most likely set in havest loop
+	public void writeToFile(String linkText, String[] paragraphs)
 			throws Exception
 	{
 		try {
@@ -84,4 +86,8 @@ public class HarvesterIO {
 			e.printStackTrace();
 		}
 	}
+	
+	// TODO: Check back to see if getters are needed
+	public String getHarvesterDataDir() { return _harvesterDataDir; }
+	public String getHarvesterDataFileExt() { return _dataFileExt; }
 }
