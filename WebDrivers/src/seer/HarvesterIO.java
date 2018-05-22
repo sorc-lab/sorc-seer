@@ -29,19 +29,28 @@ public class HarvesterIO {
 	
 	// TODO: Should run a checker for _dir set, else throws exception
 	public void createTextFileFromLinkText(String linkText) throws Exception {
-		String fileName = ROOT_DIR + "/" + linkText.replaceAll(" ", "_")
-			.toLowerCase() + _dataFileExt;
+		String filePath = ROOT_DIR + "/" + _harvesterDataDir + "/"
+				+ _getDirNameFromLinkText(linkText);
+		String fileName = filePath+"/"+_getTextFileNameFromLinkText(linkText);
+		
 		this._fileName = fileName;
 		File file = new File(_fileName);
 		file.createNewFile();
 	}
 	
+	private String _getTextFileNameFromLinkText(String linkText) {
+		return linkText.replaceAll(" ", "_").toLowerCase() + _dataFileExt;
+	}
+	
 	// TODO: Add same checker and exception seen in createTextFileFromLinkText
 	public void createDirectoryFromLinkText(String linkText) {
-		String formatLinkText = linkText.replaceAll(" ", "_");
-		String path = _harvesterDataDir + "/" + formatLinkText;
+		String path = _harvesterDataDir+"/"+_getDirNameFromLinkText(linkText);
 		File dir = new File(path);
 		dir.mkdir();
+	}
+	
+	private String _getDirNameFromLinkText(String linkText) {
+		return linkText.replaceAll(" ", "_");
 	}
 	
 	// TODO: Review and understand this code better

@@ -7,26 +7,22 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import seer.AbstractHarvester;
+import seer.GetHarvesterData;
 import seer.PhantomDriver;
-import seer.ata.ATAGetData;
 
 public class ATAHarvester extends AbstractHarvester {
 	public static final String ATA_DATA_DIR = "ATATarot";
 	public static final String ATA_DATA_FILE_EXT = "_ata.txt";
 	
-	private ATAGetData _getData;
 	private List<WebElement> _navLinkElements;
 	private String[] _navLinkTexts;
 	
 	public ATAHarvester() {
 		// TODO: Look into removing AbstractHarvester
 		super(ATA_DATA_DIR, ATA_DATA_FILE_EXT);
-		
-		// TODO: Look into making this a static util. class--would lose Abstract
-		_getData = new ATAGetData();
-		
-		_navLinkElements = _getData.getAllNavigationLinkElements();
-		_navLinkTexts = _getData
+				
+		_navLinkElements = GetHarvesterData.getAllATANavigationLinkElements();
+		_navLinkTexts = GetHarvesterData
 				.getTextValuesFromLinkElements(_navLinkElements);
 	}
 	
@@ -40,7 +36,7 @@ public class ATAHarvester extends AbstractHarvester {
 			By linkLocator = By.partialLinkText(linkText_);
 			ATANavigator.navigateToNextLink(linkLocator);
 			
-			paragraphs_ = _getData.getParagraphs();
+			paragraphs_ = GetHarvesterData.getParagraphs();
 			performHarvesterIO_();
 		}
 	}

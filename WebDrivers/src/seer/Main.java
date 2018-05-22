@@ -17,7 +17,6 @@ import java.util.List;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.WebDriver;
 
-import seer.ata.ATAGetData;
 import seer.ata.ATAHarvester;
 import seer.ata.ATASetup;
 import seer.tt.TTHarvester;
@@ -40,8 +39,8 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 		ATASetup.setupHarvester();
 		
-		/*ATAHarvester ATAHarvester = new ATAHarvester();
-		ATAHarvester.harvest();*/
+		ATAHarvester ATAHarvester = new ATAHarvester();
+		ATAHarvester.harvest();
 		
 
 
