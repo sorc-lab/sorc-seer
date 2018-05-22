@@ -14,7 +14,6 @@ public class HarvesterIO {
 	
 	private String _harvesterDataDir;
 	private String _dataFileExt;
-	private String _fileName; // TODO: Review the appropriateness of this...
 	
 	public HarvesterIO(String harvesterDataDir, String dataFileExt) {
 		this._harvesterDataDir = harvesterDataDir;
@@ -27,22 +26,26 @@ public class HarvesterIO {
 		dir.mkdir();
 	}
 	
-	// TODO: Should run a checker for _dir set, else throws exception
 	public void createTextFileFromLinkText(String linkText) throws Exception {
+		File file = new File(_getTextFileAndPathFromLinkText(linkText));
+		file.createNewFile();
+	}
+	
+	private String _getTextFilePathFromLinkText(String linkText) {
 		String filePath = ROOT_DIR + "/" + _harvesterDataDir + "/"
 				+ _getDirNameFromLinkText(linkText);
-		String fileName = filePath+"/"+_getTextFileNameFromLinkText(linkText);
-		
-		this._fileName = fileName;
-		File file = new File(_fileName);
-		file.createNewFile();
+		return filePath;
 	}
 	
 	private String _getTextFileNameFromLinkText(String linkText) {
 		return linkText.replaceAll(" ", "_").toLowerCase() + _dataFileExt;
 	}
 	
-	// TODO: Add same checker and exception seen in createTextFileFromLinkText
+	private String _getTextFileAndPathFromLinkText(String linkText) {
+		return _getTextFilePathFromLinkText(linkText) + "/"
+				+ _getTextFileNameFromLinkText(linkText);
+	}
+	
 	public void createDirectoryFromLinkText(String linkText) {
 		String path = _harvesterDataDir+"/"+_getDirNameFromLinkText(linkText);
 		File dir = new File(path);
@@ -84,12 +87,15 @@ public class HarvesterIO {
 			throws Exception
 	{
 		try {
-			FileWriter fileWriter = new FileWriter(_fileName);
+			FileWriter fileWriter = new FileWriter(
+					_getTextFileAndPathFromLinkText(linkText));
+			
 			for (int i = 0; i < paragraphs.length; i++) {
 				String preview = getPreviewLines(paragraphs[i]);
 				fileWriter.write(preview + NEW_LINE);
 				fileWriter.write(NEW_LINE);
 			}
+			
 			fileWriter.close();
 		} catch (IOException e) {
 			e.printStackTrace();
