@@ -96,6 +96,18 @@ public class HarvesterIO {
 		}
 	}
 	
+	public void performHarvesterIO(String linkText, String[] paragraphs)
+			throws Exception
+	{
+		try {			
+			createDirectoryFromLinkText(linkText);
+			createTextFileFromLinkText(linkText);
+			writeToFile(linkText, paragraphs);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	// TODO: Check back to see if getters are needed
 	public String getHarvesterDataDir() { return _harvesterDataDir; }
 	public String getHarvesterDataFileExt() { return _dataFileExt; }
