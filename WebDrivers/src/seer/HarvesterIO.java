@@ -14,6 +14,9 @@ public class HarvesterIO {
 	
 	private String _harvesterDataDir;
 	private String _dataFileExt;
+	
+	// TODO: Remove all references to linkText/Para. from outside sources
+	// TODO: Figure out how to do error checking for != null etc.
 	private String _linkText;
 	private String[] _paragraphs;
 	
@@ -27,7 +30,6 @@ public class HarvesterIO {
 		this._paragraphs = paragraphs;
 	}
 	
-	// TODO: This seems wrong (_dir being set for later use? Side effects...)
 	public void createDirectory(String directory) {
 		File dir = new File(directory);
 		dir.mkdir();

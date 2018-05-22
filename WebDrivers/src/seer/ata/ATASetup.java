@@ -11,12 +11,7 @@ public class ATASetup {
 	public static void setupHarvester() {
 		ATANavigator.navigateToHomepage(HOMEPAGE_URL);
 		ATAFrameSwitch.switchToNavigationFrame();
-		
-		HarvesterIO io = new HarvesterIO.Builder()
-				.setDir(ATA_DATA_DIR)
-				.setFileExt(ATA_DATA_FILE_EXT)
-				.build();
-		
+		HarvesterIO io = new HarvesterIO.Builder().setDir(ATA_DATA_DIR).build();
 		io.createDirectory(ATA_DATA_DIR);
 	}
 }

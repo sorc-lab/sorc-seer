@@ -32,8 +32,6 @@ public class ATAHarvester {
 			
 			String[] paragraphs = GetHarvesterData.getParagraphs();
 			
-			//HarvesterIO io = new HarvesterIO(ATA_DATA_DIR, ATA_DATA_FILE_EXT);
-			
 			HarvesterIO io = new HarvesterIO.Builder()
 					.setDir(ATA_DATA_DIR)
 					.setFileExt(ATA_DATA_FILE_EXT)
