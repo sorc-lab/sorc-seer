@@ -32,7 +32,16 @@ public class ATAHarvester {
 			
 			String[] paragraphs = GetHarvesterData.getParagraphs();
 			
-			HarvesterIO io = new HarvesterIO(ATA_DATA_DIR, ATA_DATA_FILE_EXT);
+			//HarvesterIO io = new HarvesterIO(ATA_DATA_DIR, ATA_DATA_FILE_EXT);
+			
+			HarvesterIO io = new HarvesterIO.Builder()
+					.setDir(ATA_DATA_DIR)
+					.setFileExt(ATA_DATA_FILE_EXT)
+					.setLinkText(linkText)
+					.setParagraphs(paragraphs)
+					.build();
+			
+			// TODO: Shouldn't need to pass any args. anymore w/ Builder
 			io.performHarvesterIO(linkText, paragraphs);
 		}
 	}

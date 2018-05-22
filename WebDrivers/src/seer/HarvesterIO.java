@@ -14,10 +14,17 @@ public class HarvesterIO {
 	
 	private String _harvesterDataDir;
 	private String _dataFileExt;
+	private String _linkText;
+	private String[] _paragraphs;
 	
-	public HarvesterIO(String harvesterDataDir, String dataFileExt) {
+	// TODO: Construct w/ Builder Pattern
+	public HarvesterIO(String harvesterDataDir, String dataFileExt,
+			String linkText, String[] paragraphs)
+	{
 		this._harvesterDataDir = harvesterDataDir;
 		this._dataFileExt = dataFileExt;
+		this._linkText = linkText;
+		this._paragraphs = paragraphs;
 	}
 	
 	// TODO: This seems wrong (_dir being set for later use? Side effects...)
@@ -117,4 +124,38 @@ public class HarvesterIO {
 	// TODO: Check back to see if getters are needed
 	public String getHarvesterDataDir() { return _harvesterDataDir; }
 	public String getHarvesterDataFileExt() { return _dataFileExt; }
+	
+	
+	public static class Builder {
+		private String _harvesterDataDir;
+		private String _dataFileExt;
+		private String _linkText;
+		private String[] _paragraphs;
+		
+		public Builder setDir(String dir) {
+			this._harvesterDataDir = dir;
+			return this;
+		}
+		
+		public Builder setFileExt(String fileExt) {
+			this._dataFileExt = fileExt;
+			return this;
+		}
+		
+		public Builder setLinkText(String linkText) {
+			this._linkText = linkText;
+			return this;
+		}
+		
+		public Builder setParagraphs(String[] paragraphs) {
+			this._paragraphs = paragraphs;
+			return this;
+		}
+		
+		public HarvesterIO build() {
+			HarvesterIO harvesterIO = new HarvesterIO(_harvesterDataDir,
+					_dataFileExt, _linkText, _paragraphs);
+			return harvesterIO;
+		}
+	}
 }
