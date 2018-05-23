@@ -40,6 +40,7 @@ public class Main {
 		ATASetup.setupHarvester();
 		ATAHarvester.harvest();
 		
+		TTSetup.setupHarvester();
 		
 		
 		/*

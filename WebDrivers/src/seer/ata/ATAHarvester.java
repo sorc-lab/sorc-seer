@@ -13,7 +13,7 @@ public class ATAHarvester {
 	public static final String ATA_DATA_FILE_EXT = "_ata.txt";
 	
 	public static void harvest() throws Exception {
-		List<WebElement> navLinkElements = GetHarvesterData
+		List<WebElement> navLinkElements = ATAGetData
 				.getAllATANavigationLinkElements();
 		
 		String[] navLinkTexts = GetHarvesterData
@@ -27,7 +27,7 @@ public class ATAHarvester {
 			By linkLocator = By.partialLinkText(linkText);
 			ATANavigator.navigateToNextLink(linkLocator);
 			
-			String[] paragraphs = GetHarvesterData.getParagraphs();
+			String[] paragraphs = ATAGetData.getParagraphs();
 			
 			HarvesterIO io = new HarvesterIO.Builder()
 					.setDir(ATA_DATA_DIR)
