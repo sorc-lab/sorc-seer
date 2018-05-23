@@ -4,18 +4,14 @@ import java.io.File;
 import java.io.FileFilter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.net.URI;
-import java.nio.file.CopyOption;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.nio.file.attribute.UserPrincipal;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.WebDriver;
 
 import seer.ata.ATAHarvester;
 import seer.ata.ATASetup;
@@ -44,16 +40,6 @@ public class Main {
 		TTHarvester.harvest();
 		
 		_tearDown();
-		
-		
-		/*
-		Setup setupTT = new TTSetup(driver);
-		setupTT.setupHarvester();
-		TTHarvester TTHarvester = new TTHarvester(driver);
-		TTHarvester.harvest();
-		*/
-		
-		//_tearDown();
 	}
 
 	private static void _tearDown() throws IOException {

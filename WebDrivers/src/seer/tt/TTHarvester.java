@@ -29,6 +29,8 @@ public class TTHarvester {
 		List<WebElement> navLinkElements = TTGetData
 				.getAllNavigationLinkElements();
 		
+		_filterNavigationLinkElements(navLinkElements);
+		
 		String[] navLinkTexts = TTGetData
 				.getTextValuesFromLinkElements(navLinkElements);
 				
@@ -37,6 +39,7 @@ public class TTHarvester {
 			System.out.println("Harvesting data: " + _linkText + " ...");
 			
 			By linkLocator = By.partialLinkText(_linkText);
+						
 			WebElement link = TTGetData.getPresentWebElement(linkLocator);
 			TTNavigator.navigateToLink(link);
 			
