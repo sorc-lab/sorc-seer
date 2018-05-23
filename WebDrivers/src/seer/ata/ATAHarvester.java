@@ -12,19 +12,16 @@ public class ATAHarvester {
 	public static final String ATA_DATA_DIR = "ATATarot";
 	public static final String ATA_DATA_FILE_EXT = "_ata.txt";
 	
-	private List<WebElement> _navLinkElements;
-	private String[] _navLinkTexts;
-	
-	public ATAHarvester() {
-		_navLinkElements = GetHarvesterData.getAllATANavigationLinkElements();
-		_navLinkTexts = GetHarvesterData
-				.getTextValuesFromLinkElements(_navLinkElements);
-	}
-	
-	public void harvest() throws Exception {
-		for (int i = 0; i < _navLinkElements.size(); i++) {
+	public static void harvest() throws Exception {
+		List<WebElement> navLinkElements = GetHarvesterData
+				.getAllATANavigationLinkElements();
+		
+		String[] navLinkTexts = GetHarvesterData
+				.getTextValuesFromLinkElements(navLinkElements);
+		
+		for (int i = 0; i < navLinkElements.size(); i++) {
 			ATAFrameSwitch.switchToNavigationFrame();
-			String linkText = _navLinkTexts[i];
+			String linkText = navLinkTexts[i];
 						
 			System.out.println("Harvesting data: " + linkText + " ...");
 			By linkLocator = By.partialLinkText(linkText);

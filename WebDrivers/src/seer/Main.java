@@ -38,12 +38,8 @@ public class Main {
 
 	public static void main(String[] args) throws Exception {
 		ATASetup.setupHarvester();
-		
-		ATAHarvester ATAHarvester = new ATAHarvester();
 		ATAHarvester.harvest();
 		
-
-
 		/*
 		Setup setupTT = new TTSetup(driver);
 		setupTT.setupHarvester();
