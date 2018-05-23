@@ -5,12 +5,17 @@ import org.openqa.selenium.WebDriver;
 import seer.HarvesterIO;
 import seer.Setup;
 
-public class TTSetup implements Setup {
-	public static final String ROOT_DIR = "TTTarot";
-	public static final String FILE_EXT = "_tt.txt";
+public class TTSetup {
+	public static final String TT_DATA_DIR = "TTTarot";
+	public static final String TT_DATA_FILE_EXT = "_tt.txt";
 	public static final String HOMEPAGE_URL =
 		"https://www.trustedtarot.com/card-meanings/";
 	
+	public static void setupHarvester() {
+		
+	}
+	
+	/*
 	private WebDriver _driver;
 	private TTNavigator _nav;
 	private HarvesterIO _io;
@@ -26,4 +31,5 @@ public class TTSetup implements Setup {
 		_nav.navigateToHomepage(HOMEPAGE_URL);
 		_io.createDirectory(ROOT_DIR);
 	}
+	*/
 }

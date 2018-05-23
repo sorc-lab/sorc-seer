@@ -5,18 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import seer.AbstractNavigator;
+import seer.Navigator;
 
-public class TTNavigator extends AbstractNavigator {
-	private WebDriver _driver;
-	private TTGetData _getData;
-
-	public TTNavigator(WebDriver driver) {
-		super(driver);
-		this._driver = driver;
-		_getData = new TTGetData(_driver);
-	}
-
-	@Override
+public class TTNavigator extends Navigator {
 	public void navigateToNextLink(By linkLocator) {
 		WebElement link = _getData.getPresentWebElement(linkLocator);
 		navigateToLink(link);
