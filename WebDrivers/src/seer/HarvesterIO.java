@@ -14,13 +14,9 @@ public class HarvesterIO {
 	
 	private String _harvesterDataDir;
 	private String _dataFileExt;
-	
-	// TODO: Remove all references to linkText/Para. from outside sources
-	// TODO: Figure out how to do error checking for != null etc.
 	private String _linkText;
 	private String[] _paragraphs;
 	
-	// TODO: Construct w/ Builder Pattern
 	public HarvesterIO(String harvesterDataDir, String dataFileExt,
 			String linkText, String[] paragraphs)
 	{
@@ -40,19 +36,19 @@ public class HarvesterIO {
 		file.createNewFile();
 	}
 	
-	private String _getTextFilePathFromLinkText(String linkText) {
+	public String getTextFilePathFromLinkText(String linkText) {
 		String filePath = ROOT_DIR + "/" + _harvesterDataDir + "/"
 				+ _getDirNameFromLinkText(linkText);
 		return filePath;
 	}
 	
-	private String _getTextFileNameFromLinkText(String linkText) {
+	public String getTextFileNameFromLinkText(String linkText) {
 		return linkText.replaceAll(" ", "_").toLowerCase() + _dataFileExt;
 	}
 	
-	private String _getTextFileAndPathFromLinkText(String linkText) {
-		return _getTextFilePathFromLinkText(linkText) + "/"
-				+ _getTextFileNameFromLinkText(linkText);
+	public String _getTextFileAndPathFromLinkText(String linkText) {
+		return getTextFilePathFromLinkText(linkText) + "/"
+				+ getTextFileNameFromLinkText(linkText);
 	}
 	
 	public void createDirectoryFromLinkText(String linkText) {
@@ -61,11 +57,11 @@ public class HarvesterIO {
 		dir.mkdir();
 	}
 	
-	private String _getDirNameFromLinkText(String linkText) {
+	public String _getDirNameFromLinkText(String linkText) {
 		return linkText.replaceAll(" ", "_");
 	}
 	
-	// TODO: Review and understand this code better
+	// TODO: Review this function
 	public String getPreviewLines(String input) {
 	    StringTokenizer token = new StringTokenizer(input, SPACE);
 	    StringBuilder output = new StringBuilder(input.length());
@@ -90,9 +86,8 @@ public class HarvesterIO {
 
 	    return output.toString();
 	}	
-	
-	// TODO: Depends on _fileName private var--most likely set in havest loop
-	public void writeToFile(String linkText, String[] paragraphs)
+
+	private void _writeToFile(String linkText, String[] paragraphs)
 			throws Exception
 	{
 		try {
@@ -111,22 +106,25 @@ public class HarvesterIO {
 		}
 	}
 	
-	public void performHarvesterIO(String linkText, String[] paragraphs)
-			throws Exception
-	{
+	public void performHarvesterIO() {
+		if (!_isHarvesterValid()) { return; }
 		try {			
-			createDirectoryFromLinkText(linkText);
-			createTextFileFromLinkText(linkText);
-			writeToFile(linkText, paragraphs);
-		} catch (IOException e) {
+			createDirectoryFromLinkText(_linkText);
+			createTextFileFromLinkText(_linkText);
+			_writeToFile(_linkText, _paragraphs);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	// TODO: Check back to see if getters are needed
-	public String getHarvesterDataDir() { return _harvesterDataDir; }
-	public String getHarvesterDataFileExt() { return _dataFileExt; }
-	
+	private boolean _isHarvesterValid() {
+		if (_linkText == null || _paragraphs == null) {
+			System.err.println(
+					"performHarvesterIO: null _linkText or _paragraphs");
+			return false;
+		}
+		return true;
+	}
 	
 	public static class Builder {
 		private String _harvesterDataDir;

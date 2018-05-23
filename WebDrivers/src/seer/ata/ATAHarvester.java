@@ -39,8 +39,7 @@ public class ATAHarvester {
 					.setParagraphs(paragraphs)
 					.build();
 			
-			// TODO: Shouldn't need to pass any args. anymore w/ Builder
-			io.performHarvesterIO(linkText, paragraphs);
+			io.performHarvesterIO();
 		}
 	}
 }
