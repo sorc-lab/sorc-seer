@@ -13,66 +13,64 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import seer.AbstractHarvester;
+import seer.HarvesterIO;
+import seer.PhantomDriver;
 
-public class TTHarvester extends AbstractHarvester {
-	public static final String ROOT_DIR = "TTTarot";
-	public static final String FILE_EXT = "_tt.txt";
+public class TTHarvester {
+	public static final String TT_DATA_DIR = "TTTarot";
+	public static final String TT_DATA_FILE_EXT = "_tt.txt";
 	public static final String HOMEPAGE_URL =
 			"https://www.trustedtarot.com/card-meanings/";
 	
-	private WebDriver _driver;
-	private TTNavigator _nav;
-	private TTGetData _getData;
-	private List<WebElement> _navLinkElements;
-	private String[] _navLinkTexts;
+	private static WebDriver _driver = PhantomDriver.getPhantomDriver();
+	private static String _linkText;
 
-	public TTHarvester(WebDriver driver) {
-		super(ROOT_DIR, FILE_EXT);
-		this._driver = driver;
+	public static void harvest() throws Exception {
+		List<WebElement> navLinkElements = TTGetData
+				.getAllNavigationLinkElements();
 		
-		_nav     = new TTNavigator(_driver);
-		_getData = new TTGetData(_driver);
-		
-		_navLinkElements = _getData.getAllNavigationLinkElements();
-		_filterNavigationLinkElements(_navLinkElements);
-		
-		_navLinkTexts = _getData
-			.getTextValuesFromLinkElements(_navLinkElements);
-	}
-
-	@Override
-	public void harvest() throws Exception {
-		for (int i = 0; i < _navLinkElements.size(); i++) {
-			linkText_ = _navLinkTexts[i];
-			System.out.println("Harvesting data: " + linkText_ + " ...");
+		String[] navLinkTexts = TTGetData
+				.getTextValuesFromLinkElements(navLinkElements);
+				
+		for (int i = 0; i < navLinkElements.size(); i++) {
+			_linkText = navLinkTexts[i];
+			System.out.println("Harvesting data: " + _linkText + " ...");
 			
-			By linkLocator = By.partialLinkText(linkText_);
-			WebElement link = _getData.getPresentWebElement(linkLocator);
-			_nav.navigateToLink(link);
+			By linkLocator = By.partialLinkText(_linkText);
+			WebElement link = TTGetData.getPresentWebElement(linkLocator);
+			TTNavigator.navigateToLink(link);
 			
-			paragraphs_ = _getData.getParagraphs();
+			String[] paragraphs = TTGetData.getParagraphs();
 			String[] data = {
-				_getData.getHeader(),
-				_getData.getSummary(),
-				paragraphs_[2],
+				TTGetData.getHeader(),
+				TTGetData.getSummary(),
+				paragraphs[2],
 				"Past",
-				paragraphs_[3],
+				paragraphs[3],
 				"Present",
-				paragraphs_[4],
+				paragraphs[4],
 				"Future",
-				paragraphs_[5]
+				paragraphs[5]
 			};
 			
-			paragraphs_ = data;
-			performHarvesterIO_();		
+			paragraphs = data;
+			
+			HarvesterIO io = new HarvesterIO.Builder()
+					.setDir(TT_DATA_DIR)
+					.setFileExt(TT_DATA_FILE_EXT)
+					.setLinkText(_linkText)
+					.setParagraphs(paragraphs)
+					.build();
+			
+			io.performHarvesterIO();
 			_saveImage();
-			_nav.navigateToHomepage(HOMEPAGE_URL);
+			TTNavigator.navigateToHomepage(HOMEPAGE_URL);
 		}
 	}
 	
-	private List<WebElement> _filterNavigationLinkElements
-	(List<WebElement> navLinkElements)
+	// TODO: Why is this not being used?
+	private static List<WebElement> _filterNavigationLinkElements
+		(List<WebElement> navLinkElements)
 	{
 		Iterator<WebElement> iter = navLinkElements.iterator();
 		String getText;
@@ -88,7 +86,7 @@ public class TTHarvester extends AbstractHarvester {
 		return navLinkElements;
 	}
 	
-	private void _saveImage() throws IOException {
+	private static void _saveImage() throws IOException {
 		List<WebElement> images = _driver.findElements(By.tagName("img"));
 		WebElement imageElement = images.get(1);
 		String imageURL = imageElement.getAttribute("src");
@@ -100,8 +98,8 @@ public class TTHarvester extends AbstractHarvester {
 
 		String[] splitUrl = imageURL.split("/");
 		String getFileName = splitUrl[splitUrl.length - 1];
-		String fileDestination = ROOT_DIR + "/" + linkText_.replaceAll(" ", "_")
-			+ "/" + getFileName;
+		String fileDestination = TT_DATA_DIR + "/"
+				+ _linkText.replaceAll(" ", "_") + "/" + getFileName;
 
 		InputStream in = httpcon.getInputStream();
 		OutputStream out = new FileOutputStream(fileDestination);

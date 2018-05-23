@@ -41,6 +41,9 @@ public class Main {
 		ATAHarvester.harvest();
 		
 		TTSetup.setupHarvester();
+		TTHarvester.harvest();
+		
+		_tearDown();
 		
 		
 		/*
