@@ -71,7 +71,6 @@ public class TTHarvester {
 		}
 	}
 	
-	// TODO: Why is this not being used?
 	private static List<WebElement> _filterNavigationLinkElements
 		(List<WebElement> navLinkElements)
 	{
