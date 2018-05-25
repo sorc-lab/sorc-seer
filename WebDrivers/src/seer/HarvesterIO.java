@@ -38,7 +38,7 @@ public class HarvesterIO {
 	
 	public String getTextFilePathFromLinkText(String linkText) {
 		String filePath = ROOT_DIR + "/" + _harvesterDataDir + "/"
-				+ _getDirNameFromLinkText(linkText);
+				+ getDirNameFromLinkText(linkText);
 		return filePath;
 	}
 	
@@ -52,12 +52,12 @@ public class HarvesterIO {
 	}
 	
 	public void createDirectoryFromLinkText(String linkText) {
-		String path = _harvesterDataDir+"/"+_getDirNameFromLinkText(linkText);
+		String path = _harvesterDataDir+"/"+getDirNameFromLinkText(linkText);
 		File dir = new File(path);
 		dir.mkdir();
 	}
 	
-	public String _getDirNameFromLinkText(String linkText) {
+	public String getDirNameFromLinkText(String linkText) {
 		return linkText.replaceAll(" ", "_");
 	}
 	
