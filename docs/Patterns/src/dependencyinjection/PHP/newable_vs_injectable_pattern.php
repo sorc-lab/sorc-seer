@@ -81,7 +81,15 @@ class Question
     public function __construct($question) { $this->question = $question; }
  
     public function getAuthor($id) {
-        $this->author = Singleton::getInstance('Author', $id);
+        $session = Singleton::getInstance('Session');
+
+        if ($id = $session->getUserId()) {
+            $this->author = Singleton::getInstance('Author', $id);
+        }
+        else {
+            // throw error/exception
+        }
+
         return $this->author;
     }
 
