@@ -39,6 +39,10 @@ class Singleton
     } // getInstance        
 } // singleton
 
+// NOTE: Can use the above resource locator w/ serialized obj. files?
+// $objectFilePath = "/path/to/serialized/object/file";
+// $di = unserialize(file_get_contents($objectFilePath));
+
 
 // Entity class, newable
 class Author
