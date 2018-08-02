@@ -43,16 +43,25 @@ class Singleton
 // Entity class, newable
 class Author
 {
-    private $firstName;
-    private $lastName;
+    private $id;
+    private $data; // array
  
-    public function __construct($fistName, $lastName) {
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
+    public function __construct($id) {
+        $this->id = $id;
+
+        if ($id) {
+            // instantiate AbstractTable Class
+            // AbstractTable Class makes SQL query for record
+            // AbstractTable Class makes DB_CONNECTION driver based on config.
+
+            $db = Singleton::getInstance('DBConnection');
+            $data = $db->getRecord();
+        }
     }
- 
-    public function getFirstName() { return $this->firstName; }
-    public function getLastName() { return $this->lastName; }
+
+    public function getData() { return $this->data; }
+    public function getFirstName() { return $this->data['firstName']; }
+    public function getLastName() { return $this->data['lastName']; }
 
     // obj. should have a getData() array, pulls from DB record on Author table
     // getFirst/LastName should pull from $data array
@@ -63,20 +72,23 @@ class Author
 // Entity class, newable
 class Question
 {
-    private $author;
     private $question;
 
     public function __construct($question) { $this->question = $question; }
  
-    public function getAuthor($firstName, $lastName) { // should only need pass $id
-        $this->author = Singleton::getInstance('Author', $firstName, $lastName);
+    public function getAuthor($id) {
+        $this->author = Singleton::getInstance('Author', $id);
         return $this->author;
     }
 
     public function getQuestion() { return $this->question; }
 }
 
-
+// VS. using DI to inject Author $author into the Questions constructor, which
+// instantiates an Author object which also may or may not hit a DB before the
+// Author obj. is every used. In this case we can make a Question obj. without
+// ever needing to know or care about an Author until we actually need to when
+// we call 'getAuthor()'.
 
 /*
 class Author {
