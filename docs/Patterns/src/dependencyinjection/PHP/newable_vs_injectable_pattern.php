@@ -58,6 +58,8 @@ class Author
             // AbstractTable Class makes SQL query for record
             // AbstractTable Class makes DB_CONNECTION driver based on config.
 
+            // This is probably wrong, business layer is talking to data access
+            // layer.
             $db = Singleton::getInstance('DBConnection');
             $data = $db->getRecord();
         }
@@ -77,13 +79,17 @@ class Author
 class Question
 {
     private $question;
+    private $author;
 
     public function __construct($question) { $this->question = $question; }
  
     public function getAuthor($id) {
         $session = Singleton::getInstance('Session');
 
-        if ($id = $session->getUserId()) {
+        if ($this->author) { // only go further if $author is not already set
+            return $this->author;
+        }
+        else if ($id = $session->getUserId()) {
             $this->author = Singleton::getInstance('Author', $id);
         }
         else {
