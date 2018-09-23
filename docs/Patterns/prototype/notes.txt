@@ -1,0 +1,49 @@
+(Only use when needed to make a clone of an object instead of needing a new
+instance)
+
+Create objects based on a template of an existing object through cloning.
+
+**
+Instead of going to the trouble of creating object from scratch every time, you
+can make copies of an original instance and modify it as required.
+
+
+,--------.           ,---------------.
+| Client |  ------>  | <<interface>> |
+`--------'           | Prototype     |
+                     |_______________|
+                     | + clone()     |
+                     `---------------'
+                         ^        ^
+                         |        |
+              .-----------        -----------.
+              |                              |
+              |                              |
+     ,--------------------.        ,--------------------.
+     | ConcretePrototype1 |        | ConcretePrototype2 |
+     |____________________|        |____________________|
+     | + clone()          |        | + clone()          |
+     `--------------------'        `--------------------'
+     
+
+'Prototype' interface declares a method for cloning itself, while the
+'ConcretePrototype' implements the operation for cloning itself.
+
+Should be used when composition, create and representation of objects should be
+decoupled from the system. Or, classes to be created are specified at runetime,
+or you need to hide the complexity of creating new instance from the client, or
+creating an object is an expensive operation and it would be more efficient to
+copy an object, or objects are required that are similar to existing objects.
+
+NOTE: Many have said that using Java's built-in Cloneable interface is broken
+      and not considered good to use. Need to look deeper into this. The
+      pattern is good, but Java's built-in implementation is wrong and a custom
+      solution needs to be created here.
+      
+*** I may have mitigated the above note by implementing my own clone() method
+    in the Shape class. I also do not see how this is a problem since I am just
+    using clone to make a copy of the stored object. This seems to be perfectly
+    legal since it does exactly what the patterns suggests. In the case of
+    shapes, I load shapes into a cache/DB and when I call the 'getter' function,
+    it returns a CLONED copy of what is actually stored, thus decoupling that
+    object from the system's STORED object.
